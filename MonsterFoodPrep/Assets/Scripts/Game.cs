@@ -15,10 +15,11 @@ public class Game : MonoBehaviour
     public MonsterType[] monsterTypes;
     public int spawnCount;
     public float spawnDelay;
+    public float respawnDelay;
     public Transform spawnLocation;
     public Vector3 spawnArea;
     public float timeLimit;
-    public float restockDelay;
+ 
 
     private float startTime;
     private List<Monster> monsters;
@@ -77,7 +78,7 @@ public class Game : MonoBehaviour
                         spawnArea.z * Random.value - 0.5f),
                     Random.rotation);
                 Monster monster = instance.GetComponent<Monster>();
-                monster.onDeath += Invoke("CreateMonster", restockDelay);
+                //monster.onDeath += Invoke("CreateMonster", respawnDelay);
                 break;
             }
         }

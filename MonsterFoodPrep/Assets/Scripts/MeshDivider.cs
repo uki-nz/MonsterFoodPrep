@@ -47,6 +47,23 @@ public class MeshDivider : MonoBehaviour
     }
     */
 
+    public void Divide2(Plane plane)
+    {
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        Mesh mesh = meshFilter.mesh;
+        for (int i = 0; i < mesh.triangles.Length; i += 3)
+        {
+            Vector3 a = mesh.vertices[mesh.triangles[i]];
+            Vector3 b = mesh.vertices[mesh.triangles[i + 1]];
+            Vector3 c = mesh.vertices[mesh.triangles[i + 2]];
+
+            if(!plane.SameSide(a, b) || !plane.SameSide(b, c))
+            {
+
+            }
+        }
+    }
+
     public void Divide(Plane plane)
     {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
