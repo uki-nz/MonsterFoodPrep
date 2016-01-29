@@ -41,7 +41,7 @@ public class Hand : MonoBehaviour
             {
                 chopping = true;
                 hingeJoint.connectedBody.constraints = RigidbodyConstraints.FreezeRotation;
-                choppingPoint = raycastHit.point;
+                choppingPoint = raycastHit.point - raycastHit.normal;           
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class Game : MonoBehaviour
     public Transform spawnLocation;
     public Vector3 spawnArea;
     public float timeLimit;
-    private float time;
+    public float restockDelay;
+
+    private float startTime;
+    private List<Monster> monsters;
 
     public static Game game
     {
@@ -35,43 +39,51 @@ public class Game : MonoBehaviour
     void Awake()
     {
         _game = this;
-        DontDestroyOnLoad(gameObject); //maybe have different game objects per level
     }
 
     IEnumerator Start()
     {
-       
+        for (int i = 0; i < spawnCount; i++)
+        {
+            CreateMonster();
+            yield return new WaitForSeconds(spawnDelay);
+        }
 
+        startTime = Time.time;
         while(true)
         {
+            float countdown = timeLimit - (Time.time - startTime);
+            if (countdown <= 0.0f)
+            {
+                break;
+            }
             yield return new WaitForEndOfFrame();
+        }
+
+    }
+
+    void CreateMonster()
+    {
+        while (true)
+        {
+            MonsterType monsterType = monsterTypes[Random.Range(0, monsterTypes.Length - 1)];
+            if (Random.value <= monsterType.chance)
+            {
+                GameObject instance = (GameObject)Instantiate(
+                    monsterType.prefab,
+                    spawnLocation.position + new Vector3(
+                        spawnArea.x * Random.value - 0.5f,
+                        spawnArea.y * Random.value - 0.5f,
+                        spawnArea.z * Random.value - 0.5f),
+                    Random.rotation);
+                Monster monster = instance.GetComponent<Monster>();
+                monster.onDeath += Invoke("CreateMonster", restockDelay);
+                break;
+            }
         }
     }
 
     IEnumerator Spawn()
-    {
-        for (int i = 0; i < spawnCount; i++)
-        {
-            while (true)
-            {
-                MonsterType monsterType = monsterTypes[Random.Range(0, monsterTypes.Length - 1)];
-                if (Random.value <= monsterType.chance)
-                {
-                    GameObject instance = (GameObject)Instantiate(
-                        monsterType.prefab,
-                        spawnLocation.position + new Vector3(
-                            spawnArea.x * Random.value - 0.5f,
-                            spawnArea.y * Random.value - 0.5f,
-                            spawnArea.z * Random.value - 0.5f),
-                        Random.rotation);
-                    break;
-                }
-            }
-            yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-
-    IEnumerator Timer()
     {
         yield return new WaitForSeconds(timeLimit);
     }
