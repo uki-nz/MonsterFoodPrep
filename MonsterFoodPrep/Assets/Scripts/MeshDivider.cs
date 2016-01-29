@@ -28,18 +28,28 @@ public class MeshDivider : MonoBehaviour
     List<Vector3> positiveVertices = new List<Vector3>();
     List<int> positiveTriangles = new List<int>();
 
+    void Awake()
+    {
+        if (test)
+        {
+            test = false;
+            Divide(new Plane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f)));
+        }
+    }
 
+    /*
     IEnumerator Start()
     {
+    
         //GetComponent<Rigidbody>().detectCollisions = false;
         yield return new WaitForEndOfFrame();
-        GetComponent<Rigidbody>().detectCollisions = true; ;
+        //GetComponent<Rigidbody>().detectCollisions = true; ;
     }
+    */
 
     public void Divide(Plane plane)
     {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
-        MeshCollider meshCollider = GetComponent<MeshCollider>();
         Mesh mesh = meshFilter.mesh;
 
         for (int i = 0; i < mesh.triangles.Length; i += 3)
@@ -102,15 +112,18 @@ public class MeshDivider : MonoBehaviour
 
         GameObject positive = Instantiate(gameObject);
         meshFilter = positive.GetComponent<MeshFilter>();
-        meshCollider = positive.GetComponent<MeshCollider>();
         meshFilter.sharedMesh = positiveMesh;
-        meshCollider.sharedMesh = positiveMesh;
+        // meshCollider = positive.GetComponent<MeshCollider>();
+
+        //meshCollider.sharedMesh = positiveMesh;
 
         GameObject negative = Instantiate(gameObject);
         meshFilter = negative.GetComponent<MeshFilter>();
-        meshCollider = negative.GetComponent<MeshCollider>();
         meshFilter.sharedMesh = negativeMesh;
-        meshCollider.sharedMesh = negativeMesh;
+        // meshCollider = negative.GetComponent<MeshCollider>();
+
+        //meshCollider.sharedMesh = negativeMesh;
+     
 
         Destroy(gameObject);
     }
