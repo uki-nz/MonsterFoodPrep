@@ -33,7 +33,7 @@ public class MeshDivider : MonoBehaviour
         if (test)
         {
             test = false;
-            Divide(new Plane(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 0.0f, 0.0f)));
+            Divide(new Plane(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(0.0f, -0.25f, 0.0f)));
         }
     }
 

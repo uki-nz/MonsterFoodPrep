@@ -56,11 +56,6 @@ public class Hand : MonoBehaviour
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
             worldPosition.y = y;
             rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
-
-            float horizontal = Input.GetAxis("Horizontal");
-            Quaternion rotation = transform.rotation * 
-                Quaternion.AngleAxis(Time.deltaTime * rotationSpeed * horizontal, new Vector3(0.0f, 1.0f, 0.0f));
-            rigidbody.MoveRotation(rotation);
         }
     }
 }
