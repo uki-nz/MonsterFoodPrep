@@ -14,6 +14,7 @@ public class Game : MonoBehaviour
     public float timeLimit;
 
     private float startTime;
+    private List<Monster> monsters = new List<Monster>();
 
     public static Game game
     {
@@ -37,22 +38,14 @@ public class Game : MonoBehaviour
     {
         foreach(Dish dish in dishes)
         {
-            List<Monster> monsters = new List<Monster>();
-            foreach(Monster ingredient in dish.ingredients)
+            foreach(Monster monster in dish.monsters)
             {
-                /*
-                GameObject gameObject = (GameObject)Instantiate(
-                   ingredient.gameObject,
-                   monsterSpawn.position + new Vector3(
-                       spawnArea.x * Random.value - 0.5f,
-                       spawnArea.y * Random.value - 0.5f,
-                       spawnArea.z * Random.value - 0.5f),
-                   Random.rotation);
-                Monster monster = gameObject.GetComponent<Monster>();
-                monsters.Add(monster);
-                yield return new WaitForSeconds(spawnDelay);
-                */
+
+                SpawnMonster(monster);
             }
+
+            yield return new WaitForSeconds(0.5f);
+            SpawnDish(dish);
 
             startTime = Time.time;
             while (true)
@@ -76,43 +69,22 @@ public class Game : MonoBehaviour
         GameObject gameObject = (GameObject)Instantiate(
                dish.gameObject,
                dishSpawn.position,
-               Quaternion.identity);
+               Quaternion.identity);//Quaternion.AngleAxis(Random.Range(-45.0f, 45.0f), new Vector3(0, 0, 1))
 
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-        rigidbody.angularVelocity = Random.onUnitSphere;
+        //rigidbody.angularVelocity = Random.insideUnitSphere * 360.0f;
     }
 
     void SpawnMonster(Monster monster)
     {
-
-    }
-
-    void CreateMonster()
-    {
-        /*
-        while (true)
-        {
-
-            MonsterType monsterType = monsterTypes[Random.Range(0, monsterTypes.Length - 1)];
-            if (Random.value <= monsterType.chance)
-            {
-                GameObject instance = (GameObject)Instantiate(
-                    monsterType.prefab,
-                    monsterSpawn.position + new Vector3(
-                        spawnArea.x * Random.value - 0.5f,
-                        spawnArea.y * Random.value - 0.5f,
-                        spawnArea.z * Random.value - 0.5f),
-                    Random.rotation);
-                Monster monster = instance.GetComponent<Monster>();
-                //monster.onDeath += Invoke("CreateMonster", respawnDelay);
-                //monster.onPrepared;
-                break;
-            }
-        }*/
-    }
-
-    IEnumerator Spawn()
-    {
-        yield return new WaitForSeconds(timeLimit);
+        GameObject gameObject = (GameObject)Instantiate(
+               monster.gameObject,
+               monsterSpawn.position + new Vector3(
+                   spawnArea.x * Random.value - 0.5f,
+                   spawnArea.y * Random.value - 0.5f,
+                   spawnArea.z * Random.value - 0.5f),
+               Quaternion.AngleAxis(Random.RandomRange(0, 360), new Vector3(0, 1, 0)));
+        Monster instance = gameObject.GetComponent<Monster>();
+        monsters.Add(monster);
     }
 }
