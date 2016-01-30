@@ -18,6 +18,15 @@ ModelImporter:
     100020: GrpPotatoChoppedHorizontal
     100022: GrpPotatoChoppedHorzAndVert
     100024: GrpPotatoChoppedVerticle
+    100026: GEOCabbageChoppedBodyVert1
+    100028: GEOCabbageChoppedBodyVert2
+    100030: GEOCabbageChoppedBodyWhole
+    100032: GEOCabbageChoppedLeaves
+    100034: GrpCabbageChoppedLeaves
+    100036: GrpCabbageChoppedVert
+    100038: GEOCabbageHorz1
+    100040: GEOCabbageHorz2
+    100042: GrpCabbageChoppedHorz
     400000: //RootNode
     400002: CabbageHorizontal
     400004: CabbageHorizontal1
@@ -31,6 +40,15 @@ ModelImporter:
     400020: GrpPotatoChoppedHorizontal
     400022: GrpPotatoChoppedHorzAndVert
     400024: GrpPotatoChoppedVerticle
+    400026: GEOCabbageChoppedBodyVert1
+    400028: GEOCabbageChoppedBodyVert2
+    400030: GEOCabbageChoppedBodyWhole
+    400032: GEOCabbageChoppedLeaves
+    400034: GrpCabbageChoppedLeaves
+    400036: GrpCabbageChoppedVert
+    400038: GEOCabbageHorz1
+    400040: GEOCabbageHorz2
+    400042: GrpCabbageChoppedHorz
     2300000: //RootNode
     2300002: CabbageHorizontal
     2300004: CabbageHorizontal1
@@ -41,6 +59,12 @@ ModelImporter:
     2300014: GEOCabbageHorzVert2
     2300016: GEOCabbageHorzVert3
     2300018: GEOCabbageHorzVert4
+    2300020: GEOCabbageChoppedBodyVert1
+    2300022: GEOCabbageChoppedBodyVert2
+    2300024: GEOCabbageChoppedBodyWhole
+    2300026: GEOCabbageChoppedLeaves
+    2300028: GEOCabbageHorz1
+    2300030: GEOCabbageHorz2
     3300000: //RootNode
     3300002: CabbageHorizontal
     3300004: CabbageHorizontal1
@@ -51,6 +75,12 @@ ModelImporter:
     3300014: GEOCabbageHorzVert2
     3300016: GEOCabbageHorzVert3
     3300018: GEOCabbageHorzVert4
+    3300020: GEOCabbageChoppedBodyVert1
+    3300022: GEOCabbageChoppedBodyVert2
+    3300024: GEOCabbageChoppedBodyWhole
+    3300026: GEOCabbageChoppedLeaves
+    3300028: GEOCabbageHorz1
+    3300030: GEOCabbageHorz2
     4300000: GEOCabbage
     4300002: CabbageHorizontal
     4300004: CabbageHorizontal1
@@ -60,6 +90,12 @@ ModelImporter:
     4300012: GEOCabbageHorzVert2
     4300014: GEOCabbageHorzVert3
     4300016: GEOCabbageHorzVert4
+    4300018: GEOCabbageChoppedLeaves
+    4300020: GEOCabbageChoppedBodyWhole
+    4300022: GEOCabbageChoppedBodyVert1
+    4300024: GEOCabbageChoppedBodyVert2
+    4300026: GEOCabbageHorz1
+    4300028: GEOCabbageHorz2
   materials:
     importMaterials: 1
     materialName: 0

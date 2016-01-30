@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2359360}
   - 143: {fileID: 14302418}
   - 114: {fileID: 11402388}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,17 +73,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f0f3e152fc96b4bb303543d383b47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathPrefab: {fileID: 0}
-  dummyPrefab: {fileID: 0}
+  rightPrefab: {fileID: 0}
+  wrongPrefab: {fileID: 0}
+  dummyPrefab: {fileID: 150180, guid: 49e37042450b6ad4ea2757906d8a52bd, type: 2}
   movementOptions: 0
-  ChopsToKill: 
+  ChopsToKill: 01000000
   scoreValue: 10
   moveSpeed: 1
   turnSpeed: 1
-  walkTimeMin: 2
-  walkTimeMax: 4
-  walkDistanceMin: 1
-  walkDistanceMax: 4
+  walkTimeMin: 0
+  walkTimeMax: 0
+  walkDistanceMin: 0
+  walkDistanceMax: 0
 --- !u!143 &14302418
 CharacterController:
   m_ObjectHideFlags: 1
@@ -109,8 +110,12 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: ChopsToKill.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: turnSpeed
@@ -146,6 +151,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: walkDistanceMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPrefab
+      value: 
+      objectReference: {fileID: 184722, guid: 8de3c9b03ee14794291fbfb516df2cb9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dummyPrefab
+      value: 
+      objectReference: {fileID: 150180, guid: 49e37042450b6ad4ea2757906d8a52bd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ChopsToKill.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ChopsToKill.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

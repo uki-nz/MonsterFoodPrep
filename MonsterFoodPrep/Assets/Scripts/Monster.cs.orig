@@ -26,10 +26,8 @@ public class Monster : MonoBehaviour
     // DEFINING DELEGATES
     private delegate float MovementDelegate(MonsterController mc);
     public delegate void OnDeathEvent(bool success, Monster monster);
-    public delegate void OnChopEvent(bool success, Monster monster);
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
-    public event OnChopEvent OnChop;
     // VARS
     public GameObject rightPrefab;
     public GameObject wrongPrefab;
@@ -52,25 +50,12 @@ public class Monster : MonoBehaviour
 
     public float moveSpeed;
     public float turnSpeed;
-    public float walkTimeMin;
-    public float walkTimeMax;
-    public float walkDistanceMin;
-    public float walkDistanceMax;
 
-    private Vector3 face;
+    private Vector3 target;
     private Vector3 moveDirection;
-    private Vector3 size;
     Vector3 direction;
-
-    float time = 0.0f;
-
-    bool start;
-
-    void Start()
-    {
-        size = transform.localScale;
-    }
-
+    
+        
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
@@ -80,28 +65,17 @@ public class Monster : MonoBehaviour
             {
                 state = MonState.Derpy;
             }
+            direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
+            direction.y = 0.0f;
 
-            if (!start)
-            {
-                Debug.Log("hit");
-                StartCoroutine(LookAround());
-                start = true;
-            }
+            if(direction.magnitude > 0.0f)
+                transform.forward = direction;
 
-            if(direction != Vector3.zero)
-            {
-                face = Vector3.RotateTowards(face, direction, turnSpeed * Time.deltaTime, 0.0f);
-                face.y = 0.0f;
-                transform.forward = face.normalized;
-               
-            }
-            moveDirection = face * moveSpeed;
+            if (Vector3.Distance(transform.position, target) > 0.1f)
+                moveDirection = direction * moveSpeed;
         }
-  
         moveDirection += Physics.gravity;
         controller.Move(moveDirection * Time.deltaTime);
-        transform.localScale = new Vector3(size.x, size.y - (size.y * (Mathf.PingPong(time, 0.25f) * 0.2f)), size.z);
-        time += Time.deltaTime;
     }
 
     IEnumerator LookAround()
@@ -114,18 +88,10 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            Vector2 random = Random.insideUnitCircle * Random.Range(walkDistanceMin, walkDistanceMax);
-            direction = new Vector3(random.x, 0.0f, random.y);
-            yield return new WaitForSeconds(Random.Range(walkTimeMin, walkTimeMax));
-        }
-    }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if(hit.gameObject.GetComponent<CharacterController>())
-        {
-            direction = Vector3.zero;
-            StartCoroutine(Walk());
+            Vector3 offset = Random.insideUnitSphere;
+            offset.y = 0.0f;
+            target = transform.position + offset;
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
@@ -135,15 +101,14 @@ public class Monster : MonoBehaviour
 
         if (ChopsToKill.Count == 0) return;
 
+<<<<<<< Updated upstream
         print("CHOPPED");
+=======
+        print("CHOPPED"+(int)chop);
+>>>>>>> Stashed changes
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
-
-            if (OnChop != null)
-            {
-                OnChop(true, this);
-            }
 
             if (ChopsToKill.Count == chopCount)
             {
@@ -155,9 +120,17 @@ public class Monster : MonoBehaviour
                 state = MonState.Chopped;
                 if (OnDeath != null)
                 {
+                    print("CALLING ON DEATH");
                     OnDeath(true, this);
                 }
+<<<<<<< Updated upstream
 
+=======
+                //Debug.Log("KILLED", this);
+                //GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
+                //StartCoroutine(RemoveCorpse(go));
+                //Destroy(gameObject);
+>>>>>>> Stashed changes
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
@@ -165,10 +138,6 @@ public class Monster : MonoBehaviour
         else
         {
             // chopped wrongly, kill but no rewards
-            if (OnChop != null)
-            {
-                OnChop(false, this);
-            }
 
             // run mesh divider
             // update game class fail count
@@ -183,9 +152,9 @@ public class Monster : MonoBehaviour
         }
     }
 
-    IEnumerator RemoveCorpse(GameObject toRemove)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        yield return new WaitForSeconds(3f);
-        Destroy(toRemove);
+        //StartCoroutine(LookAround());
     }
+    
 }
