@@ -71,12 +71,10 @@ public class Knife : MonoBehaviour
                 rigidbody.MovePosition(Vector3.Lerp(transform.position, point, Time.deltaTime * moveSpeed));
             }*/
 
-            /*
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
             rotation = Mathf.Clamp(rotation + scroll, -2, 2);
             rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
-            */
            
             Vector3 screenPosition = Input.mousePosition;
             screenPosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
@@ -87,15 +85,9 @@ public class Knife : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
     void OnTriggerEnter(Collider collider)
     {
         Monster monster = collider.GetComponent<Monster>();
-=======
-    void OnTriggerEnter(Collider other)
-    {
-        Monster monster = other.GetComponent<Monster>();
->>>>>>> origin/master
         if(monster)
         {
             //monster.Chop((ChopMode)Mathf.Abs(rotation));

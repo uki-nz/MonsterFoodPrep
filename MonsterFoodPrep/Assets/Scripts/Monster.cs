@@ -33,13 +33,7 @@ public class Monster : MonoBehaviour
     public GameObject dummyPrefab;
     private CharacterController controller;
     public MovementPattern movementOptions;
-<<<<<<< HEAD
-=======
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
-    public float movementSpeed = 1f; // baseline
-    [Range(0.01f, 1f)]
-    public float turningSpeed = 1f;
->>>>>>> origin/master
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
@@ -150,10 +144,6 @@ public class Monster : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-<<<<<<< HEAD
-        //StartCoroutine(LookAround());
-=======
-
         //StartCoroutine(LookAround());
     }
 
@@ -161,6 +151,5 @@ public class Monster : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(toRemove);
->>>>>>> origin/master
     }
 }
