@@ -109,8 +109,13 @@ public class Game : MonoBehaviour
 
     void OnDeathEventhandler(bool success, Monster monster)
     {
+        Debug.Log("OnDeathHandler", this);
         if (success)
         {
+            GameObject go = (GameObject)GameObject.Instantiate(monster.dummyPrefab, monster.transform.position, monster.transform.rotation);
+            StartCoroutine(RemoveCorpse(go));
+            monsters.Remove(monster);
+            Destroy(monster.gameObject);
 
         }
         else

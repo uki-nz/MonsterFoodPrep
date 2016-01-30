@@ -102,8 +102,9 @@ public class Monster : MonoBehaviour
     {
         if (state < MonState.Derpy) return;
 
+                
         print("CHOPPED");
-        if (ChopsToKill[chopCount] == chop)
+        if (ChopsToKill.Count > (int)chop && ChopsToKill[chopCount] == chop)
         {
             chopCount++;
 
@@ -115,14 +116,15 @@ public class Monster : MonoBehaviour
                 // update game class kill count
                 Debug.Log("KILLED", this);
                 state = MonState.Chopped;
-                if (OnDeath != null)
+                //if (OnDeath != null)
                 {
+                    print("CALLING ON DEATH");
                     OnDeath(true, this);
                 }
                 //Debug.Log("KILLED", this);
-                GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
-                StartCoroutine(RemoveCorpse(go));
-                Destroy(gameObject);
+                //GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
+                //StartCoroutine(RemoveCorpse(go));
+                //Destroy(gameObject);
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
@@ -149,10 +151,5 @@ public class Monster : MonoBehaviour
 
         //StartCoroutine(LookAround());
     }
-
-    IEnumerator RemoveCorpse(GameObject toRemove)
-    {
-        yield return new WaitForSeconds(3f);
-        Destroy(toRemove);
-    }
+    
 }
