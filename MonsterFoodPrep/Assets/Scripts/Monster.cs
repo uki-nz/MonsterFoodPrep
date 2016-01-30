@@ -35,6 +35,8 @@ public class Monster : MonoBehaviour
     public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     public MovementPattern movementOptions;
+    AudioSource audio;
+    public AudioClip deathSound;
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
@@ -62,6 +64,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        audio = GetComponent<AudioSource>();
         StartCoroutine(Idle());
     }
 
@@ -80,6 +83,10 @@ public class Monster : MonoBehaviour
         {
             if (controller.isGrounded)
             {
+                if (state == MonState.Spawning)
+                {
+                    state = MonState.Derpy;
+                }
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
@@ -136,6 +143,8 @@ public class Monster : MonoBehaviour
         if (state < MonState.Derpy) return;
 
         if (ChopsToKill.Count == 0) return;
+
+        audio.PlayOneShot(deathSound, 0.7F);
 
         print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)

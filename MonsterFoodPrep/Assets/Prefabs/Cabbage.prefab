@@ -77,6 +77,7 @@ MonoBehaviour:
   wrongPrefab: {fileID: 0}
   dummyPrefab: {fileID: 150180, guid: 49e37042450b6ad4ea2757906d8a52bd, type: 2}
   movementOptions: 0
+  deathSound: {fileID: 8300000, guid: 2f411a1fa2d73be409ad16b0454e2a7c, type: 3}
   ChopsToKill: 01000000
   scoreValue: 10
   moveSpeed: 1
@@ -176,6 +177,10 @@ Prefab:
       propertyPath: idleTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f411a1fa2d73be409ad16b0454e2a7c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127958}
