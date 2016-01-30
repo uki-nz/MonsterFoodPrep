@@ -54,6 +54,8 @@ public class Monster : MonoBehaviour
     public float turnSpeed = 45.0f;
     public float idleTimeMin = 5.0f;
     public float idleTimeMax = 10.0f;
+    public float lookTimeMin = 1.0f;
+    public float lookTimeMax = 2.0f;
     public float bobScale = 0.01f;
     public float bobFrequency = 0.25f;
     public bool canWalk = true;
@@ -62,7 +64,7 @@ public class Monster : MonoBehaviour
     private Vector3 startScale;
     private CharacterController controller;
     private Vector3 moveDirection;
-    private bool falling;
+    private bool changeDirection;
 
     void Awake()
     {
@@ -79,7 +81,9 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        if(!controller.isGrounded)
+        //controller.detectCollisions = true;
+
+        if (!controller.isGrounded)
         {
             moveDirection += Physics.gravity * Time.deltaTime;
         }
@@ -98,36 +102,47 @@ public class Monster : MonoBehaviour
 
     IEnumerator Idle()
     {
-        while(true)
+        while(!controller.isGrounded)
         {
-            if (controller.isGrounded)
-            {
-                if (state == MonState.Spawning)
-                {
-                    state = MonState.Derpy;
-                }
-                StartCoroutine(Looking());
-                yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
-                StopCoroutine(Looking());
-                state = MonState.Escaping;
-                yield return StartCoroutine(Walk(Random.onUnitSphere));
-            }
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
+
+        if (state == MonState.Spawning)
+        {
+            state = MonState.Derpy;
+        }
+
+        StartCoroutine(LookAround());
+        yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
+        StopAllCoroutines();
+
+        state = MonState.Escaping;
+
+        if(canWalk)
+        {
+            StartCoroutine(Walk(Random.onUnitSphere));
+        }
+
     }
 
-    IEnumerator Looking()
+    IEnumerator LookAround()
     {
         while(true)
         {
             Vector3 direction = Random.onUnitSphere;
-            direction.y = 0.0f;
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            while (!Mathf.Approximately(Quaternion.Angle(transform.rotation, rotation), 0.0f))
-            {
-                SteerTowards(rotation);
-                yield return new WaitForEndOfFrame();
-            }
+            StartCoroutine(Look(direction));
+            yield return new WaitForSeconds(Random.Range(lookTimeMin, lookTimeMax));
+        }
+    }
+
+    IEnumerator Look(Vector3 direction)
+    {
+        direction.y = 0.0f;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        while (!Mathf.Approximately(Quaternion.Angle(transform.rotation, rotation), 0.0f))
+        {
+            SteerTowards(rotation);
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -154,18 +169,27 @@ public class Monster : MonoBehaviour
     {
         if(hit.gameObject.GetComponent<CharacterController>())
         {
-            //controller.Move(-hit.normal * Time.deltaTime);
+            Vector3 normal = hit.normal * Time.deltaTime;
+            normal.y = 0.0f;
+            transform.position += normal;
+            if(state == MonState.Escaping)
+            {
+                StopAllCoroutines();
+                StartCoroutine(Walk(hit.normal));
+            }
         }
     }
 
     public void Chop(Knife.ChopMode chop)
     {
         if (state < MonState.Derpy) return;
-        
+
+        if (ChopsToKill.Count == 0) return;
+
         audio.PlayOneShot(deathSound);
         //audio.Play();
 
-        if (chopCount >= ChopsToKill.Count) return;
+        print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
