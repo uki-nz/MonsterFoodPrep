@@ -35,6 +35,7 @@ public class Monster : MonoBehaviour
     public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     public MovementPattern movementOptions;
+    AudioSource audio;
     public AudioClip deathSound;
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public int scoreValue = 10;
@@ -63,6 +64,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        audio = GetComponent<AudioSource>();
         StartCoroutine(Idle());
     }
 
@@ -151,6 +153,8 @@ public class Monster : MonoBehaviour
         if (state < MonState.Derpy) return;
 
         if (ChopsToKill.Count == 0) return;
+
+        audio.PlayOneShot(deathSound, 0.7F);
 
         print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
