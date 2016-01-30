@@ -83,8 +83,9 @@ public class Monster : MonoBehaviour
             moveDirection += Physics.gravity * Time.deltaTime;
         }
         controller.Move(moveDirection * Time.deltaTime);
+
         Vector3 scale = transform.localScale;
-        scale.y = startScale.y + (bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
+        scale.y = startScale.y + (startScale.y * bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
         transform.localScale = scale;
     }
 
@@ -145,7 +146,7 @@ public class Monster : MonoBehaviour
     {
         if(hit.gameObject.GetComponent<CharacterController>())
         {
-            //StartCoroutine(Walk());
+            //controller.Move(-hit.normal * Time.deltaTime);
         }
     }
 
