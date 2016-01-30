@@ -13,6 +13,8 @@ public class Game : MonoBehaviour
     public float timeLimit;
     public float respawnDelay;
     public float fallSpeed;
+    public int monsterQuantity = 4;
+    public List<Monster> monsterPrefabs;
 
     private float startTime;
     private List<Bounds> spawns = new List<Bounds>();
@@ -36,18 +38,33 @@ public class Game : MonoBehaviour
         _game = this;
     }
 
-    void Start()
-    {
-        foreach(Dish dish in dishes)
-        {
-            foreach(Monster monster in dish.monsters)
-            {
-                SpawnMonster(monster);
-            }
-            SpawnDish(dish);
 
-            startTime = Time.time;
+    IEnumerator Start()
+    {
+        //foreach (Dish dish in dishes)
+        //{
+        //    foreach (Monster monster in dish.monsters)
+        //    {
+        //        SpawnMonster(monster);
+        //        yield return new WaitForSeconds(0.1f);
+        //    }
+        SpawnDish(dishes[0]);
+
+        startTime = Time.time;
+        while (true)
+        {
+            //float countdown = timeLimit - (Time.time - startTime);
+            //if (countdown <= 0.0f)
+            //{
+            //    break;
+            //}
+            if (monsters.Count < monsterQuantity)
+            {
+                SpawnMonster(monsterPrefabs[Random.Range(0, monsterPrefabs.Count)]);
+            }
+            yield return new WaitForEndOfFrame();
         }
+        //}
     }
 
     void SpawnDish(Dish dish)
