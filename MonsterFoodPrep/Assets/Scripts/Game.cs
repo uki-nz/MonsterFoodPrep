@@ -6,7 +6,6 @@ public class Game : MonoBehaviour
 {
     public Dish[] dishes;
     public Transform UiCanvas;
-    public Camera UiCamera;
     public GameObject[] KillEffects;
     public Transform dishSpawn;
     public Transform monsterSpawn;
