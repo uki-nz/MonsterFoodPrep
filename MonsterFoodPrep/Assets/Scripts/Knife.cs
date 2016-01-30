@@ -79,7 +79,6 @@ public class Knife : MonoBehaviour
         Monster monster = other.GetComponent<Monster>();
         if(monster)
         {
-            print("CHOPMODE = " + Mathf.Abs(rotation));
             monster.Chop((ChopMode)Mathf.Abs(rotation));
         }
     }

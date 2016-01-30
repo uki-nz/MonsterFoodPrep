@@ -24,10 +24,12 @@ public class Monster : MonoBehaviour
     };
     // DEFINING DELEGATES
     private delegate float MovementDelegate(MonsterController mc);
-    public delegate void OnDeathEvent(bool success);
+    public delegate void OnDeathEvent(bool success, Monster monster);
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
     // VARS
+    public GameObject deathPrefab;
+    public GameObject dummyPrefab;
     private CharacterController controller;
     public MovementPattern movementOptions;
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
@@ -65,6 +67,7 @@ public class Monster : MonoBehaviour
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
+            state = MonState.Derpy;
             direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
             direction.y = 0.0f;
 
@@ -110,11 +113,16 @@ public class Monster : MonoBehaviour
 
                 // run mesh-divider
                 // update game class kill count
+                Debug.Log("KILLED", this);
                 state = MonState.Chopped;
                 if (OnDeath != null)
                 {
-                    OnDeath(true);
+                    OnDeath(true, this);
                 }
+                //Debug.Log("KILLED", this);
+                GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
+                StartCoroutine(RemoveCorpse(go));
+                Destroy(gameObject);
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
@@ -128,8 +136,9 @@ public class Monster : MonoBehaviour
             state = MonState.Chopped;
             if (OnDeath!= null)
             {
-                OnDeath(false);
+                OnDeath(false, this);
             }
+
             // leave chopped bits where they are
             Debug.Log("Fail!");
         }
@@ -139,5 +148,11 @@ public class Monster : MonoBehaviour
     {
 
         //StartCoroutine(LookAround());
+    }
+
+    IEnumerator RemoveCorpse(GameObject toRemove)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(toRemove);
     }
 }

@@ -101,8 +101,31 @@ public class Game : MonoBehaviour
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
             Monster instance = gameObject.GetComponent<Monster>();
             monsters.Add(monster);
+            monster.OnDeath += OnDeathEventhandler;
             spawns.Add(bounds);
             break;
         }
+    }
+
+    void OnDeathEventhandler(bool success, Monster monster)
+    {
+        if (success)
+        {
+
+        }
+        else
+        {
+            GameObject go = (GameObject)GameObject.Instantiate(monster.deathPrefab, monster.transform.position, monster.transform.rotation);
+            StartCoroutine(RemoveCorpse(go));
+            monsters.Remove(monster);
+            Destroy(monster.gameObject);
+        }
+        Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
+    }
+
+    IEnumerator RemoveCorpse(GameObject go)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(go);
     }
 }
