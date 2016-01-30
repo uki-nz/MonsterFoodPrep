@@ -1,47 +1,47 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &121150
+--- !u!1 &127958
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 450056}
-  - 33: {fileID: 3397774}
-  - 23: {fileID: 2327662}
-  - 114: {fileID: 11438810}
-  - 143: {fileID: 14311684}
-  m_Layer: 0
-  m_Name: DumbPotato
+  - 4: {fileID: 459792}
+  - 33: {fileID: 3346150}
+  - 23: {fileID: 2359360}
+  - 143: {fileID: 14302418}
+  - 114: {fileID: 11402388}
+  m_Layer: 2
+  m_Name: Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &450056
+--- !u!4 &459792
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
+  m_GameObject: {fileID: 127958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25331378, y: 5.95914602, z: -5.07071257}
+  m_LocalPosition: {x: -2.56570458, y: .991054296, z: -.779506147}
   m_LocalScale: {x: .75, y: .75, z: .75}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2327662
+--- !u!23 &2359360
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
+  m_GameObject: {fileID: 127958}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c557882008e693540a7a9bf6830f13f1, type: 2}
+  - {fileID: 2100000, guid: 1d2690e5e1acf4840a23ff13adcddb8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -55,19 +55,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3397774
+--- !u!33 &3346150
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
-  m_Mesh: {fileID: 4300000, guid: 892ff6819d5680c4285fe05facd33c1b, type: 3}
---- !u!114 &11438810
+  m_GameObject: {fileID: 127958}
+  m_Mesh: {fileID: 4300000, guid: da429d3aaea19c0438b8bc810465df3d, type: 3}
+--- !u!114 &11402388
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
+  m_GameObject: {fileID: 127958}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32f0f3e152fc96b4bb303543d383b47f, type: 3}
@@ -77,23 +77,23 @@ MonoBehaviour:
   scoreValue: 10
   moveSpeed: 1
   turnSpeed: 1
---- !u!143 &14311684
+--- !u!143 &14302418
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
+  m_GameObject: {fileID: 127958}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.51722896
-  m_Radius: .567277312
+  m_Height: 1.01999998
+  m_Radius: .5
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
   m_MinMoveDistance: .00100000005
-  m_Center: {x: .00434666919, y: .693460703, z: 4.470348e-08}
+  m_Center: {x: 0, y: .479999989, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -102,42 +102,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: ChopsToKill.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalScale.x
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalScale.y
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalScale.z
-      value: .75
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: turnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: ChopsToKill.Array.data[0]
+      propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: deathPrefab
-      value: 
-      objectReference: {fileID: 164844, guid: 65aa9d538d92cd443b9fef11a8a3672f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 121150}
+  m_RootGameObject: {fileID: 127958}
   m_IsPrefabParent: 1

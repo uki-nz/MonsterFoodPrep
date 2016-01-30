@@ -32,6 +32,7 @@ public class Game : MonoBehaviour
     void Awake()
     {
         _game = this;
+       // Cursor.visible = false;
     }
 
     IEnumerator Start()
@@ -81,7 +82,6 @@ public class Game : MonoBehaviour
 
             Bounds bounds = monster.GetComponent<Renderer>().bounds;
             bounds.center = position;
-            Debug.Log(bounds);
 
             bool intersects = false;
             foreach(Bounds spawn in spawns)

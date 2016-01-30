@@ -30,7 +30,6 @@ public class Knife : MonoBehaviour
     {
         Transform transform = hand.transform;
         y = transform.position.y;
-        distance = Vector3.Distance(Camera.main.transform.position, transform.position);
     }
 
     void Update()
@@ -61,25 +60,37 @@ public class Knife : MonoBehaviour
         }
         else
         {
-            Vector3 screenPosition = Input.mousePosition;
-            screenPosition.z = distance;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            worldPosition.y = y;
-            rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
+            /*
+            RaycastHit raycastHit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out raycastHit))
+            {
+    
+                Vector3 point = raycastHit.point;
+                point.y = y;
+                Debug.Log("point");
+                rigidbody.MovePosition(Vector3.Lerp(transform.position, point, Time.deltaTime * moveSpeed));
+            }*/
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
             rotation = Mathf.Clamp(rotation + scroll, -2, 2);
             rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
+           
+            Vector3 screenPosition = Input.mousePosition;
+            screenPosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+            worldPosition.y = y;
+            rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
+            
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collider)
     {
-        Monster monster = other.GetComponent<Monster>();
+        Monster monster = collider.GetComponent<Monster>();
         if(monster)
         {
-            monster.Chop((ChopMode)Mathf.Abs(rotation));
+            //monster.Chop((ChopMode)Mathf.Abs(rotation));
         }
     }
 }

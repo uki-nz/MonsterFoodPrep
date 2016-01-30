@@ -99,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.97690201, y: 4.47727394, z: 4.52219582}
+  m_Size: {x: 10, y: 4.47727394, z: 10}
   m_Center: {x: -.00883173943, y: -1.76136303, z: -.0139349699}
 --- !u!1 &336744427
 GameObject:
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 336744427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.69000006, z: -1.10000002}
+  m_LocalPosition: {x: 0, y: 3, z: -1.10000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1948685311}
@@ -155,8 +155,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -9
-    max: 9
+    min: -5.625
+    max: 5.625
     bounciness: 0
     bounceMinVelocity: .200000003
     contactDistance: 0
@@ -385,7 +385,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 781133659}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 0, y: 0, z: 1.75}
+  m_LocalPosition: {x: -0, y: 0, z: -.150000006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1948685311}
@@ -463,7 +463,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0729cd7d50dc68d489641bfc99927046, type: 2}
+  - {fileID: 2100000, guid: 3b58a88abe8a6174bad6031097fb2be1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -654,7 +654,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.70222369e-07, y: 0, z: 1.75}
+  m_ConnectedAnchor: {x: 4.88762062e-08, y: 0, z: -.150000006}
   m_UseSpring: 1
   m_Spring:
     spring: 10
@@ -667,8 +667,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -9
-    max: 9
+    min: -5.625
+    max: 5.625
     bounciness: 0
     bounceMinVelocity: .200000003
     contactDistance: 0
