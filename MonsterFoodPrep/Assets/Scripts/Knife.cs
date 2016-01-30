@@ -90,7 +90,7 @@ public class Knife : MonoBehaviour
         Monster monster = collider.GetComponent<Monster>();
         if(monster)
         {
-            //monster.Chop((ChopMode)Mathf.Abs(rotation));
+            monster.Chop((ChopMode)Mathf.Abs(rotation));
         }
     }
 }

@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 450056}
   - 33: {fileID: 3397774}
   - 23: {fileID: 2327662}
-  - 114: {fileID: 11438810}
   - 143: {fileID: 14311684}
   m_Layer: 0
   m_Name: DumbPotato
@@ -62,21 +61,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121150}
   m_Mesh: {fileID: 4300000, guid: 892ff6819d5680c4285fe05facd33c1b, type: 3}
---- !u!114 &11438810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f0f3e152fc96b4bb303543d383b47f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementOptions: 0
-  scoreValue: 10
-  moveSpeed: 1
-  turnSpeed: 1
 --- !u!143 &14311684
 CharacterController:
   m_ObjectHideFlags: 1
