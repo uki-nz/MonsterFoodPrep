@@ -34,7 +34,6 @@ public class Monster : MonoBehaviour
     public GameObject rightPrefab;
     public GameObject wrongPrefab;
     public GameObject dummyPrefab;
-    private CharacterController controller;
     public MovementPattern movementOptions;
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public int scoreValue = 10;
@@ -50,82 +49,93 @@ public class Monster : MonoBehaviour
         protected set;
     }
 
-    public float moveSpeed;
-    public float turnSpeed;
-    public float walkTimeMin;
-    public float walkTimeMax;
-    public float walkDistanceMin;
-    public float walkDistanceMax;
+    public float moveSpeed = 1.0f;
+    public float turnSpeed = 45.0f;
+    public float idleTimeMin = 5.0f;
+    public float idleTimeMax = 10.0f;
+    public bool canWalk = true;
 
-    private Vector3 face;
+    private CharacterController controller;
     private Vector3 moveDirection;
-    private Vector3 size;
-    Vector3 direction;
-
-    float time = 0.0f;
-
-    bool start;
+    private bool falling;
 
     void Start()
     {
-        size = transform.localScale;
+        controller = GetComponent<CharacterController>();
+        StartCoroutine(Idle());
     }
 
     void Update()
     {
-        CharacterController controller = GetComponent<CharacterController>();
-        if (controller.isGrounded)
+        if(!controller.isGrounded)
         {
-            if (state == MonState.Spawning)
-            {
-                state = MonState.Derpy;
-            }
-
-            if (!start)
-            {
-                Debug.Log("hit");
-                StartCoroutine(LookAround());
-                start = true;
-            }
-
-            if(direction != Vector3.zero)
-            {
-                face = Vector3.RotateTowards(face, direction, turnSpeed * Time.deltaTime, 0.0f);
-                face.y = 0.0f;
-                transform.forward = face.normalized;
-               
-            }
-            moveDirection = face * moveSpeed;
+            moveDirection += Physics.gravity * Time.deltaTime;
         }
-  
-        moveDirection += Physics.gravity;
         controller.Move(moveDirection * Time.deltaTime);
-        transform.localScale = new Vector3(size.x, size.y - (size.y * (Mathf.PingPong(time, 0.25f) * 0.2f)), size.z);
-        time += Time.deltaTime;
     }
 
-    IEnumerator LookAround()
+    IEnumerator Idle()
     {
-        yield return new WaitForSeconds(1.0f);
-        StartCoroutine(Walk());
-    }
-
-    IEnumerator Walk()
-    {
-        while (true)
+        while(true)
         {
-            Vector2 random = Random.insideUnitCircle * Random.Range(walkDistanceMin, walkDistanceMax);
-            direction = new Vector3(random.x, 0.0f, random.y);
-            yield return new WaitForSeconds(Random.Range(walkTimeMin, walkTimeMax));
+            if (controller.isGrounded)
+            {
+                StartCoroutine(Looking());
+                yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
+                StopCoroutine(Looking());
+                yield return StartCoroutine(Walking());
+            }
+            yield return null;
         }
+    }
+
+    IEnumerator Looking()
+    {
+        while(true)
+        {
+            Vector3 direction = Random.onUnitSphere;
+            direction.y = 0.0f;
+            float dot = Vector3.Dot(transform.forward, direction);
+            while (!Mathf.Approximately(dot, 1.0f))
+            {
+                LookTowards(direction);
+                yield return new WaitForEndOfFrame();
+            }
+            Debug.Log(direction);
+        }
+    }
+
+    IEnumerator Walking()
+    {
+        while(true)
+        {
+            yield return StartCoroutine(MoveInDirection(Random.onUnitSphere));
+        }
+    }
+
+    IEnumerator MoveInDirection(Vector3 direction)
+    {
+        direction.y = 0.0f;
+        while(true)
+        {
+            LookTowards(direction);
+            Vector3 move = transform.forward * moveSpeed;
+            moveDirection.x = move.x;
+            moveDirection.z = move.z;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    void LookTowards(Vector3 direction)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.gameObject.GetComponent<CharacterController>())
         {
-            direction = Vector3.zero;
-            StartCoroutine(Walk());
+            //StartCoroutine(Walk());
         }
     }
 
@@ -173,11 +183,5 @@ public class Monster : MonoBehaviour
             // leave chopped bits where they are
             Debug.Log("Fail!");
         }
-    }
-
-    IEnumerator RemoveCorpse(GameObject toRemove)
-    {
-        yield return new WaitForSeconds(3f);
-        Destroy(toRemove);
     }
 }

@@ -22,27 +22,18 @@ public class Game : MonoBehaviour
 
     public static Game game
     {
-        get
-        {
-            return _game;
-        }
+        get { return _game; }
     }
     private static Game _game;
-
-    void OnValidate()
-    {
-    }
 
     void Awake()
     {
         _game = this;
     }
 
-
     void Start()
     {
         SpawnDish(dishes[0]);
-
         startTime = Time.time;
     }
 
@@ -76,7 +67,6 @@ public class Game : MonoBehaviour
         Monster instance = gameObject.GetComponent<Monster>();
         instance.OnDeath += OnDeathEventhandler;
         monsters.Add(instance);
- 
     }
 
     void OnDeathEventhandler(bool success, Monster monster)
