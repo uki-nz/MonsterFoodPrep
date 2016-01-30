@@ -18,7 +18,6 @@ public class Game : MonoBehaviour
     public List<Monster> monsterPrefabs;
 
     private float startTime;
-    private List<Bounds> spawns = new List<Bounds>();
     private List<Monster> monsters = new List<Monster>();
 
     public static Game game
@@ -69,37 +68,15 @@ public class Game : MonoBehaviour
     void SpawnMonster(Monster monster)
     {
         Vector3 extents = choppingBoard.GetComponent<Renderer>().bounds.extents;
-        while (true)
-        {
-            Vector3 position = monsterSpawn.position + 
-                new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
-
-            Bounds bounds = monster.GetComponent<Renderer>().bounds;
-            bounds.center = position;
-
-            bool intersects = false;
-            foreach(Bounds spawn in spawns)
-            {
-                if(bounds.Intersects(spawn))
-                {
-                    intersects = true;
-                    break;
-                }
-            }
-
-            if (intersects)
-                continue;
-
-            Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
-            GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
-            Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-            Monster instance = gameObject.GetComponent<Monster>();
-            instance.OnDeath += OnDeathEventhandler;
-            monsters.Add(instance);
-            
-            spawns.Add(bounds);
-            break;
-        }
+        Vector3 position = monsterSpawn.position + 
+            new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
+        Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
+        GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        Monster instance = gameObject.GetComponent<Monster>();
+        instance.OnDeath += OnDeathEventhandler;
+        monsters.Add(instance);
+ 
     }
 
     void OnDeathEventhandler(bool success, Monster monster)
@@ -124,7 +101,6 @@ public class Game : MonoBehaviour
             {
                 prefab = monster.wrongPrefab;
             }
-
             if (prefab != null)
             {
                 GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
@@ -137,7 +113,6 @@ public class Game : MonoBehaviour
                 }
             }
         }
-
         monsters.Remove(monster);
     }
 
