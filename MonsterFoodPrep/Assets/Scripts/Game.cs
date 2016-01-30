@@ -16,7 +16,9 @@ public class Game : MonoBehaviour
     public float fallSpeed;
     public int monsterQuantity = 4;
     public List<Monster> monsterPrefabs;
+    public List<GameObject> DishParts;
 
+    private int currentDishIndex = 0;
     private float startTime;
     private List<Monster> monsters = new List<Monster>();
 
@@ -61,6 +63,10 @@ public class Game : MonoBehaviour
         Vector3 extents = choppingBoard.GetComponent<Renderer>().bounds.extents;
         Vector3 position = monsterSpawn.position + 
             new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
+        //foreach(Monster m in monsters)
+        //{
+        //    Vector3.Distance(position)
+        //}
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
         GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -110,7 +116,9 @@ public class Game : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(go);
-        //Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
+
+        DishParts[currentDishIndex].SetActive(true);
+        currentDishIndex++;
     }
 
     void SpawnKillEffects(Vector3 pos)
