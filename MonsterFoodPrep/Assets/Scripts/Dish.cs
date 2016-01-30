@@ -5,7 +5,7 @@ using System.Collections;
 public struct MonsterInfo
 {
     public Monster monsterPrefab;
-    public int spawnPoint;
+    public Transform spawnPoint;
 }
 
 [System.Serializable]
