@@ -59,7 +59,6 @@ public class Hand : MonoBehaviour
             worldPosition.y = y;
             rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
 
-
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
             rotation = Mathf.Clamp(rotation + scroll, -2, 2);

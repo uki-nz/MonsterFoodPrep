@@ -59,9 +59,23 @@ public class MeshDivider : MonoBehaviour
 
             if(!plane.SameSide(a, b) || !plane.SameSide(b, c))
             {
-
+           
             }
         }
+    }
+
+    bool TrianglePlaneIntersection(Triangle triangle, Plane plane)
+    {
+        Ray ray;
+        float distance;
+
+        ray = new Ray(triangle.a, triangle.b - triangle.a);
+        if (plane.Raycast(ray, out distance))
+        {
+            Vector3 point = ray.GetPoint(distance);
+        }
+
+        return false;
     }
 
     public void Divide(Plane plane)
