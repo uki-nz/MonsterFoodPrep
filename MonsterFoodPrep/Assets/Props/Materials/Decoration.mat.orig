@@ -6,6 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD:MonsterFoodPrep/Assets/Props/Materials/DecorationTexture.mat
   m_Name: DecorationTexture
 <<<<<<< HEAD
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
@@ -13,13 +14,20 @@ Material:
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
 =======
+=======
+  m_Name: Decoration
+>>>>>>> 40fe3e7c9c818967b0714136139c53f6024f8c2b:MonsterFoodPrep/Assets/Props/Materials/Decoration.mat
   m_Shader: {fileID: 10751, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2450
+<<<<<<< HEAD:MonsterFoodPrep/Assets/Props/Materials/DecorationTexture.mat
 >>>>>>> 6510ccdb33f7bde9fd08eadb510f7c42aee1fb70
   stringTagMap:
     RenderType: Transparent
+=======
+  stringTagMap: {}
+>>>>>>> 40fe3e7c9c818967b0714136139c53f6024f8c2b:MonsterFoodPrep/Assets/Props/Materials/Decoration.mat
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -94,7 +102,7 @@ Material:
       data:
         first:
           name: _DstBlend
-        second: 10
+        second: 0
       data:
         first:
           name: _Cutoff
@@ -106,7 +114,7 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 0
+        second: 1
       data:
         first:
           name: _Glossiness
@@ -130,7 +138,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 3
+        second: 0
       data:
         first:
           name: _Metallic
