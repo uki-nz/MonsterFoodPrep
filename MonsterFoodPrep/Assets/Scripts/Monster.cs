@@ -53,16 +53,26 @@ public class Monster : MonoBehaviour
     public float turnSpeed = 45.0f;
     public float idleTimeMin = 5.0f;
     public float idleTimeMax = 10.0f;
+    public float bobScale = 0.01f;
+    public float bobFrequency = 0.25f;
     public bool canWalk = true;
 
+    private float startTime;
+    private Vector3 startScale;
     private CharacterController controller;
     private Vector3 moveDirection;
     private bool falling;
 
-    void Start()
+    void Awake()
     {
+        startTime = Time.time;
+        startScale = transform.localScale;
         controller = GetComponent<CharacterController>();
         audio = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         StartCoroutine(Idle());
     }
 
@@ -73,6 +83,9 @@ public class Monster : MonoBehaviour
             moveDirection += Physics.gravity * Time.deltaTime;
         }
         controller.Move(moveDirection * Time.deltaTime);
+        Vector3 scale = transform.localScale;
+        scale.y = startScale.y + (bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
+        transform.localScale = scale;
     }
 
     IEnumerator Idle()
