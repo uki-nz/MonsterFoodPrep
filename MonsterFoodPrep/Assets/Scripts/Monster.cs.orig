@@ -29,7 +29,8 @@ public class Monster : MonoBehaviour
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
     // VARS
-    public GameObject deathPrefab;
+    public GameObject rightPrefab;
+    public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     private CharacterController controller;
     public MovementPattern movementOptions;
@@ -100,7 +101,11 @@ public class Monster : MonoBehaviour
 
         if (ChopsToKill.Count == 0) return;
 
+<<<<<<< Updated upstream
+        print("CHOPPED");
+=======
         print("CHOPPED"+(int)chop);
+>>>>>>> Stashed changes
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -118,10 +123,14 @@ public class Monster : MonoBehaviour
                     print("CALLING ON DEATH");
                     OnDeath(true, this);
                 }
+<<<<<<< Updated upstream
+
+=======
                 //Debug.Log("KILLED", this);
                 //GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
                 //StartCoroutine(RemoveCorpse(go));
                 //Destroy(gameObject);
+>>>>>>> Stashed changes
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
