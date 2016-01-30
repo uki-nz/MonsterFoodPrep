@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Knife : MonoBehaviour
 {
+
+    public enum ChopMode
+    {
+        Vertical,
+        Diagonal,
+        Horizontal
+    }
+
     public float moveSpeed = 10.0f;
     public float chopSpeed = 40.0f;
 

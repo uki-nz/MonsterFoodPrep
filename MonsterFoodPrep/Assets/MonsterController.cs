@@ -9,12 +9,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum ChopMode
-{
-    Vertical,
-    Diagonal,
-    Horizontal
-}
 public class MonsterController : MonoBehaviour {
     
     // ENUMS
@@ -50,8 +44,9 @@ public class MonsterController : MonoBehaviour {
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
     // VARS
+    private CharacterController controller;
     public MovementPattern movementOptions;
-    public List<ChopMode> ChopsToKill = new List<ChopMode>();
+    public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public float movementSpeed = 1f; // baseline
     [Range(0.01f, 1f)]
     public float turningSpeed = 1f;
@@ -67,29 +62,40 @@ public class MonsterController : MonoBehaviour {
         get;
         protected set;
     }
-    // CONSTS
-    public const float TWO_PI = Mathf.PI * 2;
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         rotation = new Quaternion();
         escapeAngle = Mathf.Sin(Random.value);
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-        if (state >= MonState.Derpy)
+	void FixedUpdate ()
+    {
+        Vector3 newPos = transform.position;
+        if (controller.isGrounded)
+        {
+            newPos += Physics.gravity;
+        }
+            if (state >= MonState.Derpy)
         {
             //Vector3 oldPos = transform.position;
             MovementDelegate f = movementDelegates[(int)movementOptions];
             float angle = f(this) * 360;
             rotation.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -360f, 360f), 0);
             transform.rotation = rotation;
-            transform.position = transform.position + transform.forward * Time.fixedDeltaTime * movementSpeed;
+            newPos = newPos + transform.forward * Time.fixedDeltaTime * movementSpeed;
+            transform.position = newPos;
         }
 	}
 
-    void Chop(ChopMode chop)
+    void Chop(Knife.ChopMode chop)
     {
         if (ChopsToKill[chopCount] == chop)
         {
