@@ -10,7 +10,9 @@ GameObject:
   - 4: {fileID: 461088}
   - 33: {fileID: 3326882}
   - 23: {fileID: 2387756}
+  - 54: {fileID: 5411360}
   - 114: {fileID: 11402006}
+  - 65: {fileID: 6528048}
   m_Layer: 0
   m_Name: Dish
   m_TagString: Untagged
@@ -61,6 +63,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155470}
   m_Mesh: {fileID: 4300000, guid: 1e5458e535e36a044804074f0471d22a, type: 3}
+--- !u!54 &5411360
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6528048
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.95291257, y: .0419777036, z: 2.95291257}
+  m_Center: {x: 0, y: .165184125, z: 0}
 --- !u!114 &11402006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +131,14 @@ Prefab:
       value: 
       objectReference: {fileID: 11438810, guid: 00783f51d8a5f0347a6613f22eadab8a,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155470}

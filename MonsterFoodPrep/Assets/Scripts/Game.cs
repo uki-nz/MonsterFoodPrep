@@ -7,13 +7,13 @@ public class Game : MonoBehaviour
     public Dish[] dishes;
     public Transform dishSpawn;
     public Transform monsterSpawn;
-    public Vector3 spawnArea;
-    public int spawnCount;
-    public float spawnDelay;
-    public float respawnDelay;
+    public Transform choppingBoard;
     public float timeLimit;
+    public float respawnDelay;
+    public float fallSpeed;
 
     private float startTime;
+    private List<Bounds> spawns = new List<Bounds>();
     private List<Monster> monsters = new List<Monster>();
 
     public static Game game
@@ -40,11 +40,9 @@ public class Game : MonoBehaviour
         {
             foreach(Monster monster in dish.monsters)
             {
-
                 SpawnMonster(monster);
+                yield return new WaitForSeconds(0.1f);
             }
-
-            yield return new WaitForSeconds(0.5f);
             SpawnDish(dish);
 
             startTime = Time.time;
@@ -69,22 +67,42 @@ public class Game : MonoBehaviour
         GameObject gameObject = (GameObject)Instantiate(
                dish.gameObject,
                dishSpawn.position,
-               Quaternion.identity);//Quaternion.AngleAxis(Random.Range(-45.0f, 45.0f), new Vector3(0, 0, 1))
-
+               Quaternion.identity);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-        //rigidbody.angularVelocity = Random.insideUnitSphere * 360.0f;
     }
 
     void SpawnMonster(Monster monster)
     {
-        GameObject gameObject = (GameObject)Instantiate(
-               monster.gameObject,
-               monsterSpawn.position + new Vector3(
-                   spawnArea.x * Random.value - 0.5f,
-                   spawnArea.y * Random.value - 0.5f,
-                   spawnArea.z * Random.value - 0.5f),
-               Quaternion.AngleAxis(Random.RandomRange(0, 360), new Vector3(0, 1, 0)));
-        Monster instance = gameObject.GetComponent<Monster>();
-        monsters.Add(monster);
+        Vector3 extents = choppingBoard.GetComponent<Renderer>().bounds.extents;
+        while (true)
+        {
+            Vector3 position = monsterSpawn.position + 
+                new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
+
+            Bounds bounds = monster.GetComponent<Renderer>().bounds;
+            bounds.center = position;
+            Debug.Log(bounds);
+
+            bool intersects = false;
+            foreach(Bounds spawn in spawns)
+            {
+                if(bounds.Intersects(spawn))
+                {
+                    intersects = true;
+                    break;
+                }
+            }
+
+            if (intersects)
+                continue;
+
+            Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
+            GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
+            Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+            Monster instance = gameObject.GetComponent<Monster>();
+            monsters.Add(monster);
+            spawns.Add(bounds);
+            break;
+        }
     }
 }
