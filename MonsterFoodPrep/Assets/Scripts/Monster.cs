@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Monster : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Monster : MonoBehaviour
     // VARS
     private CharacterController controller;
     public MovementPattern movementOptions;
+    public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public float movementSpeed = 1f; // baseline
     [Range(0.01f, 1f)]
     public float turningSpeed = 1f;
@@ -86,6 +88,35 @@ public class Monster : MonoBehaviour
             offset.y = 0.0f;
             target = transform.position + offset;
             yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    void Chop(Knife.ChopMode chop)
+    {
+        if (ChopsToKill[chopCount] == chop)
+        {
+            chopCount++;
+
+            if (ChopsToKill.Count == chopCount)
+            {
+                // done chopping, kill
+
+                // run mesh-divider
+                // update game class kill count
+                OnDeath(true);
+                // after interval, remove pieces, put stuff on plate  
+                Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
+            }
+        }
+        else
+        {
+            // chopped wrongly, kill but no rewards
+
+            // run mesh divider
+            // update game class fail count
+            OnDeath(false);
+            // leave chopped bits where they are
+            Debug.Log("Fail!");
         }
     }
 
