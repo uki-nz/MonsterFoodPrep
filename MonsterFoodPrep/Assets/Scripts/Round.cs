@@ -48,22 +48,22 @@ public class Round : MonoBehaviour {
         //Show round number
         yield return new WaitForSeconds(1.0f);
 
-        foreach(Dish dish in dishes)
-        {
-            SpawnDish(dish);
-            foreach(Monster monster in dish.monsters)
-            {
-                SpawnMonster(monster);
-                yield return new WaitForSeconds(0.1f);
-            }
+        //foreach(Dish dish in dishes)
+        //{
+        //    SpawnDish(dish);
+        //    foreach(Monster monster in dish.monsters)
+        //    {
+        //        SpawnMonster(monster);
+        //        yield return new WaitForSeconds(0.1f);
+        //    }
 
-            while(true)
-            {  
-                //check time and monsters
-                yield return null;
-            }
+        //    while(true)
+        //    {  
+        //        //check time and monsters
+        //        yield return null;
+        //    }
 
-        }
+        //}
 
     }
 
