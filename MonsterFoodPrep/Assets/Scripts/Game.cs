@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
     public Dish[] dishes;
     public Transform UiCanvas;
     public Camera UiCamera;
+    AudioSource audio;
+    public AudioClip chopSound;
     public GameObject[] KillEffects;
     public Transform dishSpawn;
     public Transform monsterSpawn;
@@ -37,10 +39,15 @@ public class Game : MonoBehaviour
     {
         SpawnDish(dishes[0]);
         startTime = Time.time;
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            audio.PlayOneShot(chopSound);
+        }
         if (monsters.Count < monsterQuantity)
         {
             int rand = Random.Range(0, monsterPrefabs.Count);
