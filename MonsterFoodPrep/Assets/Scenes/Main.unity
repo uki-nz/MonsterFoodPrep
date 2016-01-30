@@ -1026,6 +1026,7 @@ MonoBehaviour:
   dishes:
   - {fileID: 11402006, guid: 21f9175a9e5801c479f02fdac94f7beb, type: 2}
   UiCanvas: {fileID: 1638412335}
+  UiCamera: {fileID: 0}
   KillEffects:
   - {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   - {fileID: 170332, guid: 16cd5d9662ff1594e8d74048599ae128, type: 2}
