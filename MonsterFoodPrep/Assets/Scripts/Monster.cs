@@ -73,6 +73,11 @@ public class Monster : MonoBehaviour
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
+            if (state == MonState.Spawning)
+            {
+                state = MonState.Derpy;
+            }
+
             if (!start)
             {
                 Debug.Log("hit");
