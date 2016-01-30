@@ -141,9 +141,7 @@ public class Monster : MonoBehaviour
             chopCount++;
 
             if (OnChop != null)
-            {
                 OnChop(true, this);
-            }
 
             if (ChopsToKill.Count == chopCount)
             {
@@ -154,9 +152,7 @@ public class Monster : MonoBehaviour
                 Debug.Log("KILLED", this);
                 state = MonState.Chopped;
                 if (OnDeath != null)
-                {
                     OnDeath(true, this);
-                }
 
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
@@ -166,17 +162,13 @@ public class Monster : MonoBehaviour
         {
             // chopped wrongly, kill but no rewards
             if (OnChop != null)
-            {
                 OnChop(false, this);
-            }
 
             // run mesh divider
             // update game class fail count
             state = MonState.Chopped;
             if (OnDeath!= null)
-            {
                 OnDeath(false, this);
-            }
 
             // leave chopped bits where they are
             Debug.Log("Fail!");
