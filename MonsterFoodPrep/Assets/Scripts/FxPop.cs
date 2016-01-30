@@ -8,7 +8,8 @@ public class FxPop : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         iTween.ScaleTo(gameObject, Vector3.one, duration);
-        StartCoroutine(Kill());
+        //StartCoroutine(Kill());
+        Destroy(gameObject, duration);
 	}
 	
 	// Update is called once per frame
@@ -16,9 +17,9 @@ public class FxPop : MonoBehaviour {
 	
 	}
 
-    IEnumerator Kill()
-    {
-        yield return new WaitForSeconds(duration);
-        Destroy(gameObject);
-    }
+    //IEnumerator Kill()
+    //{
+    //    yield return new WaitForSeconds(duration);
+    //    Destroy(gameObject);
+    //}
 }
