@@ -10,7 +10,8 @@ GameObject:
   - 4: {fileID: 450056}
   - 33: {fileID: 3397774}
   - 23: {fileID: 2327662}
-  - 143: {fileID: 14311684}
+  - 54: {fileID: 5438784}
+  - 136: {fileID: 13672856}
   m_Layer: 0
   m_Name: DumbPotato
   m_TagString: Untagged
@@ -61,8 +62,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121150}
   m_Mesh: {fileID: 4300000, guid: 892ff6819d5680c4285fe05facd33c1b, type: 3}
---- !u!143 &14311684
-CharacterController:
+--- !u!54 &5438784
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121150}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &13672856
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -70,14 +86,10 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.51722896
   m_Radius: .567277312
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: .00100000005
-  m_Center: {x: .00434666919, y: .693460703, z: 4.470348e-08}
+  m_Height: 1.51722884
+  m_Direction: 1
+  m_Center: {x: .00434666872, y: .693460703, z: 4.47034836e-08}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

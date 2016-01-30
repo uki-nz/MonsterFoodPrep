@@ -53,19 +53,17 @@ public class Monster : MonoBehaviour
     private Vector3 target;
     private Vector3 moveDirection;
     Vector3 direction;
-
-    bool start;
-
-    void Start()
-    {
-    }
-
+    
+        
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
-            state = MonState.Derpy;
+            if (state == MonState.Spawning)
+            {
+                state = MonState.Derpy;
+            }
             direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
             direction.y = 0.0f;
 
@@ -100,9 +98,10 @@ public class Monster : MonoBehaviour
     {
         if (state < MonState.Derpy) return;
 
-                
-        print("CHOPPED");
-        if (ChopsToKill.Count > (int)chop && ChopsToKill[chopCount] == chop)
+        if (ChopsToKill.Count == 0) return;
+
+        print("CHOPPED"+(int)chop);
+        if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
 
@@ -114,7 +113,7 @@ public class Monster : MonoBehaviour
                 // update game class kill count
                 Debug.Log("KILLED", this);
                 state = MonState.Chopped;
-                //if (OnDeath != null)
+                if (OnDeath != null)
                 {
                     print("CALLING ON DEATH");
                     OnDeath(true, this);

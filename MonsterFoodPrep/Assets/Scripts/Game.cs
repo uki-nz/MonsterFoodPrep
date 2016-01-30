@@ -35,31 +35,31 @@ public class Game : MonoBehaviour
        // Cursor.visible = false;
     }
 
-    IEnumerator Start()
+    void Start()
     {
         foreach(Dish dish in dishes)
         {
             foreach(Monster monster in dish.monsters)
             {
                 SpawnMonster(monster);
-                yield return new WaitForSeconds(0.1f);
+                //yield return new WaitForSeconds(0.1f);
             }
             SpawnDish(dish);
 
             startTime = Time.time;
-            while (true)
-            {
-                float countdown = timeLimit - (Time.time - startTime);
-                if (countdown <= 0.0f)
-                {
-                    break;
-                }
-                if (monsters.Count == 0)
-                {
-                    break;
-                }
-                yield return new WaitForEndOfFrame();
-            }
+            //while (true)
+            //{
+            //    float countdown = timeLimit - (Time.time - startTime);
+            //    if (countdown <= 0.0f)
+            //    {
+            //        break;
+            //    }
+            //    if (monsters.Count == 0)
+            //    {
+            //        break;
+            //    }
+            //    yield return new WaitForEndOfFrame();
+            //}
         }
     }
 
@@ -100,8 +100,9 @@ public class Game : MonoBehaviour
             GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
             Monster instance = gameObject.GetComponent<Monster>();
-            monsters.Add(monster);
-            monster.OnDeath += OnDeathEventhandler;
+            instance.OnDeath += OnDeathEventhandler;
+            monsters.Add(instance);
+            
             spawns.Add(bounds);
             break;
         }
@@ -112,25 +113,26 @@ public class Game : MonoBehaviour
         Debug.Log("OnDeathHandler", this);
         if (success)
         {
-            GameObject go = (GameObject)GameObject.Instantiate(monster.dummyPrefab, monster.transform.position, monster.transform.rotation);
-            StartCoroutine(RemoveCorpse(go));
+            GameObject go = (GameObject)GameObject.Instantiate(monster.deathPrefab, monster.transform.position, monster.transform.rotation);
+            StartCoroutine(RemoveCorpse(monster, go));
             monsters.Remove(monster);
             Destroy(monster.gameObject);
 
         }
         else
         {
-            GameObject go = (GameObject)GameObject.Instantiate(monster.deathPrefab, monster.transform.position, monster.transform.rotation);
-            StartCoroutine(RemoveCorpse(go));
+            GameObject go = (GameObject)GameObject.Instantiate(monster.dummyPrefab, monster.transform.position, monster.transform.rotation);
+            StartCoroutine(RemoveCorpse(monster, go));
             monsters.Remove(monster);
             Destroy(monster.gameObject);
         }
-        Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
+        
     }
 
-    IEnumerator RemoveCorpse(GameObject go)
+    IEnumerator RemoveCorpse(Monster monster, GameObject go)
     {
         yield return new WaitForSeconds(3f);
         Destroy(go);
+        Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
     }
 }
