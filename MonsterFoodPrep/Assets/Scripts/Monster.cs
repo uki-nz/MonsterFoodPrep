@@ -41,8 +41,6 @@ public class Monster : MonoBehaviour
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
-    private float escapeAngle;
-    private float randomSteer = 0;
     private MonState state = MonState.Spawning;
     // PROPERTIES
     public MonState State
