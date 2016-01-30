@@ -73,17 +73,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f0f3e152fc96b4bb303543d383b47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathPrefab: {fileID: 0}
-  dummyPrefab: {fileID: 0}
+  rightPrefab: {fileID: 128774, guid: 0832fa07fd0fa324188623e11541e6dc, type: 2}
+  wrongPrefab: {fileID: 164844, guid: 65aa9d538d92cd443b9fef11a8a3672f, type: 2}
+  dummyPrefab: {fileID: 121150, guid: 2e53483a2abc54746b5dc28cbae85b55, type: 2}
   movementOptions: 0
-  ChopsToKill: 
+  ChopsToKill: 00000000
   scoreValue: 10
   moveSpeed: .5
   turnSpeed: 1
-  walkTimeMin: 1
-  walkTimeMax: 4
-  walkDistanceMin: 1
-  walkDistanceMax: 4
+  walkTimeMin: 0
+  walkTimeMax: 0
+  walkDistanceMin: 0
+  walkDistanceMax: 0
 --- !u!143 &14311684
 CharacterController:
   m_ObjectHideFlags: 1
@@ -138,7 +139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ChopsToKill.Array.data[0]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: deathPrefab
@@ -172,6 +173,18 @@ Prefab:
       propertyPath: walkDistanceMin
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dummyPrefab
+      value: 
+      objectReference: {fileID: 121150, guid: 2e53483a2abc54746b5dc28cbae85b55, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wrongPrefab
+      value: 
+      objectReference: {fileID: 164844, guid: 65aa9d538d92cd443b9fef11a8a3672f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: rightPrefab
+      value: 
+      objectReference: {fileID: 128774, guid: 0832fa07fd0fa324188623e11541e6dc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121150}

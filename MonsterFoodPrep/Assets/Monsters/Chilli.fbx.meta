@@ -1,70 +1,65 @@
 fileFormatVersion: 2
-guid: 0d6692649e4a1d1418315c6b013fd29e
-timeCreated: 1454129146
+guid: 6b5e56c9d22f3fc4ebc8661dadc84a13
+timeCreated: 1454137119
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: GEOOcto
-    100002: GEOOctoHorz
-    100004: GEOOctoHorz1
-    100006: GEOOctoVert1
-    100008: GEOOctoVert2
-    100010: GrpOctoChoppedHorizontal
-    100012: GrpOctoChoppedVert
-    100014: //RootNode
-    100016: GEOOctoDia1
-    100018: GEOOctoDia2
-    100020: GEOOctoVert3
-    100022: GEOOctoVert4
-    100024: GrpOctoChoppedDia
-    100026: GEOOctoHorz2
-    100028: GrpOctoChoppedHorz
-    400000: GEOOcto
-    400002: GEOOctoHorz
-    400004: GEOOctoHorz1
-    400006: GEOOctoVert1
-    400008: GEOOctoVert2
-    400010: GrpOctoChoppedHorizontal
-    400012: GrpOctoChoppedVert
-    400014: //RootNode
-    400016: GEOOctoDia1
-    400018: GEOOctoDia2
-    400020: GEOOctoVert3
-    400022: GEOOctoVert4
-    400024: GrpOctoChoppedDia
-    400026: GEOOctoHorz2
-    400028: GrpOctoChoppedHorz
-    2300000: GEOOcto
-    2300002: GEOOctoHorz
-    2300004: GEOOctoHorz1
-    2300006: GEOOctoVert1
-    2300008: GEOOctoVert2
-    2300010: GEOOctoDia1
-    2300012: GEOOctoDia2
-    2300014: GEOOctoVert3
-    2300016: GEOOctoVert4
-    2300018: GEOOctoHorz2
-    3300000: GEOOcto
-    3300002: GEOOctoHorz
-    3300004: GEOOctoHorz1
-    3300006: GEOOctoVert1
-    3300008: GEOOctoVert2
-    3300010: GEOOctoDia1
-    3300012: GEOOctoDia2
-    3300014: GEOOctoVert3
-    3300016: GEOOctoVert4
-    3300018: GEOOctoHorz2
-    4300000: GEOOcto
-    4300002: GEOOctoHorz
-    4300004: GEOOctoHorz1
-    4300006: GEOOctoVert1
-    4300008: GEOOctoVert2
-    4300010: GEOOctoDia1
-    4300012: GEOOctoDia2
-    4300014: GEOOctoVert3
-    4300016: GEOOctoVert4
-    4300018: GEOOctoHorz2
+    100000: //RootNode
+    100002: GEOChilli
+    100004: GEOChilliDia1
+    100006: GEOChilliDia2
+    100008: GEOChilliDia3
+    100010: GEOChilliDia4
+    100012: GEOChilliHorz1
+    100014: GEOChilliHorz2
+    100016: GEOChilliVert1
+    100018: GEOChilliVert2
+    100020: GrpChilliChoppedDiagonal
+    100022: GrpChilliChoppedHorizontal
+    100024: GrpChilliChoppedVert
+    400000: //RootNode
+    400002: GEOChilli
+    400004: GEOChilliDia1
+    400006: GEOChilliDia2
+    400008: GEOChilliDia3
+    400010: GEOChilliDia4
+    400012: GEOChilliHorz1
+    400014: GEOChilliHorz2
+    400016: GEOChilliVert1
+    400018: GEOChilliVert2
+    400020: GrpChilliChoppedDiagonal
+    400022: GrpChilliChoppedHorizontal
+    400024: GrpChilliChoppedVert
+    2300000: //RootNode
+    2300002: GEOChilli
+    2300004: GEOChilliDia1
+    2300006: GEOChilliDia2
+    2300008: GEOChilliDia3
+    2300010: GEOChilliDia4
+    2300012: GEOChilliHorz1
+    2300014: GEOChilliHorz2
+    2300016: GEOChilliVert1
+    2300018: GEOChilliVert2
+    3300000: //RootNode
+    3300002: GEOChilli
+    3300004: GEOChilliDia1
+    3300006: GEOChilliDia2
+    3300008: GEOChilliDia3
+    3300010: GEOChilliDia4
+    3300012: GEOChilliHorz1
+    3300014: GEOChilliHorz2
+    3300016: GEOChilliVert1
+    3300018: GEOChilliVert2
+    4300000: GEOChilli
+    4300002: GEOChilliHorz1
+    4300004: GEOChilliHorz2
+    4300006: GEOChilliVert1
+    4300008: GEOChilliVert2
+    4300010: GEOChilliDia1
+    4300012: GEOChilliDia2
+    4300014: GEOChilliDia3
+    4300016: GEOChilliDia4
   materials:
     importMaterials: 1
     materialName: 0
