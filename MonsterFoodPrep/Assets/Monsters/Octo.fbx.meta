@@ -18,6 +18,8 @@ ModelImporter:
     100020: GEOOctoVert3
     100022: GEOOctoVert4
     100024: GrpOctoChoppedDia
+    100026: GEOOctoHorz2
+    100028: GrpOctoChoppedHorz
     400000: GEOOcto
     400002: GEOOctoHorz
     400004: GEOOctoHorz1
@@ -31,6 +33,8 @@ ModelImporter:
     400020: GEOOctoVert3
     400022: GEOOctoVert4
     400024: GrpOctoChoppedDia
+    400026: GEOOctoHorz2
+    400028: GrpOctoChoppedHorz
     2300000: GEOOcto
     2300002: GEOOctoHorz
     2300004: GEOOctoHorz1
@@ -40,6 +44,7 @@ ModelImporter:
     2300012: GEOOctoDia2
     2300014: GEOOctoVert3
     2300016: GEOOctoVert4
+    2300018: GEOOctoHorz2
     3300000: GEOOcto
     3300002: GEOOctoHorz
     3300004: GEOOctoHorz1
@@ -49,6 +54,7 @@ ModelImporter:
     3300012: GEOOctoDia2
     3300014: GEOOctoVert3
     3300016: GEOOctoVert4
+    3300018: GEOOctoHorz2
     4300000: GEOOcto
     4300002: GEOOctoHorz
     4300004: GEOOctoHorz1
@@ -58,6 +64,7 @@ ModelImporter:
     4300012: GEOOctoDia2
     4300014: GEOOctoVert3
     4300016: GEOOctoVert4
+    4300018: GEOOctoHorz2
   materials:
     importMaterials: 1
     materialName: 0
