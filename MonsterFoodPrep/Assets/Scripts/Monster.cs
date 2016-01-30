@@ -96,12 +96,14 @@ public class Monster : MonoBehaviour
             Vector3 direction = Random.onUnitSphere;
             direction.y = 0.0f;
             float dot = Vector3.Dot(transform.forward, direction);
-            while (!Mathf.Approximately(dot, 1.0f))
+            while (dot < 0.5f)
             {
+                Debug.Log(dot);
                 LookTowards(direction);
+                dot = Vector3.Dot(transform.forward, direction);
                 yield return new WaitForEndOfFrame();
             }
-            Debug.Log(direction);
+            //Debug.Log()
         }
     }
 
