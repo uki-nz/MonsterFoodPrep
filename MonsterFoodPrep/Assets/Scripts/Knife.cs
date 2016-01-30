@@ -5,8 +5,6 @@ public class Knife : MonoBehaviour
 {
     public float moveSpeed = 10.0f;
     public float chopSpeed = 40.0f;
-    public float rotationSpeed = 1.0f;
-    public float releaseTime = 0.1f;
 
     public Transform hand;
 
@@ -40,13 +38,18 @@ public class Knife : MonoBehaviour
             {
                 chopping = true;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                choppingPoint = raycastHit.point;
+                choppingPoint = raycastHit.point + new Vector3(0, GetComponent<Renderer>().bounds.extents.y, 0);
             }
         }
 
         if (chopping)
         {
             rigidbody.MovePosition(Vector3.Lerp(transform.position, choppingPoint, Time.deltaTime * chopSpeed));
+            if(Vector3.Distance(transform.position, choppingPoint) < 0.1f)
+            {
+                chopping = false;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            }
         }
         else
         {
@@ -63,9 +66,12 @@ public class Knife : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collision collision)
     {
-        chopping = false;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Monster monster = collision.gameObject.GetComponent<Monster>();
+        if(monster)
+        {
+            
+        }
     }
 }
