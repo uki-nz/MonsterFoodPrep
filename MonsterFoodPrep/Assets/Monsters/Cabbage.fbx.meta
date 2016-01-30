@@ -6,10 +6,60 @@ ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: CabbageHorizontal
+    100004: CabbageHorizontal1
+    100006: CabbageVerticle1
+    100008: CabbageVerticle2
+    100010: GEOCabbage
+    100012: GEOCabbageHorzVert1
+    100014: GEOCabbageHorzVert2
+    100016: GEOCabbageHorzVert3
+    100018: GEOCabbageHorzVert4
+    100020: GrpPotatoChoppedHorizontal
+    100022: GrpPotatoChoppedHorzAndVert
+    100024: GrpPotatoChoppedVerticle
     400000: //RootNode
+    400002: CabbageHorizontal
+    400004: CabbageHorizontal1
+    400006: CabbageVerticle1
+    400008: CabbageVerticle2
+    400010: GEOCabbage
+    400012: GEOCabbageHorzVert1
+    400014: GEOCabbageHorzVert2
+    400016: GEOCabbageHorzVert3
+    400018: GEOCabbageHorzVert4
+    400020: GrpPotatoChoppedHorizontal
+    400022: GrpPotatoChoppedHorzAndVert
+    400024: GrpPotatoChoppedVerticle
     2300000: //RootNode
+    2300002: CabbageHorizontal
+    2300004: CabbageHorizontal1
+    2300006: CabbageVerticle1
+    2300008: CabbageVerticle2
+    2300010: GEOCabbage
+    2300012: GEOCabbageHorzVert1
+    2300014: GEOCabbageHorzVert2
+    2300016: GEOCabbageHorzVert3
+    2300018: GEOCabbageHorzVert4
     3300000: //RootNode
+    3300002: CabbageHorizontal
+    3300004: CabbageHorizontal1
+    3300006: CabbageVerticle1
+    3300008: CabbageVerticle2
+    3300010: GEOCabbage
+    3300012: GEOCabbageHorzVert1
+    3300014: GEOCabbageHorzVert2
+    3300016: GEOCabbageHorzVert3
+    3300018: GEOCabbageHorzVert4
     4300000: GEOCabbage
+    4300002: CabbageHorizontal
+    4300004: CabbageHorizontal1
+    4300006: CabbageVerticle1
+    4300008: CabbageVerticle2
+    4300010: GEOCabbageHorzVert1
+    4300012: GEOCabbageHorzVert2
+    4300014: GEOCabbageHorzVert3
+    4300016: GEOCabbageHorzVert4
   materials:
     importMaterials: 1
     materialName: 0

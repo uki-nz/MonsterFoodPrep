@@ -1,41 +1,41 @@
 fileFormatVersion: 2
-guid: 892ff6819d5680c4285fe05facd33c1b
-timeCreated: 1454112367
+guid: 0d6692649e4a1d1418315c6b013fd29e
+timeCreated: 1454129146
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: GEOPotato
-    100002: GEOPotato1
-    100004: GEOPotato2
-    100006: GrpPotatoChoppedHorizontal
-    100008: //RootNode
-    100010: GEOPotatoVert1
-    100012: GEOPotatoVert2
-    100014: GrpPotatoChoppedVerticle
-    400000: GEOPotato
-    400002: GEOPotato1
-    400004: GEOPotato2
-    400006: GrpPotatoChoppedHorizontal
-    400008: //RootNode
-    400010: GEOPotatoVert1
-    400012: GEOPotatoVert2
-    400014: GrpPotatoChoppedVerticle
-    2300000: GEOPotato
-    2300002: GEOPotato1
-    2300004: GEOPotato2
-    2300006: GEOPotatoVert1
-    2300008: GEOPotatoVert2
-    3300000: GEOPotato
-    3300002: GEOPotato1
-    3300004: GEOPotato2
-    3300006: GEOPotatoVert1
-    3300008: GEOPotatoVert2
-    4300000: GEOPotato
-    4300002: GEOPotato1
-    4300004: GEOPotato2
-    4300006: GEOPotatoVert1
-    4300008: GEOPotatoVert2
+    100000: GEOOcto
+    100002: GEOOctoHorz
+    100004: GEOOctoHorz1
+    100006: GEOOctoVert1
+    100008: GEOOctoVert2
+    100010: GrpOctoChoppedHorizontal
+    100012: GrpOctoChoppedVert
+    100014: //RootNode
+    400000: GEOOcto
+    400002: GEOOctoHorz
+    400004: GEOOctoHorz1
+    400006: GEOOctoVert1
+    400008: GEOOctoVert2
+    400010: GrpOctoChoppedHorizontal
+    400012: GrpOctoChoppedVert
+    400014: //RootNode
+    2300000: GEOOcto
+    2300002: GEOOctoHorz
+    2300004: GEOOctoHorz1
+    2300006: GEOOctoVert1
+    2300008: GEOOctoVert2
+    3300000: GEOOcto
+    3300002: GEOOctoHorz
+    3300004: GEOOctoHorz1
+    3300006: GEOOctoVert1
+    3300008: GEOOctoVert2
+    4300000: GEOOcto
+    4300002: GEOOctoHorz
+    4300004: GEOOctoHorz1
+    4300006: GEOOctoVert1
+    4300008: GEOOctoVert2
   materials:
     importMaterials: 1
     materialName: 0
