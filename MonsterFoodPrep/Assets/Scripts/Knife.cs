@@ -70,7 +70,7 @@ public class Knife : MonoBehaviour
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
             rotation = Mathf.Clamp(rotation + scroll, -2, 2);
-            rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * Mathf.Round(rotation), new Vector3(0, 1, 0)));
+            rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
         }
     }
 
@@ -79,7 +79,7 @@ public class Knife : MonoBehaviour
         Monster monster = collision.gameObject.GetComponent<Monster>();
         if(monster)
         {
-            
+            monster.Chop((ChopMode)Mathf.Abs(rotation));
         }
     }
 }
