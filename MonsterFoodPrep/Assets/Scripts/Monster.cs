@@ -35,7 +35,7 @@ public class Monster : MonoBehaviour
     public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     public MovementPattern movementOptions;
-    public GameObject deathSound;
+    public AudioClip deathSound;
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
