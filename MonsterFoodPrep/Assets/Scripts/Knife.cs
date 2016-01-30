@@ -74,11 +74,12 @@ public class Knife : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        Monster monster = collision.gameObject.GetComponent<Monster>();
+        Monster monster = other.GetComponent<Monster>();
         if(monster)
         {
+            print("CHOPMODE = " + Mathf.Abs(rotation));
             monster.Chop((ChopMode)Mathf.Abs(rotation));
         }
     }

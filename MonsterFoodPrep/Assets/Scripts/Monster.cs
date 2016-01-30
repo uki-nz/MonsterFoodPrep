@@ -56,6 +56,10 @@ public class Monster : MonoBehaviour
 
     bool start;
 
+    void Start()
+    {
+    }
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
@@ -91,8 +95,11 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void Chop(Knife.ChopMode chop)
+    public void Chop(Knife.ChopMode chop)
     {
+        if (state < MonState.Derpy) return;
+
+        print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -103,7 +110,11 @@ public class Monster : MonoBehaviour
 
                 // run mesh-divider
                 // update game class kill count
-                OnDeath(true);
+                state = MonState.Chopped;
+                if (OnDeath != null)
+                {
+                    OnDeath(true);
+                }
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
@@ -114,7 +125,11 @@ public class Monster : MonoBehaviour
 
             // run mesh divider
             // update game class fail count
-            OnDeath(false);
+            state = MonState.Chopped;
+            if (OnDeath!= null)
+            {
+                OnDeath(false);
+            }
             // leave chopped bits where they are
             Debug.Log("Fail!");
         }
@@ -122,7 +137,7 @@ public class Monster : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("hit");
-        StartCoroutine(LookAround());
+
+        //StartCoroutine(LookAround());
     }
 }
