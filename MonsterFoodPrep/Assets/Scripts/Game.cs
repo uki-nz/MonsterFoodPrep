@@ -32,7 +32,7 @@ public class Game : MonoBehaviour
     void Awake()
     {
         _game = this;
-        Cursor.visible = false;
+       // Cursor.visible = false;
     }
 
     IEnumerator Start()

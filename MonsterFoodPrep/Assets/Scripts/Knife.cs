@@ -30,7 +30,6 @@ public class Knife : MonoBehaviour
     {
         Transform transform = hand.transform;
         y = transform.position.y;
-        distance = Vector3.Distance(Camera.main.transform.position, transform.position);
     }
 
     void Update()
@@ -72,14 +71,15 @@ public class Knife : MonoBehaviour
                 rigidbody.MovePosition(Vector3.Lerp(transform.position, point, Time.deltaTime * moveSpeed));
             }*/
 
-  
+            /*
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
             rotation = Mathf.Clamp(rotation + scroll, -2, 2);
             rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
+            */
            
             Vector3 screenPosition = Input.mousePosition;
-            screenPosition.z = distance;
+            screenPosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
             worldPosition.y = y;
             rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
