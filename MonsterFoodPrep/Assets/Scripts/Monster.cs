@@ -83,7 +83,7 @@ public class Monster : MonoBehaviour
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
-                yield return StartCoroutine(Walking());
+                yield return StartCoroutine(Walk(Random.onUnitSphere));
             }
             yield return null;
         }
@@ -95,32 +95,22 @@ public class Monster : MonoBehaviour
         {
             Vector3 direction = Random.onUnitSphere;
             direction.y = 0.0f;
-            float dot = Vector3.Dot(transform.forward, direction);
-            while (dot < 0.5f)
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            while (!Mathf.Approximately(Quaternion.Angle(transform.rotation, rotation), 0.0f))
             {
-                Debug.Log(dot);
-                LookTowards(direction);
-                dot = Vector3.Dot(transform.forward, direction);
+                SteerTowards(rotation);
                 yield return new WaitForEndOfFrame();
             }
-            //Debug.Log()
         }
     }
 
-    IEnumerator Walking()
-    {
-        while(true)
-        {
-            yield return StartCoroutine(MoveInDirection(Random.onUnitSphere));
-        }
-    }
-
-    IEnumerator MoveInDirection(Vector3 direction)
+    IEnumerator Walk(Vector3 direction)
     {
         direction.y = 0.0f;
-        while(true)
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        while (true)
         {
-            LookTowards(direction);
+            SteerTowards(rotation);
             Vector3 move = transform.forward * moveSpeed;
             moveDirection.x = move.x;
             moveDirection.z = move.z;
@@ -128,9 +118,9 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void LookTowards(Vector3 direction)
+    void SteerTowards(Quaternion rotation)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
