@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
+    [SerializeField]
     private MonState state = MonState.Spawning;
     // PROPERTIES
     public MonState State
@@ -53,16 +54,26 @@ public class Monster : MonoBehaviour
     public float turnSpeed = 45.0f;
     public float idleTimeMin = 5.0f;
     public float idleTimeMax = 10.0f;
+    public float bobScale = 0.01f;
+    public float bobFrequency = 0.25f;
     public bool canWalk = true;
 
+    private float startTime;
+    private Vector3 startScale;
     private CharacterController controller;
     private Vector3 moveDirection;
     private bool falling;
 
-    void Start()
+    void Awake()
     {
+        startTime = Time.time;
+        startScale = transform.localScale;
         controller = GetComponent<CharacterController>();
         audio = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         StartCoroutine(Idle());
     }
 
@@ -73,6 +84,16 @@ public class Monster : MonoBehaviour
             moveDirection += Physics.gravity * Time.deltaTime;
         }
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (transform.position.y < -5f)
+        {
+            state = MonState.Dead;
+            OnDeath(false, this);
+        }
+
+        Vector3 scale = transform.localScale;
+        scale.y = startScale.y + (startScale.y * bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
+        transform.localScale = scale;
     }
 
     IEnumerator Idle()
@@ -88,6 +109,7 @@ public class Monster : MonoBehaviour
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
+                state = MonState.Escaping;
                 yield return StartCoroutine(Walk(Random.onUnitSphere));
             }
             yield return null;
@@ -132,19 +154,18 @@ public class Monster : MonoBehaviour
     {
         if(hit.gameObject.GetComponent<CharacterController>())
         {
-            //StartCoroutine(Walk());
+            //controller.Move(-hit.normal * Time.deltaTime);
         }
     }
 
     public void Chop(Knife.ChopMode chop)
     {
         if (state < MonState.Derpy) return;
+        
+        audio.PlayOneShot(deathSound);
+        //audio.Play();
 
-        if (ChopsToKill.Count == 0) return;
-
-        audio.PlayOneShot(deathSound, 0.7F);
-
-        print("CHOPPED");
+        if (chopCount >= ChopsToKill.Count) return;
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
