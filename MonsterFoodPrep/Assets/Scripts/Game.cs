@@ -40,32 +40,21 @@ public class Game : MonoBehaviour
     }
 
 
-    IEnumerator Start()
+    void Start()
     {
-        //foreach (Dish dish in dishes)
-        //{
-        //    foreach (Monster monster in dish.monsters)
-        //    {
-        //        SpawnMonster(monster);
-        //        yield return new WaitForSeconds(0.1f);
-        //    }
         SpawnDish(dishes[0]);
 
         startTime = Time.time;
-        while (true)
+    }
+
+    void Update()
+    {
+        if (monsters.Count < monsterQuantity)
         {
-            //float countdown = timeLimit - (Time.time - startTime);
-            //if (countdown <= 0.0f)
-            //{
-            //    break;
-            //}
-            if (monsters.Count < monsterQuantity)
-            {
-                SpawnMonster(monsterPrefabs[Random.Range(0, monsterPrefabs.Count)]);
-            }
-            yield return new WaitForEndOfFrame();
+            int rand = Random.Range(0, monsterPrefabs.Count);
+            rand = Mathf.Clamp(rand, 0, monsterPrefabs.Count - 1);
+            SpawnMonster(monsterPrefabs[rand]);
         }
-        //}
     }
 
     void SpawnDish(Dish dish)
@@ -136,13 +125,16 @@ public class Game : MonoBehaviour
                 prefab = monster.wrongPrefab;
             }
 
-            GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
-            StartCoroutine(RemoveCorpse(go));
-            Destroy(monster.gameObject);
-            Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
-            if (bodies.Length > 0)
+            if (prefab != null)
             {
-                bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
+                GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
+                StartCoroutine(RemoveCorpse(go));
+                Destroy(monster.gameObject);
+                Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
+                if (bodies.Length > 0)
+                {
+                    bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
+                }
             }
         }
 
