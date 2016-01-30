@@ -80,6 +80,10 @@ public class Monster : MonoBehaviour
         {
             if (controller.isGrounded)
             {
+                if (state == MonState.Spawning)
+                {
+                    state = MonState.Derpy;
+                }
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
