@@ -13,6 +13,9 @@ ModelImporter:
     100010: GEOPotatoVert1
     100012: GEOPotatoVert2
     100014: GrpPotatoChoppedVerticle
+    100016: GEOPotatoDia1
+    100018: GEOPotatoDia2
+    100020: GrpPotatoChoppedDiagonal
     400000: GEOPotato
     400002: GEOPotato1
     400004: GEOPotato2
@@ -21,21 +24,30 @@ ModelImporter:
     400010: GEOPotatoVert1
     400012: GEOPotatoVert2
     400014: GrpPotatoChoppedVerticle
+    400016: GEOPotatoDia1
+    400018: GEOPotatoDia2
+    400020: GrpPotatoChoppedDiagonal
     2300000: GEOPotato
     2300002: GEOPotato1
     2300004: GEOPotato2
     2300006: GEOPotatoVert1
     2300008: GEOPotatoVert2
+    2300010: GEOPotatoDia1
+    2300012: GEOPotatoDia2
     3300000: GEOPotato
     3300002: GEOPotato1
     3300004: GEOPotato2
     3300006: GEOPotatoVert1
     3300008: GEOPotatoVert2
+    3300010: GEOPotatoDia1
+    3300012: GEOPotatoDia2
     4300000: GEOPotato
     4300002: GEOPotato1
     4300004: GEOPotato2
     4300006: GEOPotatoVert1
     4300008: GEOPotatoVert2
+    4300010: GEOPotatoDia1
+    4300012: GEOPotatoDia2
   materials:
     importMaterials: 1
     materialName: 0

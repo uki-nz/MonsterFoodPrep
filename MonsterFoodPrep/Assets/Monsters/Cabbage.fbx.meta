@@ -27,6 +27,9 @@ ModelImporter:
     100038: GEOCabbageHorz1
     100040: GEOCabbageHorz2
     100042: GrpCabbageChoppedHorz
+    100044: GEOCabbageDia1
+    100046: GEOCabbageDia2
+    100048: GrpCabbageChoppedDiagonal
     400000: //RootNode
     400002: CabbageHorizontal
     400004: CabbageHorizontal1
@@ -49,6 +52,9 @@ ModelImporter:
     400038: GEOCabbageHorz1
     400040: GEOCabbageHorz2
     400042: GrpCabbageChoppedHorz
+    400044: GEOCabbageDia1
+    400046: GEOCabbageDia2
+    400048: GrpCabbageChoppedDiagonal
     2300000: //RootNode
     2300002: CabbageHorizontal
     2300004: CabbageHorizontal1
@@ -65,6 +71,8 @@ ModelImporter:
     2300026: GEOCabbageChoppedLeaves
     2300028: GEOCabbageHorz1
     2300030: GEOCabbageHorz2
+    2300032: GEOCabbageDia1
+    2300034: GEOCabbageDia2
     3300000: //RootNode
     3300002: CabbageHorizontal
     3300004: CabbageHorizontal1
@@ -81,6 +89,8 @@ ModelImporter:
     3300026: GEOCabbageChoppedLeaves
     3300028: GEOCabbageHorz1
     3300030: GEOCabbageHorz2
+    3300032: GEOCabbageDia1
+    3300034: GEOCabbageDia2
     4300000: GEOCabbage
     4300002: CabbageHorizontal
     4300004: CabbageHorizontal1
@@ -96,6 +106,8 @@ ModelImporter:
     4300024: GEOCabbageChoppedBodyVert2
     4300026: GEOCabbageHorz1
     4300028: GEOCabbageHorz2
+    4300030: GEOCabbageDia1
+    4300032: GEOCabbageDia2
   materials:
     importMaterials: 1
     materialName: 0
