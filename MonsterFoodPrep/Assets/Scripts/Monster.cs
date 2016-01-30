@@ -75,10 +75,13 @@ public class Monster : MonoBehaviour
     void Start()
     {
         StartCoroutine(Idle());
+        OnDeath += OnDeathHandler;
     }
 
     void Update()
     {
+        if (state == MonState.Dead) return;
+
         if(!controller.isGrounded)
         {
             moveDirection += Physics.gravity * Time.deltaTime;
@@ -173,7 +176,7 @@ public class Monster : MonoBehaviour
             if (OnChop != null)
                 OnChop(true, this);
 
-            if (ChopsToKill.Count == chopCount)
+            if (chopCount >= ChopsToKill.Count)
             {
                 // done chopping, kill
 
@@ -203,5 +206,11 @@ public class Monster : MonoBehaviour
             // leave chopped bits where they are
             Debug.Log("Fail!");
         }
+    }
+
+    void OnDeathHandler(bool success, Monster mon)
+    {
+        mon.StopAllCoroutines();
+        mon.controller.enabled = false;
     }
 }

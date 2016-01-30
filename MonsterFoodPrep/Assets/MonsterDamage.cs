@@ -7,13 +7,17 @@ public class MonsterDamage : MonoBehaviour {
     public List<Rigidbody> breakable;
     private int damageLevel = 0;
     private List<GameObject> rememberToDestroy;
+    public bool hideMeshRenderer = true;
 
 	// Use this for initialization
 	void Start () {
         rememberToDestroy = new List<GameObject>();
 
-        // line below is a hack, don't try this at home!
-        GetComponent<Renderer>().enabled = false;
+        // statement below is a hack, don't try this at home!
+        if (hideMeshRenderer)
+        {
+            GetComponent<Renderer>().enabled = false;
+        }
 
         Monster mon = GetComponent<Monster>();
         mon.OnChop += OnChopHandler;
@@ -29,6 +33,7 @@ public class MonsterDamage : MonoBehaviour {
     {
         if (!success) return;
 
+        if (damageLevel >= breakable.Count) return;
         Rigidbody part = breakable[damageLevel];
 
         part.useGravity = true;
