@@ -49,32 +49,51 @@ public class Monster : MonoBehaviour
 
     public float moveSpeed;
     public float turnSpeed;
+    public float walkTimeMin;
+    public float walkTimeMax;
+    public float walkDistanceMin;
+    public float walkDistanceMax;
 
-    private Vector3 target;
+    private Vector3 face;
     private Vector3 moveDirection;
+    private Vector3 size;
     Vector3 direction;
-    
-        
+
+    float time = 0.0f;
+
+    bool start;
+
+    void Start()
+    {
+        size = transform.localScale;
+    }
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
-            if (state == MonState.Spawning)
+            if (!start)
             {
-                state = MonState.Derpy;
+                Debug.Log("hit");
+                StartCoroutine(LookAround());
+                start = true;
             }
-            direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
-            direction.y = 0.0f;
 
-            if(direction.magnitude > 0.0f)
-                transform.forward = direction;
-
-            if (Vector3.Distance(transform.position, target) > 0.1f)
-                moveDirection = direction * moveSpeed;
+            if(direction != Vector3.zero)
+            {
+                face = Vector3.RotateTowards(face, direction, turnSpeed * Time.deltaTime, 0.0f);
+                face.y = 0.0f;
+                transform.forward = face.normalized;
+               
+            }
+            moveDirection = face * moveSpeed;
         }
+  
         moveDirection += Physics.gravity;
         controller.Move(moveDirection * Time.deltaTime);
+        transform.localScale = new Vector3(size.x, size.y - (size.y * (Mathf.PingPong(time, 0.25f) * 0.2f)), size.z);
+        time += Time.deltaTime;
     }
 
     IEnumerator LookAround()
@@ -87,10 +106,18 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            Vector3 offset = Random.insideUnitSphere;
-            offset.y = 0.0f;
-            target = transform.position + offset;
-            yield return new WaitForSeconds(1.0f);
+            Vector2 random = Random.insideUnitCircle * Random.Range(walkDistanceMin, walkDistanceMax);
+            direction = new Vector3(random.x, 0.0f, random.y);
+            yield return new WaitForSeconds(Random.Range(walkTimeMin, walkTimeMax));
+        }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.GetComponent<CharacterController>())
+        {
+            direction = Vector3.zero;
+            StartCoroutine(Walk());
         }
     }
 
@@ -98,9 +125,7 @@ public class Monster : MonoBehaviour
     {
         if (state < MonState.Derpy) return;
 
-        if (ChopsToKill.Count == 0) return;
-
-        print("CHOPPED"+(int)chop);
+        print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -115,13 +140,12 @@ public class Monster : MonoBehaviour
                 state = MonState.Chopped;
                 if (OnDeath != null)
                 {
-                    print("CALLING ON DEATH");
                     OnDeath(true, this);
                 }
                 //Debug.Log("KILLED", this);
-                //GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
-                //StartCoroutine(RemoveCorpse(go));
-                //Destroy(gameObject);
+                GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
+                StartCoroutine(RemoveCorpse(go));
+                Destroy(gameObject);
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }
@@ -143,9 +167,9 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    IEnumerator RemoveCorpse(GameObject toRemove)
     {
-        //StartCoroutine(LookAround());
+        yield return new WaitForSeconds(3f);
+        Destroy(toRemove);
     }
-    
 }
