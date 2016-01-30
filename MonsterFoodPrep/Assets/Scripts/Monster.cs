@@ -142,7 +142,8 @@ public class Monster : MonoBehaviour
 
         if (ChopsToKill.Count == 0) return;
 
-        audio.PlayOneShot(deathSound, 0.7F);
+        audio.PlayOneShot(deathSound);
+        //audio.Play();
 
         print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
