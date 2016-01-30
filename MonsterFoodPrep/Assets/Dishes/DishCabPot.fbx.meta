@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 22f6a32d8c7cd844bbd9ac63bcc340c2
+timeCreated: 1454197822
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: cabbage2
+    100002: CabbageLeaf1
+    100004: CabbageLeaf2
+    100006: CabbageLeaf3
+    100008: CabbageLeaf4
+    100010: CabbageLeaf5
+    100012: CabbageLeaf6
+    100014: CabbageLeaf7
+    100016: DishCabbagePotato
+    100018: //RootNode
+    100020: Garnish1
+    100022: GEOCabbageChoppedBodyVert1
+    100024: GEOCabbageChoppedBodyVert2
+    100026: GEOPinkBlob1
+    100028: GEOPotato2
+    100030: GrpCabbageChoppedVert
+    100032: GrpPotatoChoppedHorizontal
+    100034: potato2
+    400000: cabbage2
+    400002: CabbageLeaf1
+    400004: CabbageLeaf2
+    400006: CabbageLeaf3
+    400008: CabbageLeaf4
+    400010: CabbageLeaf5
+    400012: CabbageLeaf6
+    400014: CabbageLeaf7
+    400016: DishCabbagePotato
+    400018: //RootNode
+    400020: Garnish1
+    400022: GEOCabbageChoppedBodyVert1
+    400024: GEOCabbageChoppedBodyVert2
+    400026: GEOPinkBlob1
+    400028: GEOPotato2
+    400030: GrpCabbageChoppedVert
+    400032: GrpPotatoChoppedHorizontal
+    400034: potato2
+    2300000: CabbageLeaf1
+    2300002: CabbageLeaf2
+    2300004: CabbageLeaf3
+    2300006: CabbageLeaf4
+    2300008: CabbageLeaf5
+    2300010: CabbageLeaf6
+    2300012: CabbageLeaf7
+    2300014: GEOCabbageChoppedBodyVert1
+    2300016: GEOCabbageChoppedBodyVert2
+    2300018: GEOPinkBlob1
+    2300020: GEOPotato2
+    3300000: CabbageLeaf1
+    3300002: CabbageLeaf2
+    3300004: CabbageLeaf3
+    3300006: CabbageLeaf4
+    3300008: CabbageLeaf5
+    3300010: CabbageLeaf6
+    3300012: CabbageLeaf7
+    3300014: GEOCabbageChoppedBodyVert1
+    3300016: GEOCabbageChoppedBodyVert2
+    3300018: GEOPinkBlob1
+    3300020: GEOPotato2
+    4300000: GEOPotato2
+    4300002: GEOCabbageChoppedBodyVert1
+    4300004: GEOCabbageChoppedBodyVert2
+    4300006: CabbageLeaf1
+    4300008: CabbageLeaf2
+    4300010: CabbageLeaf3
+    4300012: CabbageLeaf4
+    4300014: CabbageLeaf5
+    4300016: CabbageLeaf6
+    4300018: CabbageLeaf7
+    4300020: GEOPinkBlob1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
