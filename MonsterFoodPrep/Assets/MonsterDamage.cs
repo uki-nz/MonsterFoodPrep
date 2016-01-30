@@ -9,6 +9,9 @@ public class MonsterDamage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        // line below is a hack, don't try this at home!
+        GetComponent<Renderer>().enabled = false;
+
         Monster mon = GetComponent<Monster>();
         mon.OnChop += OnChopHandler;
         mon.OnDeath += OnDeathHandler;
