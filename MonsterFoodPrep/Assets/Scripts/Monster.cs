@@ -29,7 +29,8 @@ public class Monster : MonoBehaviour
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
     // VARS
-    public GameObject deathPrefab;
+    public GameObject rightPrefab;
+    public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     private CharacterController controller;
     public MovementPattern movementOptions;
@@ -130,6 +131,8 @@ public class Monster : MonoBehaviour
     {
         if (state < MonState.Derpy) return;
 
+        if (ChopsToKill.Count == 0) return;
+
         print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
@@ -147,10 +150,7 @@ public class Monster : MonoBehaviour
                 {
                     OnDeath(true, this);
                 }
-                //Debug.Log("KILLED", this);
-                GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
-                StartCoroutine(RemoveCorpse(go));
-                Destroy(gameObject);
+
                 // after interval, remove pieces, put stuff on plate  
                 Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
             }

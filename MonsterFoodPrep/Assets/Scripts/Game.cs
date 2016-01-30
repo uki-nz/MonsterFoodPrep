@@ -101,18 +101,23 @@ public class Game : MonoBehaviour
         GameObject prefab;
         if (success)
         {
-            prefab = monster.deathPrefab;
+            prefab = monster.rightPrefab;
             SpawnKillEffects(monster.transform.position);
         }
         else
         {
-            prefab = monster.dummyPrefab;
+            prefab = monster.wrongPrefab;
         }
 
         GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
         StartCoroutine(RemoveCorpse(monster, go));
         monsters.Remove(monster);
         Destroy(monster.gameObject);
+        Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
+        if (bodies.Length > 0)
+        {
+            bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
+        }
 
     }
 
@@ -120,7 +125,7 @@ public class Game : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(go);
-        Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
+        //Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
     }
 
     void SpawnKillEffects(Vector3 pos)

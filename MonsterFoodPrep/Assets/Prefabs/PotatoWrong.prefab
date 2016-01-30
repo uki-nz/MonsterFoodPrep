@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 474370}
   m_Layer: 0
-  m_Name: PotatoCorpse
+  m_Name: PotatoWrong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
