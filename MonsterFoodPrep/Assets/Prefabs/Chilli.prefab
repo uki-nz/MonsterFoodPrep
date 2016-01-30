@@ -66,6 +66,8 @@ GameObject:
   - 143: {fileID: 14351766}
   - 114: {fileID: 11471690}
   - 114: {fileID: 11445028}
+  - 33: {fileID: 3369892}
+  - 23: {fileID: 2366740}
   m_Layer: 0
   m_Name: Chilli
   m_TagString: Chilli
@@ -204,6 +206,30 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2366740
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191808}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2370034
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -259,6 +285,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108416}
   m_Mesh: {fileID: 4300012, guid: 6b5e56c9d22f3fc4ebc8661dadc84a13, type: 3}
+--- !u!33 &3369892
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191808}
+  m_Mesh: {fileID: 4300000, guid: 6b5e56c9d22f3fc4ebc8661dadc84a13, type: 3}
 --- !u!33 &3374002
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -372,7 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafc6c3e230bdf44ea45e459e99b13f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakable: []
+  breakable:
+  - {fileID: 5410268}
+  - {fileID: 5400122}
+  - {fileID: 5427086}
 --- !u!114 &11471690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,11 +457,35 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: breakable.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: scoreValue
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 6b5e56c9d22f3fc4ebc8661dadc84a13, type: 3}
+    - target: {fileID: 0}
+      propertyPath: breakable.Array.data[0]
+      value: 
+      objectReference: {fileID: 5410268}
+    - target: {fileID: 0}
+      propertyPath: breakable.Array.data[1]
+      value: 
+      objectReference: {fileID: 5400122}
+    - target: {fileID: 0}
+      propertyPath: breakable.Array.data[2]
+      value: 
+      objectReference: {fileID: 5427086}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

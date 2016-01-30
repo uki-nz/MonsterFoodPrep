@@ -1036,6 +1036,11 @@ MonoBehaviour:
   timeLimit: 0
   respawnDelay: 0
   fallSpeed: 10
+  monsterQuantity: 4
+  monsterPrefabs:
+  - {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
+  - {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
 --- !u!4 &2059281404
 Transform:
   m_ObjectHideFlags: 0
