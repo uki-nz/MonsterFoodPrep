@@ -85,14 +85,12 @@ public class Monster : MonoBehaviour
         }
         controller.Move(moveDirection * Time.deltaTime);
 
-<<<<<<< HEAD
-=======
         if (transform.position.y < -5f)
         {
             state = MonState.Dead;
             OnDeath(false, this);
         }
->>>>>>> origin/master
+
         Vector3 scale = transform.localScale;
         scale.y = startScale.y + (startScale.y * bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
         transform.localScale = scale;
