@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
+    [SerializeField]
     private MonState state = MonState.Spawning;
     // PROPERTIES
     public MonState State
@@ -73,6 +74,12 @@ public class Monster : MonoBehaviour
             moveDirection += Physics.gravity * Time.deltaTime;
         }
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (transform.position.y < -5f)
+        {
+            state = MonState.Dead;
+            OnDeath(false, this);
+        }
     }
 
     IEnumerator Idle()
@@ -88,6 +95,7 @@ public class Monster : MonoBehaviour
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
+                state = MonState.Escaping;
                 yield return StartCoroutine(Walking());
             }
             yield return null;
