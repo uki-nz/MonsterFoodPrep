@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class Game : MonoBehaviour
 {
     public Dish[] dishes;
+    public Transform UiCanvas;
+    public Camera UiCamera;
+    public GameObject[] KillEffects;
     public Transform dishSpawn;
     public Transform monsterSpawn;
     public Transform choppingBoard;
@@ -32,7 +35,6 @@ public class Game : MonoBehaviour
     void Awake()
     {
         _game = this;
-       // Cursor.visible = false;
     }
 
     void Start()
@@ -42,24 +44,10 @@ public class Game : MonoBehaviour
             foreach(Monster monster in dish.monsters)
             {
                 SpawnMonster(monster);
-                //yield return new WaitForSeconds(0.1f);
             }
             SpawnDish(dish);
 
             startTime = Time.time;
-            //while (true)
-            //{
-            //    float countdown = timeLimit - (Time.time - startTime);
-            //    if (countdown <= 0.0f)
-            //    {
-            //        break;
-            //    }
-            //    if (monsters.Count == 0)
-            //    {
-            //        break;
-            //    }
-            //    yield return new WaitForEndOfFrame();
-            //}
         }
     }
 
@@ -111,22 +99,22 @@ public class Game : MonoBehaviour
     void OnDeathEventhandler(bool success, Monster monster)
     {
         Debug.Log("OnDeathHandler", this);
+        GameObject prefab;
         if (success)
         {
-            GameObject go = (GameObject)GameObject.Instantiate(monster.deathPrefab, monster.transform.position, monster.transform.rotation);
-            StartCoroutine(RemoveCorpse(monster, go));
-            monsters.Remove(monster);
-            Destroy(monster.gameObject);
-
+            prefab = monster.deathPrefab;
+            SpawnKillEffects(monster.transform.position);
         }
         else
         {
-            GameObject go = (GameObject)GameObject.Instantiate(monster.dummyPrefab, monster.transform.position, monster.transform.rotation);
-            StartCoroutine(RemoveCorpse(monster, go));
-            monsters.Remove(monster);
-            Destroy(monster.gameObject);
+            prefab = monster.dummyPrefab;
         }
-        
+
+        GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
+        StartCoroutine(RemoveCorpse(monster, go));
+        monsters.Remove(monster);
+        Destroy(monster.gameObject);
+
     }
 
     IEnumerator RemoveCorpse(Monster monster, GameObject go)
@@ -134,5 +122,17 @@ public class Game : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(go);
         Object.Instantiate(monster.dummyPrefab, dishSpawn.position, Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0)));
+    }
+
+    void SpawnKillEffects(Vector3 pos)
+    {
+        GameObject fx = KillEffects[Random.Range(0, KillEffects.Length)];
+        GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
+
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
+        RectTransform fxTransform = (RectTransform)go.transform;
+        RectTransform canvasTransform = (RectTransform)UiCanvas;
+        fxTransform.anchoredPosition = screenPoint;
+        fxTransform.SetParent(UiCanvas);
     }
 }

@@ -3,9 +3,11 @@ using System.Collections;
 
 public class FxPop : MonoBehaviour {
 
+    public float duration = 0.5f;
+
 	// Use this for initialization
 	void Start () {
-        iTween.ScaleTo(gameObject, Vector3.one, 0.5f);
+        iTween.ScaleTo(gameObject, Vector3.one, duration);
         StartCoroutine(Kill());
 	}
 	
@@ -16,7 +18,7 @@ public class FxPop : MonoBehaviour {
 
     IEnumerator Kill()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 }
