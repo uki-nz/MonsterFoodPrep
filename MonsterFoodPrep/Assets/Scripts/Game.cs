@@ -116,30 +116,40 @@ public class Game : MonoBehaviour
     void OnDeathEventhandler(bool success, Monster monster)
     {
         Debug.Log("OnDeathHandler", this);
+
         GameObject prefab;
-        if (success)
+
+        // we handle chilli and octopus destruction differently
+        if (monster.tag == "Chilli" || monster.tag == "Octopus")
         {
-            prefab = monster.rightPrefab;
-            SpawnKillEffects(monster.transform.position);
+            StartCoroutine(RemoveCorpse(monster.gameObject));
         }
         else
         {
-            prefab = monster.wrongPrefab;
+            if (success)
+            {
+                prefab = monster.rightPrefab;
+                SpawnKillEffects(monster.transform.position);
+            }
+            else
+            {
+                prefab = monster.wrongPrefab;
+            }
+
+            GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
+            StartCoroutine(RemoveCorpse(go));
+            Destroy(monster.gameObject);
+            Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
+            if (bodies.Length > 0)
+            {
+                bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
+            }
         }
 
-        GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
-        StartCoroutine(RemoveCorpse(monster, go));
         monsters.Remove(monster);
-        Destroy(monster.gameObject);
-        Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
-        if (bodies.Length > 0)
-        {
-            bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
-        }
-
     }
 
-    IEnumerator RemoveCorpse(Monster monster, GameObject go)
+    IEnumerator RemoveCorpse(GameObject go)
     {
         yield return new WaitForSeconds(3f);
         Destroy(go);
