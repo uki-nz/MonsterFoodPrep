@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(CharacterController))]
 public class Monster : MonoBehaviour
@@ -24,12 +25,21 @@ public class Monster : MonoBehaviour
     };
     // DEFINING DELEGATES
     private delegate float MovementDelegate(MonsterController mc);
-    public delegate void OnDeathEvent(bool success);
+    public delegate void OnDeathEvent(bool success, Monster monster);
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
     // VARS
+    public GameObject deathPrefab;
+    public GameObject dummyPrefab;
     private CharacterController controller;
     public MovementPattern movementOptions;
+<<<<<<< HEAD
+=======
+    public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
+    public float movementSpeed = 1f; // baseline
+    [Range(0.01f, 1f)]
+    public float turningSpeed = 1f;
+>>>>>>> origin/master
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
@@ -52,11 +62,16 @@ public class Monster : MonoBehaviour
 
     bool start;
 
+    void Start()
+    {
+    }
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
+            state = MonState.Derpy;
             direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
             direction.y = 0.0f;
 
@@ -87,8 +102,65 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public void Chop(Knife.ChopMode chop)
+    {
+        if (state < MonState.Derpy) return;
+
+        print("CHOPPED");
+        if (ChopsToKill[chopCount] == chop)
+        {
+            chopCount++;
+
+            if (ChopsToKill.Count == chopCount)
+            {
+                // done chopping, kill
+
+                // run mesh-divider
+                // update game class kill count
+                Debug.Log("KILLED", this);
+                state = MonState.Chopped;
+                if (OnDeath != null)
+                {
+                    OnDeath(true, this);
+                }
+                //Debug.Log("KILLED", this);
+                GameObject go = (GameObject) GameObject.Instantiate(deathPrefab, transform.position, transform.rotation);
+                StartCoroutine(RemoveCorpse(go));
+                Destroy(gameObject);
+                // after interval, remove pieces, put stuff on plate  
+                Debug.Log("Success! Awarded pts : " + scoreValue.ToString());
+            }
+        }
+        else
+        {
+            // chopped wrongly, kill but no rewards
+
+            // run mesh divider
+            // update game class fail count
+            state = MonState.Chopped;
+            if (OnDeath!= null)
+            {
+                OnDeath(false, this);
+            }
+
+            // leave chopped bits where they are
+            Debug.Log("Fail!");
+        }
+    }
+
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+<<<<<<< HEAD
         //StartCoroutine(LookAround());
+=======
+
+        //StartCoroutine(LookAround());
+    }
+
+    IEnumerator RemoveCorpse(GameObject toRemove)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(toRemove);
+>>>>>>> origin/master
     }
 }
