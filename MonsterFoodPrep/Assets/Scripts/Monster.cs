@@ -8,23 +8,23 @@ public class Monster : MonoBehaviour
 
     private Vector3 target;
     private Vector3 moveDirection;
+    Vector3 direction;
 
-    void Start()
-    {
-        StartCoroutine(LookAround());
-    }
+    bool start;
 
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-     
         if (controller.isGrounded)
         {
-            transform.forward = Vector3.RotateTowards(transform.forward, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
+            direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
+            direction.y = 0.0f;
+
+            if(direction.magnitude > 0.0f)
+                transform.forward = direction;
+
             if (Vector3.Distance(transform.position, target) > 0.1f)
-            {
-                moveDirection = transform.forward * moveSpeed;
-            }
+                moveDirection = direction * moveSpeed;
         }
         moveDirection += Physics.gravity;
         controller.Move(moveDirection * Time.deltaTime);
@@ -32,18 +32,24 @@ public class Monster : MonoBehaviour
 
     IEnumerator LookAround()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         StartCoroutine(Walk());
     }
 
     IEnumerator Walk()
-    {   
-        while(true)
+    {
+        while (true)
         {
             Vector3 offset = Random.insideUnitSphere;
             offset.y = 0.0f;
             target = transform.position + offset;
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("hit");
+        StartCoroutine(LookAround());
     }
 }
