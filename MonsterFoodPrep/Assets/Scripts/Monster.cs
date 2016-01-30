@@ -49,15 +49,23 @@ public class Monster : MonoBehaviour
 
     public float moveSpeed;
     public float turnSpeed;
+    public float walkTimeMin;
+    public float walkTimeMax;
+    public float walkDistanceMin;
+    public float walkDistanceMax;
 
-    private Vector3 target;
+    private Vector3 face;
     private Vector3 moveDirection;
+    private Vector3 size;
     Vector3 direction;
+
+    float time = 0.0f;
 
     bool start;
 
     void Start()
     {
+        size = transform.localScale;
     }
 
     void Update()
@@ -65,18 +73,27 @@ public class Monster : MonoBehaviour
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
         {
-            state = MonState.Derpy;
-            direction = Vector3.RotateTowards(direction, target - transform.position, turnSpeed * Time.deltaTime, 0.0f);
-            direction.y = 0.0f;
+            if (!start)
+            {
+                Debug.Log("hit");
+                StartCoroutine(LookAround());
+                start = true;
+            }
 
-            if(direction.magnitude > 0.0f)
-                transform.forward = direction;
-
-            if (Vector3.Distance(transform.position, target) > 0.1f)
-                moveDirection = direction * moveSpeed;
+            if(direction != Vector3.zero)
+            {
+                face = Vector3.RotateTowards(face, direction, turnSpeed * Time.deltaTime, 0.0f);
+                face.y = 0.0f;
+                transform.forward = face.normalized;
+               
+            }
+            moveDirection = face * moveSpeed;
         }
+  
         moveDirection += Physics.gravity;
         controller.Move(moveDirection * Time.deltaTime);
+        transform.localScale = new Vector3(size.x, size.y - (size.y * (Mathf.PingPong(time, 0.25f) * 0.2f)), size.z);
+        time += Time.deltaTime;
     }
 
     IEnumerator LookAround()
@@ -89,10 +106,18 @@ public class Monster : MonoBehaviour
     {
         while (true)
         {
-            Vector3 offset = Random.insideUnitSphere;
-            offset.y = 0.0f;
-            target = transform.position + offset;
-            yield return new WaitForSeconds(1.0f);
+            Vector2 random = Random.insideUnitCircle * Random.Range(walkDistanceMin, walkDistanceMax);
+            direction = new Vector3(random.x, 0.0f, random.y);
+            yield return new WaitForSeconds(Random.Range(walkTimeMin, walkTimeMax));
+        }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.GetComponent<CharacterController>())
+        {
+            direction = Vector3.zero;
+            StartCoroutine(Walk());
         }
     }
 
@@ -140,11 +165,6 @@ public class Monster : MonoBehaviour
             // leave chopped bits where they are
             Debug.Log("Fail!");
         }
-    }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        //StartCoroutine(LookAround());
     }
 
     IEnumerator RemoveCorpse(GameObject toRemove)

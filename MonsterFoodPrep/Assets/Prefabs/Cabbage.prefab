@@ -73,10 +73,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f0f3e152fc96b4bb303543d383b47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPrefab: {fileID: 0}
+  dummyPrefab: {fileID: 0}
   movementOptions: 0
+  ChopsToKill: 
   scoreValue: 10
   moveSpeed: 1
   turnSpeed: 1
+  walkTimeMin: 2
+  walkTimeMax: 4
+  walkDistanceMin: 1
+  walkDistanceMax: 4
 --- !u!143 &14302418
 CharacterController:
   m_ObjectHideFlags: 1
@@ -89,7 +96,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.01999998
   m_Radius: .5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 180
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
   m_MinMoveDistance: .00100000005
@@ -104,6 +111,42 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: turnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SlopeLimit
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minWalk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxWalk
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkDistanceMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkTimeMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkTimeMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkDistanceMin
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
