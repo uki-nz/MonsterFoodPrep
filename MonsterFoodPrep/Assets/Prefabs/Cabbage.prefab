@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2359360}
   - 143: {fileID: 14302418}
   - 114: {fileID: 11402388}
+  - 82: {fileID: 8295894}
   m_Layer: 0
   m_Name: Cabbage
   m_TagString: Untagged
@@ -62,6 +63,76 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127958}
   m_Mesh: {fileID: 4300000, guid: da429d3aaea19c0438b8bc810465df3d, type: 3}
+--- !u!82 &8295894
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127958}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11402388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +155,8 @@ MonoBehaviour:
   turnSpeed: 4
   idleTimeMin: 5
   idleTimeMax: 10
+  bobScale: .0500000007
+  bobFrequency: .5
   canWalk: 1
 --- !u!143 &14302418
 CharacterController:
@@ -181,6 +254,14 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 2f411a1fa2d73be409ad16b0454e2a7c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: bobScale
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bobFrequency
+      value: .5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127958}
