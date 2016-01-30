@@ -26,8 +26,10 @@ public class Monster : MonoBehaviour
     // DEFINING DELEGATES
     private delegate float MovementDelegate(MonsterController mc);
     public delegate void OnDeathEvent(bool success, Monster monster);
+    public delegate void OnChopEvent(bool success, Monster monster);
     // DEFINING EVENTS
     public event OnDeathEvent OnDeath;
+    public event OnChopEvent OnChop;
     // VARS
     public GameObject rightPrefab;
     public GameObject wrongPrefab;
@@ -138,6 +140,11 @@ public class Monster : MonoBehaviour
         {
             chopCount++;
 
+            if (OnChop != null)
+            {
+                OnChop(true, this);
+            }
+
             if (ChopsToKill.Count == chopCount)
             {
                 // done chopping, kill
@@ -158,6 +165,10 @@ public class Monster : MonoBehaviour
         else
         {
             // chopped wrongly, kill but no rewards
+            if (OnChop != null)
+            {
+                OnChop(false, this);
+            }
 
             // run mesh divider
             // update game class fail count
