@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
+    [SerializeField]
     private MonState state = MonState.Spawning;
     // PROPERTIES
     public MonState State
@@ -84,6 +85,14 @@ public class Monster : MonoBehaviour
         }
         controller.Move(moveDirection * Time.deltaTime);
 
+<<<<<<< HEAD
+=======
+        if (transform.position.y < -5f)
+        {
+            state = MonState.Dead;
+            OnDeath(false, this);
+        }
+>>>>>>> origin/master
         Vector3 scale = transform.localScale;
         scale.y = startScale.y + (startScale.y * bobScale * Mathf.PingPong(Time.time / bobFrequency, 1f));
         transform.localScale = scale;
@@ -102,6 +111,7 @@ public class Monster : MonoBehaviour
                 StartCoroutine(Looking());
                 yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
                 StopCoroutine(Looking());
+                state = MonState.Escaping;
                 yield return StartCoroutine(Walk(Random.onUnitSphere));
             }
             yield return null;

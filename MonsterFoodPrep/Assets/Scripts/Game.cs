@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
     public Dish[] dishes;
     public Transform UiCanvas;
     public Camera UiCamera;
+    AudioSource audio;
+    public AudioClip chopSound;
     public GameObject[] KillEffects;
     public Transform dishSpawn;
     public Transform monsterSpawn;
@@ -37,10 +39,15 @@ public class Game : MonoBehaviour
     {
         SpawnDish(dishes[0]);
         startTime = Time.time;
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            audio.PlayOneShot(chopSound);
+        }
         if (monsters.Count < monsterQuantity)
         {
             int rand = Random.Range(0, monsterPrefabs.Count);
@@ -63,10 +70,23 @@ public class Game : MonoBehaviour
         Vector3 extents = choppingBoard.GetComponent<Renderer>().bounds.extents;
         Vector3 position = monsterSpawn.position + 
             new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
-        //foreach(Monster m in monsters)
-        //{
-        //    Vector3.Distance(position)
-        //}
+
+        bool overlap = true;
+        while (overlap)
+        {
+            overlap = false;
+            foreach (Monster m in monsters)
+            {
+                float dist = Vector3.Distance(position, m.transform.position);
+                if (dist < 1f)
+                {
+                    overlap = true;
+                    position = monsterSpawn.position +
+             new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
+                    break;
+                }
+            }
+        }
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
         GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -117,8 +137,11 @@ public class Game : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(go);
 
-        DishParts[currentDishIndex].SetActive(true);
-        currentDishIndex++;
+        if (currentDishIndex < DishParts.Count)
+        {
+            DishParts[currentDishIndex].SetActive(true);
+            currentDishIndex++;
+        }
     }
 
     void SpawnKillEffects(Vector3 pos)
