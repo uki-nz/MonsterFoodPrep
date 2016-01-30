@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterController))]
 public class Monster : MonoBehaviour
 {
     // ENUMS
@@ -29,9 +30,6 @@ public class Monster : MonoBehaviour
     // VARS
     private CharacterController controller;
     public MovementPattern movementOptions;
-    public float movementSpeed = 1f; // baseline
-    [Range(0.01f, 1f)]
-    public float turningSpeed = 1f;
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
     private Quaternion rotation;
@@ -91,7 +89,6 @@ public class Monster : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("hit");
-        StartCoroutine(LookAround());
+        //StartCoroutine(LookAround());
     }
 }

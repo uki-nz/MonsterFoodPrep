@@ -104,7 +104,8 @@ MonoBehaviour:
   monsters:
   - {fileID: 11438810, guid: 00783f51d8a5f0347a6613f22eadab8a, type: 2}
   - {fileID: 11438810, guid: 00783f51d8a5f0347a6613f22eadab8a, type: 2}
-  - {fileID: 11438810, guid: 00783f51d8a5f0347a6613f22eadab8a, type: 2}
+  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
+  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -114,7 +115,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: monsters.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsters.Array.data[0]
@@ -129,7 +130,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: monsters.Array.data[2]
       value: 
-      objectReference: {fileID: 11438810, guid: 00783f51d8a5f0347a6613f22eadab8a,
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
         type: 2}
     - target: {fileID: 0}
       propertyPath: m_Convex
