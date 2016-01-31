@@ -16,34 +16,30 @@ public class Knife : MonoBehaviour
 
     public Transform hand;
 
-    [HideInInspector]
-    public bool chopping;
-
-    Vector3 choppingPoint;
-
-    float y;
-    float distance;
-
-    float rotation;
+    private bool chopping;
+    private float y;
+    private int rotation;
+    private Vector3 choppingPoint;
+    private AudioSource audioSource;
 
     void Awake()
     {
-        Transform transform = hand.transform;
-        y = transform.position.y;
+        audioSource = GetComponent<AudioSource>();
+        y = hand.transform.position.y;
     }
 
     void Update()
     {
-        Transform transform = hand.transform;
         Rigidbody rigidbody = hand.GetComponent<Rigidbody>();
         HingeJoint hingeJoint = hand.GetComponent<HingeJoint>();
 
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit raycastHit;
-            if (Physics.Raycast(new Ray(transform.position, Vector3.down), out raycastHit))
+            if (Physics.Raycast(new Ray(hand.transform.position, Vector3.down), out raycastHit))
             {
                 chopping = true;
+                audioSource.Play();
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 choppingPoint = raycastHit.point + new Vector3(0, GetComponent<Renderer>().bounds.extents.y, 0);
             }
@@ -51,8 +47,8 @@ public class Knife : MonoBehaviour
 
         if (chopping)
         {
-            rigidbody.MovePosition(Vector3.Lerp(transform.position, choppingPoint, Time.deltaTime * chopSpeed));
-            if(Vector3.Distance(transform.position, choppingPoint) < 0.1f)
+            rigidbody.MovePosition(Vector3.Lerp(hand.transform.position, choppingPoint, Time.deltaTime * chopSpeed));
+            if(Vector3.Distance(hand.transform.position, choppingPoint) < 0.1f)
             {
                 chopping = false;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -60,28 +56,15 @@ public class Knife : MonoBehaviour
         }
         else
         {
-            /*
-            RaycastHit raycastHit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out raycastHit))
-            {
-    
-                Vector3 point = raycastHit.point;
-                point.y = y;
-                Debug.Log("point");
-                rigidbody.MovePosition(Vector3.Lerp(transform.position, point, Time.deltaTime * moveSpeed));
-            }*/
-
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            scroll = (scroll > 0.0f) ? Mathf.Ceil(scroll) : Mathf.Floor(scroll);
-            rotation = Mathf.Clamp(rotation + scroll, -2, 2);
-            rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
-           
             Vector3 screenPosition = Input.mousePosition;
-            screenPosition.z = Vector3.Distance(transform.position, Camera.main.transform.position);
+            screenPosition.z = Vector3.Distance(hand.transform.position, Camera.main.transform.position);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
             worldPosition.y = y;
-            rigidbody.MovePosition(Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * moveSpeed));
-            
+            rigidbody.MovePosition(Vector3.Lerp(hand.transform.position, worldPosition, Time.deltaTime * moveSpeed));
+
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            rotation = Mathf.Clamp(rotation + ((scroll > 0.0f) ? Mathf.CeilToInt(scroll) : Mathf.FloorToInt(scroll)), -2, 2);
+            rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
         }
     }
 
@@ -92,7 +75,6 @@ public class Knife : MonoBehaviour
             Monster monster = collider.GetComponent<Monster>();
             if (monster)
             {
-                //Destroy(monster.gameObject);
                 monster.Chop((ChopMode)Mathf.Abs(rotation));
             }
         }

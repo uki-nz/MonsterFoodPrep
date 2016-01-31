@@ -15,11 +15,8 @@ public class Game : MonoBehaviour
     public Camera UiCamera;
     public GameObject[] KillEffects;
     AudioSource audio;
-<<<<<<< HEAD
-=======
     public AudioClip chopSound;
     public AudioClip deathSound;
->>>>>>> origin/master
     public GameObject chopSuccessfulPopup;
     public GameObject chopWastePopup;
     public GameObject chopPopup;
@@ -63,7 +60,7 @@ public class Game : MonoBehaviour
 
                         monsters.Remove(monster);
                     };
-                    monsterInstance.OnDeath += OnDeathEventhandler;
+                    monsterInstance.OnDeath += OnDeath;
                     monsters.Add(monsterInstance);
                     yield return new WaitForSeconds(0.05f);
                 }
@@ -106,6 +103,8 @@ public class Game : MonoBehaviour
                dish.gameObject,
                dishSpawn.position,
                Quaternion.identity);
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        rigidbody.velocity = Vector3.down * 10f;
         return gameObject.GetComponent<Dish>();
     }
 
@@ -114,10 +113,11 @@ public class Game : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
         GameObject gameObject = (GameObject)Instantiate(monster.gameObject, transform.position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+<<<<<<< HEAD
         Monster instance = gameObject.GetComponent<Monster>();
         instance.OnChop += OnChopEventHandler;
         instance.OnDeath += OnDeathEventhandler;
-        return gameObject.GetComponent<Monster>();
+        monsters.Add(instance);
     }
 
     private void OnChopEventHandler(bool success, Monster monster)
@@ -141,6 +141,12 @@ public class Game : MonoBehaviour
     }
 
     void OnDeathEventhandler(bool success, Monster monster)
+=======
+        return gameObject.GetComponent<Monster>();
+    }
+
+    void OnDeath(bool success, Monster monster)
+>>>>>>> 5e182bec4467be6a3a4eb92fc0e28877ea455501
     {
         Debug.Log("OnDeathHandler", this);
 
