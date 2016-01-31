@@ -79,12 +79,12 @@ public class Game : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                 }
 
-                Debug.Log("dish finished");
-
                 yield return new WaitForSeconds(completeDelay);
                 Destroy(dishInstance.gameObject);
             }
         }
+
+        GameOver();
     }
 
     IEnumerator Countdown(float time)
@@ -104,14 +104,19 @@ public class Game : MonoBehaviour
 
                 gameOverScreen.SetActive(true);
 
-                gameOver = true;
-                if (onGameOver != null)
-                    onGameOver();
+                GameOver();
 
                 break;
             }
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        if (onGameOver != null)
+            onGameOver();
     }
 
     public void PlayAgain()
