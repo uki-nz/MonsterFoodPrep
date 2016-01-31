@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class Game : MonoBehaviour
 {
     public Round[] rounds;
+    public GameObject gameOverScreen;
     public GameObject countdownTimer;
     public Text countdownText;
     public Image countdownImage;
@@ -100,6 +101,8 @@ public class Game : MonoBehaviour
                 {
                     monster.OnDeath -= OnDeath;
                 }
+
+                gameOverScreen.SetActive(true);
 
                 _gameOver = true;
                 if (onGameOver != null)
