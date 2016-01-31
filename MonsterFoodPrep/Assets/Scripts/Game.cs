@@ -25,30 +25,24 @@ public class Game : MonoBehaviour
     public Transform foodSpawn;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
-    private DishProgress dp;
 
     public delegate void OnGameOver();
     public event OnGameOver onGameOver;
 
-    public bool gameOver
-    {
-        get { return _gameOver; }
-    }
-    private bool _gameOver;
+    [HideInInspector]
+    public int monstersRemaining;
+    [HideInInspector]
+    public int monstersRequired;
+    [HideInInspector]
+    public bool gameOver;
+    [HideInInspector]
+    public static Game game;
 
-    public static Game instance
-    {
-        get { return _game; }
-    }
-    private static Game _game;
-
-
-    int count;
     List<Monster> monsters;
 
     void Awake()
     {
-        _game = this;
+        game = this;
         audio = GetComponent<AudioSource>();
     }
 
@@ -66,14 +60,9 @@ public class Game : MonoBehaviour
             {
                 Dish dishInstance = SpawnDish(dish);
 
-                count = 0;
+                monstersRequired = dish.monsterSpawns.Length;
+                monstersRemaining = monstersRequired;
                 monsters = new List<Monster>();
-
-                if(dish.dishPrefab != null)
-                {
-                    GameObject go = (GameObject)GameObject.Instantiate(dish.dishPrefab.gameObject, foodSpawn.position, Quaternion.identity);
-                    dp = go.GetComponent<DishProgress>();
-                }
 
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
@@ -84,7 +73,7 @@ public class Game : MonoBehaviour
 
                 while (true)
                 {
-                    if (count == dish.monsterSpawns.Length)
+                    if (monstersRemaining == 0)
                         break;
 
                     yield return new WaitForEndOfFrame();
