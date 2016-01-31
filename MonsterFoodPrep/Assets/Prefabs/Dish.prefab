@@ -101,11 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7653d023fc430374391906443cc323b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsters:
-  - {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-  - {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
+  monsterSpawns:
+  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+    transform: {fileID: 494872, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+    transform: {fileID: 429686, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+    transform: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -116,6 +118,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: monsters.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsters.Array.data[0]
@@ -140,6 +146,33 @@ Prefab:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].monster
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[1].monster
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[2].monster
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].transform
+      value: 
+      objectReference: {fileID: 494872, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[1].transform
+      value: 
+      objectReference: {fileID: 429686, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[2].transform
+      value: 
+      objectReference: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155470}

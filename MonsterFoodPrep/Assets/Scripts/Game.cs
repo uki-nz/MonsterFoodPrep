@@ -1,28 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class Game : MonoBehaviour
 {
-    public Dish[] dishes;
+    public Round[] rounds;
+    public GameObject countdownTimer;
+    public Text countdownText;
+    public Image countdownImage;
     public Transform UiCanvas;
     public Camera UiCamera;
-    AudioSource audio;
-    public AudioClip chopSound;
     public GameObject[] KillEffects;
     public Transform dishSpawn;
-    public Transform monsterSpawn;
-    public Transform choppingBoard;
-    public float timeLimit;
-    public float respawnDelay;
-    public float fallSpeed;
-    public int monsterQuantity = 4;
-    public List<Monster> monsterPrefabs;
-    public List<GameObject> DishParts;
-
-    private int currentDishIndex = 0;
-    private float startTime;
-    private List<Monster> monsters = new List<Monster>();
+    public float respawnDelay = 5f;
+    public float completeDelay = 1f;
 
     public static Game game
     {
@@ -35,67 +27,87 @@ public class Game : MonoBehaviour
         _game = this;
     }
 
-    void Start()
+    IEnumerator Start()
     {
-        SpawnDish(dishes[0]);
-        startTime = Time.time;
-        audio = GetComponent<AudioSource>();
+        foreach(Round round in rounds)
+        {
+            countdownTimer.SetActive(false);
+            yield return new WaitForSeconds(1.0f);
+
+            countdownTimer.SetActive(true);
+            StartCoroutine(Countdown(round.timeLimit));
+
+            foreach (Dish dish in round.dishes)
+            {
+                int count = 0;
+                Dish dishInstance = SpawnDish(dish);
+                List<Monster> monsters = new List<Monster>();
+                foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
+                {
+                    Monster monsterInstance = SpawnMonster(monsterSpawn.monster, monsterSpawn.transform);
+                    monsterInstance.OnDeath += delegate (bool success, Monster monster)
+                    {
+                        if (success)
+                            count++;
+
+                        monsters.Remove(monster);
+                    };
+                    monsterInstance.OnDeath += OnDeath;
+                    monsters.Add(monsterInstance);
+                    yield return new WaitForSeconds(0.05f);
+                }
+
+                while (true)
+                {
+                    if (count == dish.monsterSpawns.Length)
+                        break;
+
+                    yield return new WaitForEndOfFrame();
+                }
+
+                yield return new WaitForSeconds(completeDelay);
+                Destroy(dishInstance.gameObject);
+            }
+        }
     }
 
-    void Update()
+    IEnumerator Countdown(float time)
     {
-        if (Input.GetMouseButtonDown(0))
+        float start = Time.time;
+        while (true)
         {
-            audio.PlayOneShot(chopSound);
-        }
-        if (monsters.Count < monsterQuantity)
-        {
-            int rand = Random.Range(0, monsterPrefabs.Count);
-            rand = Mathf.Clamp(rand, 0, monsterPrefabs.Count - 1);
-            SpawnMonster(monsterPrefabs[rand]);
+            float timeLeft = time - (Time.time - start);
+            countdownText.text = timeLeft.ToString("0.0");
+            countdownImage.fillAmount = timeLeft / time;
+            if (timeLeft <= 0.0f)
+            {
+                //Game over
+                break;
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
 
-    void SpawnDish(Dish dish)
+    Dish SpawnDish(Dish dish)
     {
         GameObject gameObject = (GameObject)Instantiate(
                dish.gameObject,
                dishSpawn.position,
                Quaternion.identity);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        rigidbody.velocity = Vector3.down * 10f;
+        return gameObject.GetComponent<Dish>();
     }
 
-    void SpawnMonster(Monster monster)
+    Monster SpawnMonster(Monster monster, Transform transform)
     {
-        Vector3 extents = choppingBoard.GetComponent<Renderer>().bounds.extents;
-        Vector3 position = monsterSpawn.position + 
-            new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
-
-        bool overlap = true;
-        while (overlap)
-        {
-            overlap = false;
-            foreach (Monster m in monsters)
-            {
-                float dist = Vector3.Distance(position, m.transform.position);
-                if (dist < 1f)
-                {
-                    overlap = true;
-                    position = monsterSpawn.position +
-             new Vector3(extents.x * (Random.value - 0.5f), 0.0f, extents.z * (Random.value - 0.5f));
-                    break;
-                }
-            }
-        }
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
-        GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
+        GameObject gameObject = (GameObject)Instantiate(monster.gameObject, transform.position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-        Monster instance = gameObject.GetComponent<Monster>();
-        instance.OnDeath += OnDeathEventhandler;
-        monsters.Add(instance);
+        return gameObject.GetComponent<Monster>();
     }
 
-    void OnDeathEventhandler(bool success, Monster monster)
+    void OnDeath(bool success, Monster monster)
     {
         Debug.Log("OnDeathHandler", this);
 
@@ -104,7 +116,7 @@ public class Game : MonoBehaviour
         // we handle chilli and octopus destruction differently
         if (monster.tag == "Chilli" || monster.tag == "Octopus")
         {
-            StartCoroutine(RemoveCorpse(monster.gameObject));
+            Destroy(monster.gameObject, 3f);
         }
         else
         {
@@ -120,7 +132,7 @@ public class Game : MonoBehaviour
             if (prefab != null)
             {
                 GameObject go = (GameObject)GameObject.Instantiate(prefab, monster.transform.position, monster.transform.rotation);
-                StartCoroutine(RemoveCorpse(go));
+                Destroy(go, 3f);
                 Destroy(monster.gameObject);
                 Rigidbody[] bodies = go.GetComponentsInChildren<Rigidbody>();
                 if (bodies.Length > 0)
@@ -128,19 +140,6 @@ public class Game : MonoBehaviour
                     bodies[0].AddExplosionForce(200f, bodies[1].position + Random.onUnitSphere, 10f);
                 }
             }
-        }
-        monsters.Remove(monster);
-    }
-
-    IEnumerator RemoveCorpse(GameObject go)
-    {
-        yield return new WaitForSeconds(3f);
-        Destroy(go);
-
-        if (currentDishIndex < DishParts.Count)
-        {
-            DishParts[currentDishIndex].SetActive(true);
-            currentDishIndex++;
         }
     }
 
