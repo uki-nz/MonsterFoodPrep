@@ -1,15 +1,44 @@
 fileFormatVersion: 2
-guid: b87c07dd2af35ff4a9f1e64b1ef110ee
-timeCreated: 1454186079
+guid: dccd00a4e7ab5b84eba1868b7253fe58
+timeCreated: 1454197823
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: TEXTChop
+    100000: DishPotato
+    100002: //RootNode
+    100004: GEOPinkBlob2
+    100006: GEOPotato2
+    100008: GEOSaladLeave1
+    100010: GEOSaladLeave3
+    100012: GEOSaladLeave4
+    100014: GEOSaladLeave5
+    400000: DishPotato
+    400002: //RootNode
+    400004: GEOPinkBlob2
+    400006: GEOPotato2
+    400008: GEOSaladLeave1
+    400010: GEOSaladLeave3
+    400012: GEOSaladLeave4
+    400014: GEOSaladLeave5
+    2300000: GEOPinkBlob2
+    2300002: GEOPotato2
+    2300004: GEOSaladLeave1
+    2300006: GEOSaladLeave3
+    2300008: GEOSaladLeave4
+    2300010: GEOSaladLeave5
+    3300000: GEOPinkBlob2
+    3300002: GEOPotato2
+    3300004: GEOSaladLeave1
+    3300006: GEOSaladLeave3
+    3300008: GEOSaladLeave4
+    3300010: GEOSaladLeave5
+    4300000: GEOSaladLeave1
+    4300002: GEOPotato2
+    4300004: GEOSaladLeave3
+    4300006: GEOSaladLeave4
+    4300008: GEOSaladLeave5
+    4300010: GEOPinkBlob2
   materials:
     importMaterials: 1
     materialName: 0

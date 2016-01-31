@@ -12,6 +12,10 @@ public class Game : MonoBehaviour
     public Transform UiCanvas;
     public Camera UiCamera;
     public GameObject[] KillEffects;
+    AudioSource audio;
+    public AudioClip chopSound;
+    public GameObject chopSuccessfulPopup;
+    public GameObject chopWastePopup;
     public Transform dishSpawn;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
@@ -118,17 +122,19 @@ public class Game : MonoBehaviour
         if (monster.tag == "Chilli" || monster.tag == "Octopus")
         {
             Destroy(monster.gameObject, 3f);
+            SpawnKillEffects(monster.transform.position, success);
         }
         else
         {
             if (success)
             {
                 prefab = monster.rightPrefab;
-                SpawnKillEffects(monster.transform.position);
+                SpawnKillEffects(monster.transform.position, true);
             }
             else
             {
                 prefab = monster.wrongPrefab;
+                SpawnKillEffects(monster.transform.position, false);
             }
             if (prefab != null)
             {
@@ -144,9 +150,17 @@ public class Game : MonoBehaviour
         }
     }
 
-    void SpawnKillEffects(Vector3 pos)
+    void SpawnKillEffects(Vector3 pos, bool success)
     {
-        GameObject fx = KillEffects[Random.Range(0, KillEffects.Length)];
+        GameObject fx;
+        if (success)
+        {
+            fx = chopSuccessfulPopup;
+        }
+        else
+        {
+            fx = chopWastePopup;
+        }
         GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
 
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);

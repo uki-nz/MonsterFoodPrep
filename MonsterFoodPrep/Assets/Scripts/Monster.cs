@@ -89,7 +89,7 @@ public class Monster : MonoBehaviour
         }
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (transform.position.y < -5f)
+        if (transform.position.y < -5f && state != MonState.Dead)
         {
             state = MonState.Dead;
             if(OnDeath != null)
@@ -183,13 +183,11 @@ public class Monster : MonoBehaviour
     public void Chop(Knife.ChopMode chop)
     {
         if (state < MonState.Derpy) return;
-
-        if (ChopsToKill.Count == 0) return;
+        
+        if (chopCount >= ChopsToKill.Count) return;
 
         audio.PlayOneShot(deathSound);
-        //audio.Play();
 
-        print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -204,7 +202,7 @@ public class Monster : MonoBehaviour
                 // run mesh-divider
                 // update game class kill count
                 Debug.Log("KILLED", this);
-                state = MonState.Chopped;
+                state = MonState.Dead;
                 if (OnDeath != null)
                     OnDeath(true, this);
 
@@ -220,7 +218,7 @@ public class Monster : MonoBehaviour
 
             // run mesh divider
             // update game class fail count
-            state = MonState.Chopped;
+            state = MonState.Dead;
             if (OnDeath!= null)
                 OnDeath(false, this);
 
