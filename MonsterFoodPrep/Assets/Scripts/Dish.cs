@@ -10,5 +10,6 @@ public struct MonsterSpawn
 
 public class Dish : MonoBehaviour
 {
+
     public MonsterSpawn[] monsterSpawns;
 }
