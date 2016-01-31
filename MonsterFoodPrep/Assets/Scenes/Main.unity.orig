@@ -1807,9 +1807,16 @@ MonoBehaviour:
   UiCanvas: {fileID: 1638412335}
   UiCamera: {fileID: 0}
   chopSound: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+<<<<<<< HEAD
+  deathSound: {fileID: 8300000, guid: dd7d632a1ac8d5b4daa4798cccb29433, type: 3}
+  chopSuccessfulPopup: {fileID: 171318, guid: e7cc131ab2d723f46adc06ca7133bdef, type: 2}
+  chopWastePopup: {fileID: 171318, guid: 23b3669bd9c3c5a44a85cd21324533a5, type: 2}
+  chopPopup: {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
+=======
   KillEffects:
   - {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   - {fileID: 170332, guid: 16cd5d9662ff1594e8d74048599ae128, type: 2}
+>>>>>>> 5e182bec4467be6a3a4eb92fc0e28877ea455501
   dishSpawn: {fileID: 1119247361}
   monsterSpawn: {fileID: 1844975384}
   choppingBoard: {fileID: 645367348}
