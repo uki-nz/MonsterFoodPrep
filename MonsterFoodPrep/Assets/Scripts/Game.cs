@@ -29,7 +29,7 @@ public class Game : MonoBehaviour
     public delegate void OnGameOver();
     public event OnGameOver onGameOver;
 
-    [HideInInspector]
+
     public int monstersRemaining;
     [HideInInspector]
     public int monstersRequired;
@@ -101,9 +101,6 @@ public class Game : MonoBehaviour
                 {
                     monster.OnDeath -= OnDeath;
                 }
-
-                gameOverScreen.SetActive(true);
-
                 GameOver();
 
                 break;
@@ -117,6 +114,8 @@ public class Game : MonoBehaviour
         gameOver = true;
         if (onGameOver != null)
             onGameOver();
+
+        gameOverScreen.SetActive(true);
     }
 
     public void PlayAgain()
