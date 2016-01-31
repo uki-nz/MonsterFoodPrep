@@ -6,9 +6,13 @@ ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: GEOKnife
     400000: //RootNode
+    400002: GEOKnife
     2300000: //RootNode
+    2300002: GEOKnife
     3300000: //RootNode
+    3300002: GEOKnife
     4300000: GEOKnife
   materials:
     importMaterials: 1

@@ -149,7 +149,7 @@ MonoBehaviour:
   dummyPrefab: {fileID: 150180, guid: 49e37042450b6ad4ea2757906d8a52bd, type: 2}
   movementOptions: 0
   deathSound: {fileID: 8300000, guid: 2f411a1fa2d73be409ad16b0454e2a7c, type: 3}
-  ChopsToKill: 01000000
+  ChopsToKill: 0200000000000000
   scoreValue: 10
   state: 0
   moveSpeed: 1
@@ -187,7 +187,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: ChopsToKill.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -239,11 +239,11 @@ Prefab:
       objectReference: {fileID: 150180, guid: 49e37042450b6ad4ea2757906d8a52bd, type: 2}
     - target: {fileID: 0}
       propertyPath: ChopsToKill.Array.data[1]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ChopsToKill.Array.data[0]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: canWalk
