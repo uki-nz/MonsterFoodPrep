@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ace48b5143a3a64790be2dcfc615556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 1
+  timeLimit: 120
   dishes:
   - {fileID: 11402006, guid: fe1a719d16930c04d8407817a66aa845, type: 2}
   - {fileID: 11402006, guid: 21f9175a9e5801c479f02fdac94f7beb, type: 2}
