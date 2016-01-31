@@ -24,11 +24,21 @@ public class Game : MonoBehaviour
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
 
-    public static Game game
+    public delegate void OnGameOver();
+    public event OnGameOver onGameOver;
+
+    public bool gameOver
+    {
+        get { return _gameOver; }
+    }
+    private bool _gameOver;
+
+    public static Game instance
     {
         get { return _game; }
     }
     private static Game _game;
+
 
     int count;
     List<Monster> monsters;
@@ -65,7 +75,6 @@ public class Game : MonoBehaviour
 
                 while (true)
                 {
-                    Debug.Log(count);
                     if (count == dish.monsterSpawns.Length)
                         break;
 
@@ -89,7 +98,10 @@ public class Game : MonoBehaviour
             countdownImage.fillAmount = timeLeft / time;
             if (timeLeft <= 0.0f)
             {
-                //Game over
+                _gameOver = true;
+                if (onGameOver != null)
+                    onGameOver();
+                Destroy(this);
                 break;
             }
             yield return new WaitForEndOfFrame();

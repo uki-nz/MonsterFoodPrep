@@ -28,6 +28,14 @@ public class Knife : MonoBehaviour
         y = hand.transform.position.y;
     }
 
+    void Start()
+    {
+        Game.instance.onGameOver += delegate ()
+        {
+            Destroy(this);
+        };
+    }
+
     void Update()
     {
         Rigidbody rigidbody = hand.GetComponent<Rigidbody>();
@@ -48,7 +56,7 @@ public class Knife : MonoBehaviour
         if (chopping)
         {
             rigidbody.MovePosition(Vector3.Lerp(hand.transform.position, choppingPoint, Time.deltaTime * chopSpeed));
-            if(Vector3.Distance(hand.transform.position, choppingPoint) < 0.1f)
+            if (Vector3.Distance(hand.transform.position, choppingPoint) < 0.1f)
             {
                 chopping = false;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
