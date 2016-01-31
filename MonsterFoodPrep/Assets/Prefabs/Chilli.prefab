@@ -168,7 +168,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: def16759a5f52bd42905be1058cae021, type: 2}
+  - {fileID: 2100000, guid: 5670310b351f9d14cad7558302b733b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -192,7 +192,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: def16759a5f52bd42905be1058cae021, type: 2}
+  - {fileID: 2100000, guid: 5670310b351f9d14cad7558302b733b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -240,7 +240,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: def16759a5f52bd42905be1058cae021, type: 2}
+  - {fileID: 2100000, guid: 5670310b351f9d14cad7558302b733b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -264,7 +264,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: def16759a5f52bd42905be1058cae021, type: 2}
+  - {fileID: 2100000, guid: 5670310b351f9d14cad7558302b733b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -409,6 +409,7 @@ MonoBehaviour:
   - {fileID: 5410268}
   - {fileID: 5400122}
   - {fileID: 5427086}
+  hideRenderer: 1
 --- !u!114 &11471690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,10 +428,13 @@ MonoBehaviour:
   deathSound: {fileID: 0}
   ChopsToKill: 010000000100000001000000
   scoreValue: 20
+  state: 0
   moveSpeed: 1
   turnSpeed: 4
   idleTimeMin: 5
   idleTimeMax: 10
+  lookTimeMin: 1
+  lookTimeMax: 2
   bobScale: .0500000007
   bobFrequency: .5
   canWalk: 1
