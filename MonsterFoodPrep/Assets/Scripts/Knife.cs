@@ -71,7 +71,7 @@ public class Knife : MonoBehaviour
             rigidbody.MovePosition(Vector3.Lerp(hand.transform.position, worldPosition, Time.deltaTime * moveSpeed));
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            rotation = Mathf.Clamp(rotation + ((scroll > 0.0f) ? Mathf.CeilToInt(scroll) : Mathf.FloorToInt(scroll)), -2, 2);
+            rotation = Mathf.Clamp(rotation + ((scroll > 0.0f) ? Mathf.CeilToInt(scroll) : Mathf.FloorToInt(scroll)), 0, 2);
             rigidbody.MoveRotation(Quaternion.AngleAxis((90 / 2) * rotation, new Vector3(0, 1, 0)));
         }
     }

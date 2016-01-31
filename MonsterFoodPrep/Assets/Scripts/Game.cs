@@ -79,6 +79,8 @@ public class Game : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                 }
 
+                Debug.Log("dish finished");
+
                 yield return new WaitForSeconds(completeDelay);
                 Destroy(dishInstance.gameObject);
             }
@@ -153,7 +155,7 @@ public class Game : MonoBehaviour
     void OnDeath(bool success, Monster monster)
     {
         if (success)
-            monstersRemaining++;
+            monstersRemaining--;
         else
             StartCoroutine(RespawnMonster(monster.monsterSpawn, respawnDelay));
 
