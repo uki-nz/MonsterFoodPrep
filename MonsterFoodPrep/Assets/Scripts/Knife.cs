@@ -49,7 +49,7 @@ public class Knife : MonoBehaviour
                 chopping = true;
                 audioSource.Play();
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                choppingPoint = raycastHit.point + new Vector3(0, GetComponent<Renderer>().bounds.extents.y, 0);
+                choppingPoint = raycastHit.point;
             }
         }
 
@@ -85,6 +85,7 @@ public class Knife : MonoBehaviour
             {
                 monster.Chop((ChopMode)Mathf.Abs(rotation));
             }
+            //chopping = false;
         }
     }
 }
