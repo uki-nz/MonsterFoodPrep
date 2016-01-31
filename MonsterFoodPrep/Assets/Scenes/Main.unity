@@ -573,7 +573,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &392024005 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 5efbe6113356adf4d807930a4494ad3f, type: 3}
@@ -676,7 +676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!82 &474407944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1369,11 +1369,15 @@ Transform:
   - {fileID: 247454071}
   - {fileID: 1169256184}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &1028447680 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b46bfbd51406fe0469d27020ad2e971f, type: 3}
   m_PrefabInternal: {fileID: 1793790626}
+--- !u!1 &1042396416 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+  m_PrefabInternal: {fileID: 1094487914}
 --- !u!1 &1079005063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1449,52 @@ RectTransform:
 GameObject:
   m_PrefabParentObject: {fileID: 153750, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
   m_PrefabInternal: {fileID: 598914145}
+--- !u!1001 &1094487914
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.39126229
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: .863985717
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -.560000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 22f6a32d8c7cd844bbd9ac63bcc340c2, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &1119247360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1360244692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &1558691301
 Prefab:
   m_ObjectHideFlags: 0
@@ -1729,7 +1779,7 @@ RectTransform:
   - {fileID: 1621734462}
   - {fileID: 2023572507}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2184,6 +2234,7 @@ MonoBehaviour:
   chopPopup: {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   dishSpawn: {fileID: 1119247361}
   foodSpawn: {fileID: 1294815209}
+  finishedDish: {fileID: 1042396416}
   respawnDelay: 2
   completeDelay: 1
   monstersRemaining: 0

@@ -23,6 +23,7 @@ public class Game : MonoBehaviour
     public GameObject chopPopup;
     public Transform dishSpawn;
     public Transform foodSpawn;
+    public GameObject finishedDish;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
 
@@ -81,7 +82,12 @@ public class Game : MonoBehaviour
 
                 Debug.Log("dish finished");
 
+                finishedDish.SetActive(true);
+
                 yield return new WaitForSeconds(completeDelay);
+
+                finishedDish.SetActive(false);
+
                 Destroy(dishInstance.gameObject);
             }
         }
