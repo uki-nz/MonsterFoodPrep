@@ -68,7 +68,6 @@ public class Game : MonoBehaviour
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
                     Monster monsterInstance = SpawnMonster(monsterSpawn);
-                    monsterInstance.monsterSpawn = monsterSpawn;
                     monsters.Add(monsterInstance);
                     yield return new WaitForSeconds(0.05f);
                 }
@@ -87,7 +86,6 @@ public class Game : MonoBehaviour
         }
     }
 
-
     IEnumerator Countdown(float time)
     {
         float start = Time.time;
@@ -98,14 +96,29 @@ public class Game : MonoBehaviour
             countdownImage.fillAmount = timeLeft / time;
             if (timeLeft <= 0.0f)
             {
+                foreach(Monster monster in monsters)
+                {
+                    monster.OnDeath -= OnDeath;
+                }
+
                 _gameOver = true;
                 if (onGameOver != null)
                     onGameOver();
-                Destroy(this);
+
                 break;
             }
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    public void PlayAgain()
+    {
+        Application.LoadLevel("Main");
+    }
+
+    public void ReturnToMenu()
+    {
+        Application.LoadLevel("Menu");
     }
 
     Dish SpawnDish(Dish dish)
@@ -126,6 +139,7 @@ public class Game : MonoBehaviour
         instance.OnChop += OnChopEventHandler;
         instance.OnDeath += OnDeath;
         instance.OnDeath += OnDeathEventhandler;
+        instance.monsterSpawn = monsterSpawn;
         return gameObject.GetComponent<Monster>();
     }
 
