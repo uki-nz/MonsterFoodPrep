@@ -15,11 +15,8 @@ public class Game : MonoBehaviour
     public Camera UiCamera;
     public GameObject[] KillEffects;
     AudioSource audio;
-<<<<<<< HEAD
-=======
     public AudioClip chopSound;
     public AudioClip deathSound;
->>>>>>> origin/master
     public GameObject chopSuccessfulPopup;
     public GameObject chopWastePopup;
     public GameObject chopPopup;
@@ -33,9 +30,13 @@ public class Game : MonoBehaviour
     }
     private static Game _game;
 
+    int count;
+    List<Monster> monsters;
+
     void Awake()
     {
         _game = this;
+        audio = GetComponent<AudioSource>();
     }
 
     IEnumerator Start()
@@ -50,26 +51,21 @@ public class Game : MonoBehaviour
 
             foreach (Dish dish in round.dishes)
             {
-                int count = 0;
                 Dish dishInstance = SpawnDish(dish);
-                List<Monster> monsters = new List<Monster>();
+
+                count = 0;
+                monsters = new List<Monster>();
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
-                    Monster monsterInstance = SpawnMonster(monsterSpawn.monster, monsterSpawn.transform);
-                    monsterInstance.OnDeath += delegate (bool success, Monster monster)
-                    {
-                        if (success)
-                            count++;
-
-                        monsters.Remove(monster);
-                    };
-                    monsterInstance.OnDeath += OnDeathEventhandler;
+                    Monster monsterInstance = SpawnMonster(monsterSpawn);
+                    monsterInstance.monsterSpawn = monsterSpawn;
                     monsters.Add(monsterInstance);
                     yield return new WaitForSeconds(0.05f);
                 }
 
                 while (true)
                 {
+                    Debug.Log(count);
                     if (count == dish.monsterSpawns.Length)
                         break;
 
@@ -109,15 +105,32 @@ public class Game : MonoBehaviour
         return gameObject.GetComponent<Dish>();
     }
 
-    Monster SpawnMonster(Monster monster, Transform transform)
+    Monster SpawnMonster(MonsterSpawn monsterSpawn)
     {
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(0, 1, 0));
-        GameObject gameObject = (GameObject)Instantiate(monster.gameObject, transform.position, rotation);
+        GameObject gameObject = (GameObject)Instantiate(monsterSpawn.monster.gameObject, monsterSpawn.transform.position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         Monster instance = gameObject.GetComponent<Monster>();
         instance.OnChop += OnChopEventHandler;
+        instance.OnDeath += OnDeath;
         instance.OnDeath += OnDeathEventhandler;
         return gameObject.GetComponent<Monster>();
+    }
+
+    IEnumerator RespawnMonster(MonsterSpawn monsterSpawn, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SpawnMonster(monsterSpawn);
+    }
+
+    void OnDeath(bool success, Monster monster)
+    {
+        if (success)
+            count++;
+        else
+            StartCoroutine(RespawnMonster(monster.monsterSpawn, respawnDelay));
+
+        monsters.Remove(monster);
     }
 
     private void OnChopEventHandler(bool success, Monster monster)

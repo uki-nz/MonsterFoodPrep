@@ -58,6 +58,9 @@ public class Monster : MonoBehaviour
     public float bobScale = 0.01f;
     public float bobFrequency = 0.25f;
     public bool canWalk = true;
+    
+    [HideInInspector]
+    public MonsterSpawn monsterSpawn;
 
     private float startTime;
     private Vector3 startScale;
