@@ -68,12 +68,6 @@ public class Game : MonoBehaviour
                 count = 0;
                 monsters = new List<Monster>();
 
-                if(dish.dishPrefab != null)
-                {
-                    GameObject go = (GameObject)GameObject.Instantiate(dish.dishPrefab, foodSpawn.position, Quaternion.identity);
-                    //go.
-                }
-
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
                     Monster monsterInstance = SpawnMonster(monsterSpawn);
