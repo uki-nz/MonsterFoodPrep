@@ -13,7 +13,6 @@ public class Game : MonoBehaviour
     public Camera UiCamera;
     public GameObject[] KillEffects;
     AudioSource audio;
-    public AudioClip chopSound;
     public GameObject chopSuccessfulPopup;
     public GameObject chopWastePopup;
     public Transform dishSpawn;
@@ -99,8 +98,6 @@ public class Game : MonoBehaviour
                dish.gameObject,
                dishSpawn.position,
                Quaternion.identity);
-        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-        rigidbody.velocity = Vector3.down * 10f;
         return gameObject.GetComponent<Dish>();
     }
 

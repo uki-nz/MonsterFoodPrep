@@ -731,10 +731,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5efbe6113356adf4d807930a4494ad3f, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &645367348 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 5efbe6113356adf4d807930a4494ad3f, type: 3}
-  m_PrefabInternal: {fileID: 645367347}
 --- !u!1001 &690728181
 Prefab:
   m_ObjectHideFlags: 0
@@ -814,6 +810,7 @@ GameObject:
   - 65: {fileID: 781133660}
   - 54: {fileID: 781133662}
   - 114: {fileID: 781133661}
+  - 82: {fileID: 781133665}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -847,7 +844,6 @@ MonoBehaviour:
   moveSpeed: 10
   chopSpeed: 40
   hand: {fileID: 336744428}
-  chopping: 0
 --- !u!54 &781133662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -896,6 +892,76 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 781133659}
   m_Mesh: {fileID: 4300000, guid: 5cec9a9499317724e9f6d1f79632ea0a, type: 3}
+--- !u!82 &781133665
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781133659}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &791677017
 Prefab:
   m_ObjectHideFlags: 0
@@ -950,6 +1016,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0e7c8b5097f1e30448b0fcdb25a8a16b, type: 3}
   m_PrefabInternal: {fileID: 791677017}
+--- !u!1 &795546763 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 153750, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
+  m_PrefabInternal: {fileID: 972430632}
 --- !u!1001 &846608436
 Prefab:
   m_ObjectHideFlags: 0
@@ -963,7 +1033,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec2c444d6b4fbc342b65819d4b1dd326, type: 3}
       propertyPath: m_LocalPosition.y
-      value: .5
+      value: .479999989
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec2c444d6b4fbc342b65819d4b1dd326, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1037,11 +1107,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444950, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 316
+      value: 314.100006
       objectReference: {fileID: 0}
     - target: {fileID: 22444950, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 204
+      value: 178.899994
       objectReference: {fileID: 0}
     - target: {fileID: 22444950, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
       propertyPath: m_SizeDelta.x
@@ -1074,6 +1144,14 @@ Prefab:
     - target: {fileID: 22444950, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
       propertyPath: m_Pivot.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426280, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465898, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
+      propertyPath: m_FillClockwise
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c47360aee5e3d2c4ea5097990578eadb, type: 2}
@@ -1187,6 +1265,12 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b46bfbd51406fe0469d27020ad2e971f, type: 3}
   m_PrefabInternal: {fileID: 1793790626}
+--- !u!114 &1072609147 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11465898, guid: c47360aee5e3d2c4ea5097990578eadb,
+    type: 2}
+  m_PrefabInternal: {fileID: 972430632}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1119247360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1867,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2059281404}
   - 114: {fileID: 2059281403}
-  - 82: {fileID: 2059281405}
+  - 114: {fileID: 2059281405}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1802,26 +1886,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9952f247dce42714da5f570aa92b7060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dishes:
-  - {fileID: 11402006, guid: 21f9175a9e5801c479f02fdac94f7beb, type: 2}
+  rounds:
+  - {fileID: 2059281405}
+  countdownTimer: {fileID: 795546763}
+  countdownText: {fileID: 2136795377}
+  countdownImage: {fileID: 1072609147}
   UiCanvas: {fileID: 1638412335}
   UiCamera: {fileID: 0}
-  chopSound: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   KillEffects:
   - {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   - {fileID: 170332, guid: 16cd5d9662ff1594e8d74048599ae128, type: 2}
+  chopSuccessfulPopup: {fileID: 0}
+  chopWastePopup: {fileID: 0}
   dishSpawn: {fileID: 1119247361}
-  monsterSpawn: {fileID: 1844975384}
-  choppingBoard: {fileID: 645367348}
-  timeLimit: 0
   respawnDelay: 0
-  fallSpeed: 10
-  monsterQuantity: 4
-  monsterPrefabs:
-  - {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-  - {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-  - {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
-  DishParts: []
+  completeDelay: 1
 --- !u!4 &2059281404
 Transform:
   m_ObjectHideFlags: 0
@@ -1834,77 +1913,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
---- !u!82 &2059281405
-AudioSource:
+--- !u!114 &2059281405
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059281402}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ace48b5143a3a64790be2dcfc615556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeLimit: 20
+  dishes:
+  - {fileID: 11402006, guid: fe1a719d16930c04d8407817a66aa845, type: 2}
 --- !u!4 &2062016126 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b46bfbd51406fe0469d27020ad2e971f, type: 3}
   m_PrefabInternal: {fileID: 2040991668}
+--- !u!114 &2136795377 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11475892, guid: c47360aee5e3d2c4ea5097990578eadb,
+    type: 2}
+  m_PrefabInternal: {fileID: 972430632}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}

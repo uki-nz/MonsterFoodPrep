@@ -1869,6 +1869,8 @@ MonoBehaviour:
   KillEffects:
   - {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   - {fileID: 170332, guid: 16cd5d9662ff1594e8d74048599ae128, type: 2}
+  chopSuccessfulPopup: {fileID: 0}
+  chopWastePopup: {fileID: 0}
   dishSpawn: {fileID: 1119247361}
   respawnDelay: 0
   completeDelay: 1
