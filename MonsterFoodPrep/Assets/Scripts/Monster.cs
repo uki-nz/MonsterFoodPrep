@@ -202,7 +202,7 @@ public class Monster : MonoBehaviour
                 // run mesh-divider
                 // update game class kill count
                 Debug.Log("KILLED", this);
-                state = MonState.Chopped;
+                state = MonState.Dead;
                 if (OnDeath != null)
                     OnDeath(true, this);
 
@@ -218,7 +218,7 @@ public class Monster : MonoBehaviour
 
             // run mesh divider
             // update game class fail count
-            state = MonState.Chopped;
+            state = MonState.Dead;
             if (OnDeath!= null)
                 OnDeath(false, this);
 
