@@ -7,9 +7,12 @@ public class MonsterDamage : MonoBehaviour {
     public List<Rigidbody> breakable;
     private int damageLevel = 0;
     public bool hideRenderer = true;
+    private List<GameObject> rememberToDestroy;
 
 	// Use this for initialization
 	void Start () {
+        rememberToDestroy = new List<GameObject>();
+
         if (hideRenderer)
         {
             // line below is a hack, don't try this at home!
@@ -36,7 +39,7 @@ public class MonsterDamage : MonoBehaviour {
         part.useGravity = true;
         part.GetComponent<Collider>().enabled = true;
         part.transform.parent = null;
-
+        rememberToDestroy.Add(part.gameObject);
         breakable[damageLevel] = null;
         damageLevel++;
     }
@@ -52,7 +55,16 @@ public class MonsterDamage : MonoBehaviour {
                 part.useGravity = true;
                 part.GetComponent<Collider>().enabled = true;
                 part.transform.parent = null;
+                rememberToDestroy.Add(part.gameObject);
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        foreach(GameObject go in rememberToDestroy)
+        {
+            Destroy(go);
         }
     }
 }
