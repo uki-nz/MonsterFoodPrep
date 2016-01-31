@@ -80,8 +80,6 @@ public class Game : MonoBehaviour
                     yield return new WaitForEndOfFrame();
                 }
 
-                Debug.Log("dish finished");
-
                 finishedDish.SetActive(true);
 
                 yield return new WaitForSeconds(completeDelay);
@@ -91,6 +89,8 @@ public class Game : MonoBehaviour
                 Destroy(dishInstance.gameObject);
             }
         }
+
+        GameOver();
     }
 
     IEnumerator Countdown(float time)
@@ -108,16 +108,21 @@ public class Game : MonoBehaviour
                     monster.OnDeath -= OnDeath;
                 }
 
-                gameOverScreen.SetActive(true);
-
-                gameOver = true;
-                if (onGameOver != null)
-                    onGameOver();
-
+                GameOver();
+                           
                 break;
             }
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        if (onGameOver != null)
+            onGameOver();
+
+        gameOverScreen.SetActive(true);
     }
 
     public void PlayAgain()
