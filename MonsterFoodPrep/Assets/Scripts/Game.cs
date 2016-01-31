@@ -22,6 +22,7 @@ public class Game : MonoBehaviour
     public GameObject chopWastePopup;
     public GameObject chopPopup;
     public Transform dishSpawn;
+    public Transform foodSpawn;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
 
@@ -66,6 +67,13 @@ public class Game : MonoBehaviour
 
                 count = 0;
                 monsters = new List<Monster>();
+
+                if(dish.dishPrefab != null)
+                {
+                    GameObject go = (GameObject)GameObject.Instantiate(dish.dishPrefab, foodSpawn.position, Quaternion.identity);
+                    //go.
+                }
+
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
                     Monster monsterInstance = SpawnMonster(monsterSpawn);
