@@ -183,13 +183,11 @@ public class Monster : MonoBehaviour
     public void Chop(Knife.ChopMode chop)
     {
         if (state < MonState.Derpy) return;
-
-        if (ChopsToKill.Count == 0) return;
+        
+        if (chopCount >= ChopsToKill.Count) return;
 
         audio.PlayOneShot(deathSound);
-        //audio.Play();
 
-        print("CHOPPED");
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;

@@ -6,11 +6,15 @@ public class MonsterDamage : MonoBehaviour {
     
     public List<Rigidbody> breakable;
     private int damageLevel = 0;
+    public bool hideRenderer = true;
 
 	// Use this for initialization
 	void Start () {
-        // line below is a hack, don't try this at home!
-        GetComponent<Renderer>().enabled = false;
+        if (hideRenderer)
+        {
+            // line below is a hack, don't try this at home!
+            GetComponent<Renderer>().enabled = false;
+        }
 
         Monster mon = GetComponent<Monster>();
         mon.OnChop += OnChopHandler;
