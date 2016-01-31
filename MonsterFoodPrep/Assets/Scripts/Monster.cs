@@ -35,8 +35,7 @@ public class Monster : MonoBehaviour
     public GameObject wrongPrefab;
     public GameObject dummyPrefab;
     public MovementPattern movementOptions;
-    AudioSource audio;
-    public AudioClip deathSound;
+
     public List<Knife.ChopMode> ChopsToKill = new List<Knife.ChopMode>();
     public int scoreValue = 10;
     private int chopCount = 0;  // must init to 0 in Start() if we pool
@@ -71,7 +70,6 @@ public class Monster : MonoBehaviour
         startTime = Time.time;
         startScale = transform.localScale;
         controller = GetComponent<CharacterController>();
-        audio = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -186,8 +184,6 @@ public class Monster : MonoBehaviour
         
         if (chopCount >= ChopsToKill.Count) return;
 
-        audio.PlayOneShot(deathSound);
-
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -212,13 +208,13 @@ public class Monster : MonoBehaviour
         }
         else
         {
+            state = MonState.Chopped;
             // chopped wrongly, kill but no rewards
             if (OnChop != null)
                 OnChop(false, this);
 
             // run mesh divider
             // update game class fail count
-            state = MonState.Chopped;
             if (OnDeath!= null)
                 OnDeath(false, this);
 

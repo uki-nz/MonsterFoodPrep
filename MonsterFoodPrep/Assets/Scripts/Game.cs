@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using Random = UnityEngine.Random;
 
 public class Game : MonoBehaviour
 {
@@ -9,8 +11,10 @@ public class Game : MonoBehaviour
     public Camera UiCamera;
     AudioSource audio;
     public AudioClip chopSound;
+    public AudioClip deathSound;
     public GameObject chopSuccessfulPopup;
     public GameObject chopWastePopup;
+    public GameObject chopPopup;
     public Transform dishSpawn;
     public Transform monsterSpawn;
     public Transform choppingBoard;
@@ -92,8 +96,22 @@ public class Game : MonoBehaviour
         GameObject gameObject = (GameObject)Instantiate(monster.gameObject, position, rotation);
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         Monster instance = gameObject.GetComponent<Monster>();
+        instance.OnChop += OnChopEventHandler;
         instance.OnDeath += OnDeathEventhandler;
         monsters.Add(instance);
+    }
+
+    private void OnChopEventHandler(bool success, Monster monster)
+    {
+        if (monster.State == Monster.MonState.Dead) return;
+        GameObject fx = chopPopup;
+        GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
+
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, monster.transform.position);
+        RectTransform fxTransform = (RectTransform)go.transform;
+        RectTransform canvasTransform = (RectTransform)UiCanvas;
+        fxTransform.anchoredPosition = screenPoint;
+        fxTransform.SetParent(UiCanvas);
     }
 
     void OnDeathEventhandler(bool success, Monster monster)
@@ -165,5 +183,7 @@ public class Game : MonoBehaviour
         RectTransform canvasTransform = (RectTransform)UiCanvas;
         fxTransform.anchoredPosition = screenPoint;
         fxTransform.SetParent(UiCanvas);
+        
+        audio.PlayOneShot(deathSound);
     }
 }
