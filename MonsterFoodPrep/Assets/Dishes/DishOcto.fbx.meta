@@ -1,15 +1,46 @@
 fileFormatVersion: 2
-guid: b87c07dd2af35ff4a9f1e64b1ef110ee
-timeCreated: 1454186079
+guid: 25ea5817caa0312488d1cebb807f0413
+timeCreated: 1454197822
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: TEXTChop
+    100000: DishOcto
+    100002: //RootNode
+    100004: GEOBlueBlob2
+    100006: GEOBlueBlob3
+    100008: GEOOctoVert1
+    100010: GEOOctoVert2
+    100012: GEOOctoVert3
+    100014: GEOOctoVert4
+    100016: GrpOctoChoppedVert
+    400000: DishOcto
+    400002: //RootNode
+    400004: GEOBlueBlob2
+    400006: GEOBlueBlob3
+    400008: GEOOctoVert1
+    400010: GEOOctoVert2
+    400012: GEOOctoVert3
+    400014: GEOOctoVert4
+    400016: GrpOctoChoppedVert
+    2300000: GEOBlueBlob2
+    2300002: GEOBlueBlob3
+    2300004: GEOOctoVert1
+    2300006: GEOOctoVert2
+    2300008: GEOOctoVert3
+    2300010: GEOOctoVert4
+    3300000: GEOBlueBlob2
+    3300002: GEOBlueBlob3
+    3300004: GEOOctoVert1
+    3300006: GEOOctoVert2
+    3300008: GEOOctoVert3
+    3300010: GEOOctoVert4
+    4300000: GEOOctoVert1
+    4300002: GEOOctoVert2
+    4300004: GEOOctoVert3
+    4300006: GEOOctoVert4
+    4300008: GEOBlueBlob2
+    4300010: GEOBlueBlob3
   materials:
     importMaterials: 1
     materialName: 0
