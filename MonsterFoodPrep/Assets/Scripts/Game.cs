@@ -25,6 +25,7 @@ public class Game : MonoBehaviour
     public Transform foodSpawn;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
+    private DishProgress dp;
 
     public delegate void OnGameOver();
     public event OnGameOver onGameOver;
@@ -70,8 +71,8 @@ public class Game : MonoBehaviour
 
                 if(dish.dishPrefab != null)
                 {
-                    GameObject go = (GameObject)GameObject.Instantiate(dish.dishPrefab, foodSpawn.position, Quaternion.identity);
-                    //go.
+                    GameObject go = (GameObject)GameObject.Instantiate(dish.dishPrefab.gameObject, foodSpawn.position, Quaternion.identity);
+                    dp = go.GetComponent<DishProgress>();
                 }
 
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
