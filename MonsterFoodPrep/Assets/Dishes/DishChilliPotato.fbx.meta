@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 7fc667de28257764a8a3630397d13bb4
+timeCreated: 1454209067
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: DishChilliPotato
+    100002: //RootNode
+    100004: GEOChilliDia1
+    100006: GEOChilliDia2
+    100008: GEOChilliDia3
+    100010: GEOChilliDia4
+    100012: GEOChilliDia5
+    100014: GEOChilliDia6
+    100016: GEOPinkBlob5
+    100018: GEOPotato1
+    100020: GEOPotato2
+    100022: GEOPotato4
+    100024: GEOPotato5
+    400000: //RootNode
+    400002: DishChilliPotato
+    400004: GEOChilliDia1
+    400006: GEOChilliDia2
+    400008: GEOChilliDia3
+    400010: GEOChilliDia4
+    400012: GEOChilliDia5
+    400014: GEOChilliDia6
+    400016: GEOPinkBlob5
+    400018: GEOPotato1
+    400020: GEOPotato2
+    400022: GEOPotato4
+    400024: GEOPotato5
+    2300000: GEOChilliDia1
+    2300002: GEOChilliDia2
+    2300004: GEOChilliDia3
+    2300006: GEOChilliDia4
+    2300008: GEOChilliDia5
+    2300010: GEOChilliDia6
+    2300012: GEOPinkBlob5
+    2300014: GEOPotato1
+    2300016: GEOPotato2
+    2300018: GEOPotato4
+    2300020: GEOPotato5
+    3300000: GEOChilliDia1
+    3300002: GEOChilliDia2
+    3300004: GEOChilliDia3
+    3300006: GEOChilliDia4
+    3300008: GEOChilliDia5
+    3300010: GEOChilliDia6
+    3300012: GEOPinkBlob5
+    3300014: GEOPotato1
+    3300016: GEOPotato2
+    3300018: GEOPotato4
+    3300020: GEOPotato5
+    4300000: GEOPinkBlob5
+    4300002: GEOPotato1
+    4300004: GEOPotato2
+    4300006: GEOChilliDia1
+    4300008: GEOChilliDia2
+    4300010: GEOChilliDia3
+    4300012: GEOChilliDia4
+    4300014: GEOPotato4
+    4300016: GEOPotato5
+    4300018: GEOChilliDia5
+    4300020: GEOChilliDia6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

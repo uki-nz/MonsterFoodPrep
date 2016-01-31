@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 5469b82a8c830a54ab884f241448ed93
+timeCreated: 1454209066
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: CabbageLeaf1
+    100002: CabbageLeaf2
+    100004: CabbageLeaf3
+    100006: CabbageLeaf4
+    100008: CabbageLeaf5
+    100010: CabbageLeaf6
+    100012: CabbageLeaf7
+    100014: DishChilliOctoCabbage
+    100016: //RootNode
+    100018: Garnish6
+    100020: GEOCabbageChoppedBodyVert1
+    100022: GEOCabbageChoppedBodyVert2
+    100024: GEOCabbageChoppedLeaves
+    100026: GEOChilliDia1
+    100028: GEOChilliDia2
+    100030: GEOChilliDia3
+    100032: GEOChilliDia4
+    100034: GEOOctoVert1
+    100036: GEOOctoVert2
+    100038: GEOOctoVert3
+    100040: GEOOctoVert4
+    400000: CabbageLeaf1
+    400002: CabbageLeaf2
+    400004: CabbageLeaf3
+    400006: CabbageLeaf4
+    400008: CabbageLeaf5
+    400010: CabbageLeaf6
+    400012: CabbageLeaf7
+    400014: DishChilliOctoCabbage
+    400016: //RootNode
+    400018: Garnish6
+    400020: GEOCabbageChoppedBodyVert1
+    400022: GEOCabbageChoppedBodyVert2
+    400024: GEOCabbageChoppedLeaves
+    400026: GEOChilliDia1
+    400028: GEOChilliDia2
+    400030: GEOChilliDia3
+    400032: GEOChilliDia4
+    400034: GEOOctoVert1
+    400036: GEOOctoVert2
+    400038: GEOOctoVert3
+    400040: GEOOctoVert4
+    2300000: CabbageLeaf1
+    2300002: CabbageLeaf2
+    2300004: CabbageLeaf3
+    2300006: CabbageLeaf4
+    2300008: CabbageLeaf5
+    2300010: CabbageLeaf6
+    2300012: CabbageLeaf7
+    2300014: GEOCabbageChoppedBodyVert1
+    2300016: GEOCabbageChoppedBodyVert2
+    2300018: GEOCabbageChoppedLeaves
+    2300020: GEOChilliDia1
+    2300022: GEOChilliDia2
+    2300024: GEOChilliDia3
+    2300026: GEOChilliDia4
+    2300028: GEOOctoVert1
+    2300030: GEOOctoVert2
+    2300032: GEOOctoVert3
+    2300034: GEOOctoVert4
+    3300000: CabbageLeaf1
+    3300002: CabbageLeaf2
+    3300004: CabbageLeaf3
+    3300006: CabbageLeaf4
+    3300008: CabbageLeaf5
+    3300010: CabbageLeaf6
+    3300012: CabbageLeaf7
+    3300014: GEOCabbageChoppedBodyVert1
+    3300016: GEOCabbageChoppedBodyVert2
+    3300018: GEOCabbageChoppedLeaves
+    3300020: GEOChilliDia1
+    3300022: GEOChilliDia2
+    3300024: GEOChilliDia3
+    3300026: GEOChilliDia4
+    3300028: GEOOctoVert1
+    3300030: GEOOctoVert2
+    3300032: GEOOctoVert3
+    3300034: GEOOctoVert4
+    4300000: CabbageLeaf1
+    4300002: CabbageLeaf2
+    4300004: CabbageLeaf3
+    4300006: CabbageLeaf4
+    4300008: CabbageLeaf5
+    4300010: CabbageLeaf6
+    4300012: CabbageLeaf7
+    4300014: GEOCabbageChoppedLeaves
+    4300016: GEOCabbageChoppedBodyVert1
+    4300018: GEOCabbageChoppedBodyVert2
+    4300020: GEOChilliDia1
+    4300022: GEOChilliDia2
+    4300024: GEOChilliDia3
+    4300026: GEOChilliDia4
+    4300028: GEOOctoVert1
+    4300030: GEOOctoVert2
+    4300032: GEOOctoVert3
+    4300034: GEOOctoVert4
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
