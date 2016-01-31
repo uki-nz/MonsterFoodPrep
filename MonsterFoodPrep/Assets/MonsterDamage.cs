@@ -26,10 +26,12 @@ public class MonsterDamage : MonoBehaviour {
     {
         if (!success) return;
 
+        if (breakable.Count <= damageLevel) return;
         Rigidbody part = breakable[damageLevel];
 
         part.useGravity = true;
         part.GetComponent<Collider>().enabled = true;
+        part.transform.parent = null;
 
         breakable[damageLevel] = null;
         damageLevel++;
@@ -45,6 +47,7 @@ public class MonsterDamage : MonoBehaviour {
             {
                 part.useGravity = true;
                 part.GetComponent<Collider>().enabled = true;
+                part.transform.parent = null;
             }
         }
     }
