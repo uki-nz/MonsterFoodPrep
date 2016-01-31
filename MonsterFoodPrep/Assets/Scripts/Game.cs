@@ -36,13 +36,13 @@ public class Game : MonoBehaviour
     [HideInInspector]
     public bool gameOver;
     [HideInInspector]
-    public static Game game;
+    public static Game instance;
 
     List<Monster> monsters;
 
     void Awake()
     {
-        game = this;
+        instance = this;
         audio = GetComponent<AudioSource>();
     }
 
@@ -102,7 +102,7 @@ public class Game : MonoBehaviour
 
                 gameOverScreen.SetActive(true);
 
-                _gameOver = true;
+                gameOver = true;
                 if (onGameOver != null)
                     onGameOver();
 
@@ -153,7 +153,7 @@ public class Game : MonoBehaviour
     void OnDeath(bool success, Monster monster)
     {
         if (success)
-            count++;
+            monstersRemaining++;
         else
             StartCoroutine(RespawnMonster(monster.monsterSpawn, respawnDelay));
 
