@@ -89,7 +89,7 @@ public class Monster : MonoBehaviour
         }
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (transform.position.y < -5f)
+        if (transform.position.y < -5f && state != MonState.Dead)
         {
             state = MonState.Dead;
             OnDeath(false, this);

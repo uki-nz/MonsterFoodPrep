@@ -106,6 +106,7 @@ public class Game : MonoBehaviour
         if (monster.tag == "Chilli" || monster.tag == "Octopus")
         {
             StartCoroutine(RemoveCorpse(monster.gameObject));
+            SpawnKillEffects(monster.transform.position, success);
         }
         else
         {
