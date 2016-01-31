@@ -92,7 +92,8 @@ public class Monster : MonoBehaviour
         if (transform.position.y < -5f && state != MonState.Dead)
         {
             state = MonState.Dead;
-            OnDeath(false, this);
+            if(OnDeath != null)
+                OnDeath(false, this);
         }
 
         Vector3 scale = transform.localScale;
@@ -122,7 +123,6 @@ public class Monster : MonoBehaviour
         {
             StartCoroutine(Walk(Random.onUnitSphere));
         }
-
     }
 
     IEnumerator LookAround()
