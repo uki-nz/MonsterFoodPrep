@@ -1971,9 +1971,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ace48b5143a3a64790be2dcfc615556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 1
+  timeLimit: 120
   dishes:
   - {fileID: 11402006, guid: fe1a719d16930c04d8407817a66aa845, type: 2}
+  - {fileID: 11402006, guid: 21f9175a9e5801c479f02fdac94f7beb, type: 2}
+  - {fileID: 11402006, guid: 825a72b47acf7084492206600eb61560, type: 2}
+  - {fileID: 11402006, guid: 6d73166679df2ab4ca9172d9865d9ef9, type: 2}
+  - {fileID: 11402006, guid: 03930d350d91dca4ba420c073507fbd0, type: 2}
+  - {fileID: 11402006, guid: 43e9f37d7d02f6e47848227f68503435, type: 2}
+  - {fileID: 11402006, guid: 3303cf77731671e4cb237da09b796b17, type: 2}
+  - {fileID: 11402006, guid: e1499dcb511ddd0478727fc837d2df00, type: 2}
+  - {fileID: 11402006, guid: bbaa86606890df045873b05ee8dc42fc, type: 2}
 --- !u!82 &2059281406
 AudioSource:
   m_ObjectHideFlags: 0
