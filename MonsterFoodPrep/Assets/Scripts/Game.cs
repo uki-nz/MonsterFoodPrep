@@ -103,15 +103,22 @@ public class Game : MonoBehaviour
 
     private void OnChopEventHandler(bool success, Monster monster)
     {
-        if (monster.State == Monster.MonState.Dead) return;
-        GameObject fx = chopPopup;
-        GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
+        if (success)
+        {
+            Debug.Log(monster.name+" MONSTER STATE!!! " + monster.State);
 
-        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, monster.transform.position);
-        RectTransform fxTransform = (RectTransform)go.transform;
-        RectTransform canvasTransform = (RectTransform)UiCanvas;
-        fxTransform.anchoredPosition = screenPoint;
-        fxTransform.SetParent(UiCanvas);
+            if (monster.State == Monster.MonState.Dead) return;
+            
+            GameObject fx = chopPopup;
+            GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
+
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, monster.transform.position);
+            RectTransform fxTransform = (RectTransform)go.transform;
+            RectTransform canvasTransform = (RectTransform)UiCanvas;
+            fxTransform.anchoredPosition = screenPoint;
+            fxTransform.SetParent(UiCanvas);
+        }
+        
     }
 
     void OnDeathEventhandler(bool success, Monster monster)
