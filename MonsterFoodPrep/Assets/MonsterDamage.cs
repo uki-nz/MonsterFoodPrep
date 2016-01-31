@@ -37,7 +37,11 @@ public class MonsterDamage : MonoBehaviour {
         Rigidbody part = breakable[damageLevel];
 
         part.useGravity = true;
-        part.GetComponent<Collider>().enabled = true;
+        Collider col = part.GetComponent<Collider>();
+        if (col != null)
+        {
+            col.enabled = true;
+        }
         part.transform.parent = null;
         rememberToDestroy.Add(part.gameObject);
         breakable[damageLevel] = null;
@@ -53,7 +57,11 @@ public class MonsterDamage : MonoBehaviour {
             if (part != null)
             {
                 part.useGravity = true;
-                part.GetComponent<Collider>().enabled = true;
+                Collider col = part.GetComponent<Collider>();
+                if (col != null)
+                {
+                    col.enabled = true;
+                }
                 part.transform.parent = null;
                 rememberToDestroy.Add(part.gameObject);
             }
