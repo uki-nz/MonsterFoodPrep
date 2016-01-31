@@ -9,7 +9,8 @@ public class Game : MonoBehaviour
     public Camera UiCamera;
     AudioSource audio;
     public AudioClip chopSound;
-    public GameObject[] KillEffects;
+    public GameObject chopSuccessfulPopup;
+    public GameObject chopWastePopup;
     public Transform dishSpawn;
     public Transform monsterSpawn;
     public Transform choppingBoard;
@@ -111,11 +112,12 @@ public class Game : MonoBehaviour
             if (success)
             {
                 prefab = monster.rightPrefab;
-                SpawnKillEffects(monster.transform.position);
+                SpawnKillEffects(monster.transform.position, true);
             }
             else
             {
                 prefab = monster.wrongPrefab;
+                SpawnKillEffects(monster.transform.position, false);
             }
             if (prefab != null)
             {
@@ -144,9 +146,17 @@ public class Game : MonoBehaviour
         }
     }
 
-    void SpawnKillEffects(Vector3 pos)
+    void SpawnKillEffects(Vector3 pos, bool success)
     {
-        GameObject fx = KillEffects[Random.Range(0, KillEffects.Length)];
+        GameObject fx;
+        if (success)
+        {
+            fx = chopSuccessfulPopup;
+        }
+        else
+        {
+            fx = chopWastePopup;
+        }
         GameObject go = (GameObject)GameObject.Instantiate(fx, Vector3.zero, Quaternion.identity);
 
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
