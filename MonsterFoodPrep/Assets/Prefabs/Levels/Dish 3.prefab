@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11402006}
   - 65: {fileID: 6528048}
   m_Layer: 0
-  m_Name: Dish1
+  m_Name: Dish 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,74 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7653d023fc430374391906443cc323b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterWaves:
-  - mobs:
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 0
-  - mobs:
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 0
-  - mobs:
-    - monsterPrefab: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
-      spawnPoint: 0
-  - mobs:
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 2
-  - mobs:
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 2
-  - mobs:
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
-      spawnPoint: 1
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 2
-  - mobs:
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 2
-    - monsterPrefab: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
-      spawnPoint: 4
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 6
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 8
-  - mobs:
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
-      spawnPoint: 2
-    - monsterPrefab: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c, type: 2}
-      spawnPoint: 4
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 6
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 8
-  - mobs:
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 0
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 1
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 2
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 3
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 4
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 5
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 6
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 7
-    - monsterPrefab: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-      spawnPoint: 8
+  dishPrefab: {fileID: 11444760, guid: c45b4583b6fa0554d97457ca0ce5d4b2, type: 2}
+  monsterSpawns:
+  - monster: {fileID: 11472410, guid: 2b604997620804f4e850d5086f0f5c42, type: 2}
+    transform: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -183,6 +119,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: monsterWaves.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsterWaves.Array.data[0].mobs.Array.size
@@ -417,6 +357,20 @@ Prefab:
       propertyPath: monsterWaves.Array.data[8].mobs.Array.data[8].spawnPoint
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].monster
+      value: 
+      objectReference: {fileID: 11472410, guid: 2b604997620804f4e850d5086f0f5c42,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].transform
+      value: 
+      objectReference: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dishPrefab
+      value: 
+      objectReference: {fileID: 11444760, guid: c45b4583b6fa0554d97457ca0ce5d4b2,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155470}

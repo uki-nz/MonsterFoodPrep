@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11402006}
   - 65: {fileID: 6528048}
   m_Layer: 0
-  m_Name: Dish
+  m_Name: Dish 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,13 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7653d023fc430374391906443cc323b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dishPrefab: {fileID: 11420358, guid: 6381d881c79d49f4e9fafba8a900d717, type: 2}
   monsterSpawns:
   - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-    transform: {fileID: 494872, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
-  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-    transform: {fileID: 429686, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
-  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
-    transform: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    transform: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -121,7 +118,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsterSpawns.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsters.Array.data[0]
@@ -154,17 +151,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: monsterSpawns.Array.data[1].monster
       value: 
-      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsterSpawns.Array.data[2].monster
       value: 
-      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: monsterSpawns.Array.data[0].transform
       value: 
-      objectReference: {fileID: 494872, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+      objectReference: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
     - target: {fileID: 0}
       propertyPath: monsterSpawns.Array.data[1].transform
       value: 
@@ -173,6 +168,11 @@ Prefab:
       propertyPath: monsterSpawns.Array.data[2].transform
       value: 
       objectReference: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dishPrefab
+      value: 
+      objectReference: {fileID: 11420358, guid: 6381d881c79d49f4e9fafba8a900d717,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155470}

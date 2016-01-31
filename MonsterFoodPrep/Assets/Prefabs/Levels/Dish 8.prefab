@@ -1,0 +1,421 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &155470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 461088}
+  - 33: {fileID: 3326882}
+  - 23: {fileID: 2387756}
+  - 54: {fileID: 5411360}
+  - 114: {fileID: 11402006}
+  - 65: {fileID: 6528048}
+  m_Layer: 0
+  m_Name: Dish 8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461088
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.27999997, y: .419999987, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2387756
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3b58a88abe8a6174bad6031097fb2be1, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3326882
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_Mesh: {fileID: 4300000, guid: 1e5458e535e36a044804074f0471d22a, type: 3}
+--- !u!54 &5411360
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6528048
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.95291257, y: .0419777036, z: 2.95291257}
+  m_Center: {x: 0, y: .165184125, z: 0}
+--- !u!114 &11402006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7653d023fc430374391906443cc323b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dishPrefab: {fileID: 11497440, guid: d85c7343cf7e11947b5372d7989e18f7, type: 2}
+  monsterSpawns:
+  - monster: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
+    transform: {fileID: 470486, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee, type: 2}
+    transform: {fileID: 433532, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11472410, guid: 2b604997620804f4e850d5086f0f5c42, type: 2}
+    transform: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+    transform: {fileID: 429686, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+  - monster: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6, type: 2}
+    transform: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: monsters.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[0].mobs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[1].mobs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[2].mobs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[3].mobs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[4].mobs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[7].mobs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsters.Array.data[2]
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[0].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[1].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[2].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[3].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[3].mobs.Array.data[1].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[3].mobs.Array.data[1].spawnPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[4].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[4].mobs.Array.data[1].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[4].mobs.Array.data[1].spawnPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.data[1].spawnPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.data[2].spawnPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.data[1].monsterPrefab
+      value: 
+      objectReference: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[5].mobs.Array.data[2].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[1].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[1].spawnPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[2].monsterPrefab
+      value: 
+      objectReference: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[2].spawnPoint
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[3].spawnPoint
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[6].mobs.Array.data[4].spawnPoint
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[0].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[1].monsterPrefab
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[1].spawnPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[2].monsterPrefab
+      value: 
+      objectReference: {fileID: 11471690, guid: d5ee5e93e21498e43bccaeae8a8bae0c,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[2].spawnPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[3].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[3].spawnPoint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[4].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[4].spawnPoint
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[5].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[5].spawnPoint
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[6].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[6].spawnPoint
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[7].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[7].spawnPoint
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[8].monsterPrefab
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterWaves.Array.data[8].mobs.Array.data[8].spawnPoint
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].monster
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[0].transform
+      value: 
+      objectReference: {fileID: 470486, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[1].transform
+      value: 
+      objectReference: {fileID: 433532, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[1].monster
+      value: 
+      objectReference: {fileID: 11402388, guid: 78fdb164241851f4eb25598c4bd31fee,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[2].monster
+      value: 
+      objectReference: {fileID: 11472410, guid: 2b604997620804f4e850d5086f0f5c42,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[2].transform
+      value: 
+      objectReference: {fileID: 412860, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[3].monster
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[4].monster
+      value: 
+      objectReference: {fileID: 11438810, guid: 312c15d36598c8148a14a2884a1294c6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[3].transform
+      value: 
+      objectReference: {fileID: 429686, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: monsterSpawns.Array.data[4].transform
+      value: 
+      objectReference: {fileID: 478880, guid: 06521417e7329ae4595963fcbb0923b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dishPrefab
+      value: 
+      objectReference: {fileID: 11497440, guid: d85c7343cf7e11947b5372d7989e18f7,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 155470}
+  m_IsPrefabParent: 1

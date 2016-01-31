@@ -10,6 +10,6 @@ public struct MonsterSpawn
 
 public class Dish : MonoBehaviour
 {
-
+    public DishProgress dishPrefab;
     public MonsterSpawn[] monsterSpawns;
 }
