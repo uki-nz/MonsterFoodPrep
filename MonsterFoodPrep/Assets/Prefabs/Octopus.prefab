@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2324124}
   - 54: {fileID: 5439374}
   - 135: {fileID: 13588822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 23: {fileID: 2345134}
   - 54: {fileID: 5443998}
   - 135: {fileID: 13501998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - 114: {fileID: 11407716}
   - 33: {fileID: 3369442}
   - 23: {fileID: 2312948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Octopus
   m_TagString: Octopus
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - 23: {fileID: 2343262}
   - 54: {fileID: 5495026}
   - 135: {fileID: 13522498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - 23: {fileID: 2321396}
   - 54: {fileID: 5413892}
   - 135: {fileID: 13542498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,8 +151,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1196.57312, y: 591.139832, z: 206.072906}
-  m_LocalScale: {x: .75, y: .75, z: .75}
+  m_LocalPosition: {x: 1196.5731, y: 591.13983, z: 206.0729}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 409710}
   - {fileID: 410864}
@@ -178,8 +178,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -202,8 +204,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -226,8 +230,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -250,8 +256,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -274,8 +282,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -324,7 +334,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -339,7 +349,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -354,7 +364,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -369,7 +379,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -415,8 +425,8 @@ MonoBehaviour:
   idleTimeMax: 10
   lookTimeMin: 1
   lookTimeMax: 2
-  bobScale: .0500000007
-  bobFrequency: .5
+  bobScale: 0.05
+  bobFrequency: 0.5
   canWalk: 0
   monsterSpawn:
     monster: {fileID: 0}
@@ -431,8 +441,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: .644670904
-  m_Center: {x: .115201995, y: .232286721, z: .000247061253}
+  m_Radius: 0.6446709
+  m_Center: {x: 0.115201995, y: 0.23228672, z: 0.00024706125}
 --- !u!135 &13522498
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -443,8 +453,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: .644470572
-  m_Center: {x: -.119578153, y: .232286721, z: -4.56273556e-05}
+  m_Radius: 0.6444706
+  m_Center: {x: -0.11957815, y: 0.23228672, z: -0.000045627356}
 --- !u!135 &13542498
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -455,8 +465,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: .531792641
-  m_Center: {x: -.447914839, y: .216001242, z: -.00140476227}
+  m_Radius: 0.53179264
+  m_Center: {x: -0.44791484, y: 0.21600124, z: -0.0014047623}
 --- !u!135 &13588822
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -467,8 +477,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: .534630239
-  m_Center: {x: .448741853, y: .214301318, z: -.00163406134}
+  m_Radius: 0.53463024
+  m_Center: {x: 0.44874185, y: 0.21430132, z: -0.0016340613}
 --- !u!143 &14330202
 CharacterController:
   m_ObjectHideFlags: 1
@@ -479,13 +489,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: .579999983
-  m_Radius: .430000007
+  m_Height: 0.58
+  m_Radius: 0.43
   m_SlopeLimit: 180
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: .00100000005
-  m_Center: {x: 0, y: .209999993, z: 0}
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.21, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -496,6 +506,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

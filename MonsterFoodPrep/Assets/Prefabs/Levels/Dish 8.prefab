@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5411360}
   - 114: {fileID: 11402006}
   - 65: {fileID: 6528048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dish 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.27999997, y: .419999987, z: 0}
+  m_LocalPosition: {x: 2.28, y: 0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,8 +50,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -72,7 +74,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -88,8 +90,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.95291257, y: .0419777036, z: 2.95291257}
-  m_Center: {x: 0, y: .165184125, z: 0}
+  m_Size: {x: 2.9529126, y: 0.041977704, z: 2.9529126}
+  m_Center: {x: 0, y: 0.16518413, z: 0}
 --- !u!114 &11402006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,6 +417,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11497440, guid: d85c7343cf7e11947b5372d7989e18f7,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155470}

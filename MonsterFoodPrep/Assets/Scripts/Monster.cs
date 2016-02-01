@@ -45,8 +45,14 @@ public class Monster : MonoBehaviour
     // PROPERTIES
     public MonState State
     {
-        get;
-        protected set;
+        get
+        {
+            return state;
+        }
+        protected set
+        {
+            state = value;
+        }
     }
 
     public float moveSpeed = 1.0f;
@@ -187,6 +193,7 @@ public class Monster : MonoBehaviour
         
         if (chopCount >= ChopsToKill.Count) return;
 
+        // we chopped at the right angle
         if (ChopsToKill[chopCount] == chop)
         {
             chopCount++;
@@ -210,6 +217,7 @@ public class Monster : MonoBehaviour
                 OnChop(true, this);
 
         }
+        // we chopped at the wrong angle
         else
         {
             state = MonState.Dead;
