@@ -6,6 +6,7 @@ public class DishProgress : MonoBehaviour {
 
     public List<GameObject> foodParts;
     private float progress;
+    private float oldProgress = 0f;
     public float Progress
     {
         get
@@ -14,7 +15,9 @@ public class DishProgress : MonoBehaviour {
         }
         set
         {
+            if (value == oldProgress) return;
             progress = value;
+            oldProgress = progress;
             SetProgress(progress);
         }
     }    

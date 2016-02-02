@@ -26,6 +26,7 @@ public class Game : MonoBehaviour
     public GameObject finishedDish;
     public float respawnDelay = 5f;
     public float completeDelay = 1f;
+    private DishProgress currentDish;
 
     public delegate void OnGameOver();
     public event OnGameOver onGameOver;
@@ -65,6 +66,9 @@ public class Game : MonoBehaviour
                 monstersRemaining = monstersRequired;
                 monsters = new List<Monster>();
 
+                GameObject go = (GameObject)GameObject.Instantiate(dishInstance.dishPrefab.gameObject, foodSpawn.position, Quaternion.identity);
+                currentDish = go.GetComponent<DishProgress>();
+
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
                 {
                     Monster monsterInstance = SpawnMonster(monsterSpawn);
@@ -74,19 +78,28 @@ public class Game : MonoBehaviour
 
                 while (true)
                 {
+                    if (currentDish != null)
+                    {
+                        float val = (((float)monstersRequired - monstersRemaining) / monstersRequired);
+                        if (val > 0)
+                            Debug.Log("Dish is "+val*100+"% complete", this);
+                        currentDish.SetProgress(val);
+                    }
+
                     if (monstersRemaining == 0)
                         break;
 
                     yield return new WaitForEndOfFrame();
                 }
 
-                finishedDish.SetActive(true);
+                //finishedDish.SetActive(true);
 
                 yield return new WaitForSeconds(completeDelay);
 
-                finishedDish.SetActive(false);
+                //finishedDish.SetActive(false);
 
                 Destroy(dishInstance.gameObject);
+                Destroy(currentDish.gameObject);
             }
         }
 
