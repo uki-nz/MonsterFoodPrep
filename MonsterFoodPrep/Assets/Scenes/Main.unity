@@ -1532,6 +1532,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1156132670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1156132671}
+  m_Layer: 0
+  m_Name: Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1156132671
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1156132670}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1294815209}
+  m_RootOrder: 0
 --- !u!1 &1169256183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1699,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.25, y: 1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1156132671}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1 &1360244692
@@ -2207,7 +2235,7 @@ MonoBehaviour:
   chopWastePopup: {fileID: 171318, guid: 23b3669bd9c3c5a44a85cd21324533a5, type: 2}
   chopPopup: {fileID: 171318, guid: 72341e2e1dfac904a957db2656e0f945, type: 2}
   dishSpawn: {fileID: 1119247361}
-  foodSpawn: {fileID: 1294815209}
+  foodSpawn: {fileID: 1156132671}
   finishedDish: {fileID: 1042396416}
   respawnDelay: 2
   completeDelay: 1

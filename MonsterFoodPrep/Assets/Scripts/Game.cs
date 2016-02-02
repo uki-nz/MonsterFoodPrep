@@ -66,7 +66,7 @@ public class Game : MonoBehaviour
                 monstersRemaining = monstersRequired;
                 monsters = new List<Monster>();
 
-                GameObject go = (GameObject)GameObject.Instantiate(dishInstance.dishPrefab.gameObject, foodSpawn.position, Quaternion.identity);
+                GameObject go = (GameObject)GameObject.Instantiate(dishInstance.dishPrefab.gameObject, foodSpawn.position, foodSpawn.rotation);
                 currentDish = go.GetComponent<DishProgress>();
 
                 foreach (MonsterSpawn monsterSpawn in dish.monsterSpawns)
